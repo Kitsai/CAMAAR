@@ -14,3 +14,8 @@ Feature: User Password Setup
     And I enter a valid password
     And I enter a different password in the confirmation field
     Then I should see an error message that passwords do not match
+
+  Scenario: Password already created
+    Given I already have a password
+    When I click on the registration link
+    Then I should see an error message that password already registered
