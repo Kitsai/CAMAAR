@@ -12,4 +12,4 @@ Feature: View Forms Admin
         And I am in "gerenciamento" page
         And there are not created forms
         When I click on "Resultados" button
-        Then the button should be deactivated
+        Then the button should not be clickable
