@@ -5,4 +5,6 @@ class Form < ApplicationRecord
 
   has_many :form_requests
   has_many :users, through: :form_requests
+
+  has_many :answers
 end
