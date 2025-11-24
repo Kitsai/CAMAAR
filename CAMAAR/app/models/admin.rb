@@ -4,4 +4,5 @@ class Admin < ApplicationRecord
   belongs_to :user
 
   has_many :templates
+  has_many :forms
 end

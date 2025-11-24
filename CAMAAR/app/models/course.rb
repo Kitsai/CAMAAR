@@ -4,4 +4,5 @@ class Course < ApplicationRecord
   # Student relationship
   has_many :enrollments
   has_many :students, through: :enrollments, source: :student
+  has_many :forms
 end
