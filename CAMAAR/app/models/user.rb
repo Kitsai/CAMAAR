@@ -9,4 +9,11 @@ class User < ApplicationRecord
   # Student relationship
   has_many :enrollments, foreign_key: "student_id"
   has_many :courses, through: :enrollments
+
+  # Admin relationship (optional)
+  has_one :admin
+
+  def admin?
+    admin.present?
+  end
 end
