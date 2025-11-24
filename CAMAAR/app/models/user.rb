@@ -16,4 +16,7 @@ class User < ApplicationRecord
   def admin?
     admin.present?
   end
+
+  has_many :form_requests
+  has_many :forms, through: :form_requests
 end
