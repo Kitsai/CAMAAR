@@ -1,0 +1,99 @@
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.login_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 900px;
+    min-height: 600px;
+}
+
+.welcome {
+    background-color: #6C2365;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    font-size: 56px;
+
+    padding: 76px 41px;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    background-color: white;
+
+    gap: 24px;
+}
+
+.login_form form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login_form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.login_form h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.login_form label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.login_form .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login_form .form-control:focus {
+    outline: none;
+    border-color: #6C2365;
+    box-shadow: 0 0 0 3px rgba(108, 35, 101, 0.1);
+}
+
+.login_form .form-control::placeholder {
+    color: #9ca3af;
+}
+
+.login_form .button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-width: 0;
+}
