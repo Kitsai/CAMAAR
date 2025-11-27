@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   # Include session helpers for authentication
   include SessionsHelper
 
-  include SessionsHelper
-
   before_action :require_login
 
   private
