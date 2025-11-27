@@ -7,4 +7,18 @@ class ApplicationController < ActionController::Base
 
   # Include session helpers for authentication
   include SessionsHelper
+
+  include SessionsHelper
+
+  before_action :require_login
+
+  private
+
+  def require_login
+    unless logged_in?
+    flash[:alert] = "You must be logged in to acces this page."
+
+    redirect_to login_path
+    end
+  end
 end
