@@ -26,14 +26,14 @@ When('I enter a valid email') do
 end
 
 When('I enter the correct password') do
-  fill_in 'Password', with: 'password123'
-  click_button 'Log in'
+  fill_in 'Senha', with: 'password123'
+  click_button 'Entrar'
 end
 
 When('I enter a email that does not exist on database') do
   fill_in 'Email', with: 'nonexistent@example.com'
-  fill_in 'Password', with: 'password123'
-  click_button 'Log in'
+  fill_in 'Senha', with: 'password123'
+  click_button 'Entrar'
 end
 
 When('I enter the wrong password') do
@@ -43,15 +43,15 @@ When('I enter the wrong password') do
     password_confirmation: 'password123'
   )
   fill_in 'Email', with: @user.email
-  fill_in 'Password', with: 'wrongpassword'
-  click_button 'Log in'
+  fill_in 'Senha', with: 'wrongpassword'
+  click_button 'Entrar'
 end
 
 When('I log in successfully') do
   visit login_path
   fill_in 'Email', with: @user.email
-  fill_in 'Password', with: 'password123'
-  click_button 'Log in'
+  fill_in 'Senha', with: 'password123'
+  click_button 'Entrar'
 end
 
 # Then steps - Assertions

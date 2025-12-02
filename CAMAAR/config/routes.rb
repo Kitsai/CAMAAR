@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy", as: :logout
 
+  # Password setup routes
+  get "set_password", to: "passwords#new", as: :set_password
+  post "set_password", to: "passwords#create"
+
   # Defines the root path route ("/")
   root "sessions#new"
 end
