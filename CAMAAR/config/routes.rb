@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get "set_password", to: "passwords#new", as: :set_password
   post "set_password", to: "passwords#create"
 
+  # Templates routes
+  resources :templates
+
   # Defines the root path route ("/")
   root "sessions#new"
 end

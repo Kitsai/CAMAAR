@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_27_000753) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_02_002829) do
   create_table "admins", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_000753) do
   create_table "templates", force: :cascade do |t|
     t.integer "admin_id", null: false
     t.datetime "created_at", null: false
+    t.string "name"
     t.integer "question_set_id", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_templates_on_admin_id"
