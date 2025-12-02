@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <button class="navbar-menu-btn" id="menuToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <h1 class="navbar-title"><%= content_for?(:page_title) ? yield(:page_title) : 'CAMAAR' %></h1>
+  </div>
+
+  <% if logged_in? %>
+    <div class="navbar-right">
+      <div class="user-avatar">
+        <%= current_user.name&.first&.upcase || current_user.email.first.upcase %>
+      </div>
+    </div>
+  <% end %>
+</nav>

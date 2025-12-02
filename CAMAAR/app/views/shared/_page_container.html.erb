@@ -1,0 +1,16 @@
+<%# Usage: render 'shared/page_container', title: 'Page Title', button_text: 'Add New', button_path: new_item_path do %>
+<%#   Page content goes here %>
+<%# end %>
+
+<div class="page-container">
+  <% if local_assigns[:title] %>
+    <%= render "shared/page_header",
+    title: local_assigns[:title],
+    button_text: local_assigns[:button_text],
+    button_path: local_assigns[:button_path] %>
+  <% end %>
+
+  <div class="page-content">
+    <%= yield %>
+  </div>
+</div>

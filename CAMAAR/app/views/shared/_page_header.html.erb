@@ -1,0 +1,8 @@
+<%# Usage: render 'shared/page_header', title: 'Page Title', button_text: 'Add New', button_path: new_item_path %>
+
+<div class="page-header">
+  <h1><%= local_assigns[:title] %></h1>
+  <% if local_assigns[:button_text] && local_assigns[:button_path] %>
+    <%= link_to local_assigns[:button_text], local_assigns[:button_path], class: "button" %>
+  <% end %>
+</div>

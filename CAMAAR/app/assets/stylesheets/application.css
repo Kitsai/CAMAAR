@@ -9,6 +9,9 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+/* CSS Variables */
+@import 'variables.css';
+
 /* Base styles */
 * {
     margin: 0;
@@ -22,6 +25,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-@import 'components/button.css'
+/* Components */
+@import 'components/button.css';
+@import 'components/navigation.css';
+@import 'components/sidebar.css';
+@import 'components/page_structure.css';
 
-@import 'login.css'
+/* Pages */
+@import 'login.css';
+@import 'templates.css';
