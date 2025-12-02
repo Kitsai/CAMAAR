@@ -1,6 +1,6 @@
 class TemplatesController < ApplicationController
   before_action :require_admin
-  before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_template, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @templates = current_admin.templates.includes(:question_set)
@@ -47,7 +47,7 @@ class TemplatesController < ApplicationController
   end
 
   def template_params
-    params.require(:template).permit(:name, question_set_attributes: [:id, :data])
+    params.require(:template).permit(:name, question_set_attributes: [ :id, :data ])
   end
 
   def require_admin
