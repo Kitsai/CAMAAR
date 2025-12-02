@@ -2,6 +2,7 @@
 
 <aside class="sidebar" id="sidebar">
   <nav class="sidebar-nav">
+
     <%# deixar apenas Gerenciamento quando implementado %>
     <% if admin? %>
       <%= link_to templates_path, class: "sidebar-item #{current_page?(templates_path) ? 'active' : ''}" do %>
