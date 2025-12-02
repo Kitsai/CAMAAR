@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  code: MyString
-  classCode: MyString
-  semester: MyString
-  name: MyString
+  code: CS101
+  classCode: A
+  semester: 2024.1
+  name: Introduction to Computer Science
+  teacher: one
 
 two:
-  code: MyString
-  classCode: MyString
-  semester: MyString
-  name: MyString
+  code: CS102
+  classCode: B
+  semester: 2024.1
+  name: Data Structures
+  teacher: two

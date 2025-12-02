@@ -1,7 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  data: 
+  data: [{"question": "What is your name?", "type": "text"}]
 
 two:
-  data: 
+  data: [{"question": "What is your age?", "type": "number"}]
+
+three:
+  data: [{"question": "What is your email?", "type": "email"}] 
