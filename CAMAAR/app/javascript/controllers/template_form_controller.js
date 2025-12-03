@@ -28,6 +28,57 @@ export default class extends Controller {
     this.updateSubmitButtonState()
   }
 
+  toggleOptions(event) {
+    const select = event.target
+    const questionItem = select.closest('.question-item')
+    const optionsSection = questionItem.querySelector('.question-options')
+    const optionsList = optionsSection.querySelector('.options-list')
+
+    if (select.value === 'radio') {
+      optionsSection.style.display = 'block'
+
+      // If no options exist, add 2 default options
+      if (optionsList.children.length === 0) {
+        this.addOptionToList(optionsList)
+        this.addOptionToList(optionsList)
+      }
+    } else {
+      optionsSection.style.display = 'none'
+    }
+  }
+
+  addOption(event) {
+    event.preventDefault()
+    const button = event.currentTarget
+    const questionOptions = button.closest('.question-options')
+    const optionsList = questionOptions.querySelector('.options-list')
+    this.addOptionToList(optionsList)
+  }
+
+  addOptionToList(optionsList) {
+    const optionTemplate = document.getElementById('option-template')
+    if (!optionTemplate) {
+      console.error('Option template not found')
+      return
+    }
+
+    const clone = optionTemplate.content.cloneNode(true)
+    optionsList.appendChild(clone)
+  }
+
+  removeOption(event) {
+    event.preventDefault()
+    const optionItem = event.currentTarget.closest('.option-item')
+    const optionsList = optionItem.parentElement
+
+    // Only remove if there's more than one option
+    if (optionsList.children.length > 1) {
+      optionItem.remove()
+    } else {
+      alert('Você deve ter pelo menos uma opção')
+    }
+  }
+
   removeQuestion(event) {
     event.preventDefault()
     const questionItem = event.currentTarget.closest('.question-item')
@@ -49,10 +100,26 @@ export default class extends Controller {
       const typeSelect = item.querySelector('.question-type-select')
 
       if (input && input.value.trim()) {
-        questions.push({
+        const questionData = {
           question: input.value,
           type: typeSelect ? typeSelect.value : "text"
-        })
+        }
+
+        // If radio type, collect options
+        if (questionData.type === 'radio') {
+          const options = []
+          const optionInputs = item.querySelectorAll('.option-input')
+
+          optionInputs.forEach(optionInput => {
+            if (optionInput.value.trim()) {
+              options.push(optionInput.value)
+            }
+          })
+
+          questionData.options = options
+        }
+
+        questions.push(questionData)
       }
     })
 

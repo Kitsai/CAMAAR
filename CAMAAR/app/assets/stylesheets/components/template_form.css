@@ -197,3 +197,84 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+.question-options {
+    margin-top: var(--spacing-sm);
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.option-item {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.option-input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-white);
+    transition: border-color var(--transition-base);
+}
+
+.option-input:focus {
+    outline: none;
+    border-color: var(--primary-purple);
+}
+
+.btn-remove-option {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    color: var(--gray-400);
+    transition: all var(--transition-base);
+}
+
+.btn-remove-option:hover {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+.add-option-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.btn-add-option {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--gray-400);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-add-option:hover {
+    background-color: var(--gray-500);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-add-option svg {
+    stroke: currentColor;
+}

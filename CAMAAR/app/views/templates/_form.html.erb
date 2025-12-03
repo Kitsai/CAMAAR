@@ -14,16 +14,51 @@
                 <div class="question-fields">
                   <div class="question-field-group">
                     <label class="question-label">Tipo</label>
-                    <select class="question-type-select">
+                    <select class="question-type-select" data-action="change->template-form#toggleOptions">
                       <option value="text" <%= 'selected' if question_data['type'] == 'text' %>>Text</option>
+                      <option value="radio" <%= 'selected' if question_data['type'] == 'radio' %>>Radio</option>
                     </select>
                   </div>
                   <div class="question-field-group">
-                    <label class="question-label">Pergunta</label>
+                    <label class="question-label">Texto</label>
                     <input type="text"
                            class="question-input"
                            placeholder="Digite a pergunta"
                            value="<%= question_data['question'] %>">
+                  </div>
+                  <div class="question-options" style="display: <%= question_data['type'] == 'radio' ? 'block' : 'none' %>;">
+                    <label class="question-label">Opções</label>
+                    <div class="options-list">
+                      <% if question_data['options'].present? %>
+                        <% question_data['options'].each do |option| %>
+                          <div class="option-item">
+                            <input type="text"
+                                   class="option-input"
+                                   placeholder="Digite a opção"
+                                   value="<%= option %>">
+                            <button type="button"
+                                    class="btn-remove-option"
+                                    data-action="click->template-form#removeOption">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                              </svg>
+                            </button>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="add-option-wrapper">
+                      <button type="button"
+                              class="btn-add-option"
+                              data-action="click->template-form#addOption"
+                              title="Adicionar opção">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <line x1="12" y1="5" x2="12" y2="19"></line>
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <button type="button"
