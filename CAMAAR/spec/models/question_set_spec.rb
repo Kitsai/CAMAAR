@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe QuestionSet, type: :model do
   describe "validations" do
     it "is valid with a non-empty array of questions" do
-      question_set = QuestionSet.new(data: [{ question: "Test?", type: "text" }])
+      question_set = QuestionSet.new(data: [ { question: "Test?", type: "text" } ])
       expect(question_set).to be_valid
     end
 
@@ -40,16 +40,16 @@ RSpec.describe QuestionSet, type: :model do
 
   describe "copy-on-write behavior" do
     let(:admin) { create(:user, :admin).admin }
-    let(:question_set) { QuestionSet.create!(data: [{ question: "Original", type: "text" }]) }
+    let(:question_set) { QuestionSet.create!(data: [ { question: "Original", type: "text" } ]) }
     let(:template) { Template.create!(name: "Test Template", admin: admin, question_set: question_set) }
 
     context "when question_set is not used by any forms" do
       it "updates the question_set directly" do
         original_id = question_set.id
-        question_set.update(data: [{ question: "Updated", type: "text" }])
+        question_set.update(data: [ { question: "Updated", type: "text" } ])
         question_set.reload
         expect(question_set.id).to eq(original_id)
-        expect(question_set.data).to eq([{ "question" => "Updated", "type" => "text" }])
+        expect(question_set.data).to eq([ { "question" => "Updated", "type" => "text" } ])
       end
     end
 
@@ -62,25 +62,25 @@ RSpec.describe QuestionSet, type: :model do
         template
 
         original_id = question_set.id
-        question_set.update(data: [{ question: "Modified", type: "text" }])
+        question_set.update(data: [ { question: "Modified", type: "text" } ])
 
         # Original question_set should remain unchanged
         question_set.reload
-        expect(question_set.data).to eq([{ "question" => "Original", "type" => "text" }])
+        expect(question_set.data).to eq([ { "question" => "Original", "type" => "text" } ])
 
         # Template should point to a new question_set
         template.reload
         expect(template.question_set_id).not_to eq(original_id)
-        expect(template.question_set.data).to eq([{ "question" => "Modified", "type" => "text" }])
+        expect(template.question_set.data).to eq([ { "question" => "Modified", "type" => "text" } ])
       end
 
       it "keeps the original question_set for existing forms" do
         original_id = question_set.id
-        question_set.update(data: [{ question: "Modified", type: "text" }])
+        question_set.update(data: [ { question: "Modified", type: "text" } ])
 
         form.reload
         expect(form.question_set_id).to eq(original_id)
-        expect(form.question_set.data).to eq([{ "question" => "Original", "type" => "text" }])
+        expect(form.question_set.data).to eq([ { "question" => "Original", "type" => "text" } ])
       end
     end
   end

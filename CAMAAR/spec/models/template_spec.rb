@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Template, type: :model do
   let(:admin) { create(:user, :admin).admin }
-  let(:question_set) { QuestionSet.create!(data: [{ question: "Test question", type: "text" }]) }
+  let(:question_set) { QuestionSet.create!(data: [ { question: "Test question", type: "text" } ]) }
 
   describe "validations" do
     it "is valid with name, admin, and question_set with questions" do
@@ -69,12 +69,12 @@ RSpec.describe Template, type: :model do
       template = admin.templates.build(
         name: "Nested Template",
         question_set_attributes: {
-          data: [{ question: "Nested question", type: "text" }]
+          data: [ { question: "Nested question", type: "text" } ]
         }
       )
       expect(template.save).to be true
       expect(template.question_set).to be_persisted
-      expect(template.question_set.data).to eq([{ "question" => "Nested question", "type" => "text" }])
+      expect(template.question_set.data).to eq([ { "question" => "Nested question", "type" => "text" } ])
     end
   end
 end

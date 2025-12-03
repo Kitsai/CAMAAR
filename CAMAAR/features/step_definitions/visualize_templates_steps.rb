@@ -55,6 +55,8 @@ end
 
 Then("the {string} button should be disabled") do |button_text|
   # Check if button/link is disabled or not present
-  expect(page).to have_css("a.disabled", text: button_text) ||
-    expect(page).to have_css("button[disabled]", text: button_text)
+  expect(
+    page.has_css?("a.disabled", text: button_text) ||
+    page.has_css?("button[disabled]", text: button_text)
+  ).to be true
 end

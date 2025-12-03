@@ -133,3 +133,4 @@ When writing tests, match the existing pattern for the component being tested.
 - Schema is in `db/schema.rb` (do not edit directly)
 - SQLite databases stored in `storage/` directory
 - QuestionSets and Answers store complex data as JSON/text in `data` fields
+- always implement first the bdd steps and unit tests

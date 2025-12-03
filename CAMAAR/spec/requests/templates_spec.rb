@@ -8,7 +8,7 @@ RSpec.describe "Templates", type: :request do
     {
       name: "Test Template",
       question_set_attributes: {
-        data: [{ question: "What is your name?", type: "text" }]
+        data: [ { question: "What is your name?", type: "text" } ]
       }
     }
   end
@@ -31,8 +31,8 @@ RSpec.describe "Templates", type: :request do
     end
 
     it "displays all templates for the current admin" do
-      template1 = Template.create!(name: "Template 1", admin: admin, question_set: QuestionSet.create!(data: [{question: "Q1"}]))
-      template2 = Template.create!(name: "Template 2", admin: admin, question_set: QuestionSet.create!(data: [{question: "Q2"}]))
+      template1 = Template.create!(name: "Template 1", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q1" } ]))
+      template2 = Template.create!(name: "Template 2", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q2" } ]))
 
       get templates_path
       expect(response.body).to include("Template 1")
@@ -76,17 +76,17 @@ RSpec.describe "Templates", type: :request do
     context "with invalid parameters (no name)" do
       it "does not create a new template" do
         expect {
-          post templates_path, params: { template: { name: "", question_set_attributes: { data: [{question: "Q"}] } } }
+          post templates_path, params: { template: { name: "", question_set_attributes: { data: [ { question: "Q" } ] } } }
         }.not_to change(Template, :count)
       end
 
       it "returns unprocessable entity status" do
-        post templates_path, params: { template: { name: "", question_set_attributes: { data: [{question: "Q"}] } } }
+        post templates_path, params: { template: { name: "", question_set_attributes: { data: [ { question: "Q" } ] } } }
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "shows error message" do
-        post templates_path, params: { template: { name: "", question_set_attributes: { data: [{question: "Q"}] } } }
+        post templates_path, params: { template: { name: "", question_set_attributes: { data: [ { question: "Q" } ] } } }
         expect(response.body).to include("can't be blank")
       end
     end
@@ -106,7 +106,7 @@ RSpec.describe "Templates", type: :request do
   end
 
   describe "GET /templates/:id/edit" do
-    let(:template) { Template.create!(name: "Test", admin: admin, question_set: QuestionSet.create!(data: [{question: "Q"}])) }
+    let(:template) { Template.create!(name: "Test", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q" } ])) }
 
     it "returns http success" do
       get edit_template_path(template)
@@ -115,7 +115,7 @@ RSpec.describe "Templates", type: :request do
   end
 
   describe "PATCH /templates/:id" do
-    let(:template) { Template.create!(name: "Original", admin: admin, question_set: QuestionSet.create!(data: [{question: "Q"}])) }
+    let(:template) { Template.create!(name: "Original", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q" } ])) }
     let(:new_attributes) { { name: "Updated Template" } }
 
     it "updates the template" do
@@ -131,7 +131,7 @@ RSpec.describe "Templates", type: :request do
   end
 
   describe "DELETE /templates/:id" do
-    let!(:template) { Template.create!(name: "Test", admin: admin, question_set: QuestionSet.create!(data: [{question: "Q"}])) }
+    let!(:template) { Template.create!(name: "Test", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q" } ])) }
 
     it "destroys the template" do
       expect {
