@@ -1,0 +1,54 @@
+<%= turbo_frame_tag "template_modal" do %>
+  <div class="modal-overlay active"
+       id="modalOverlay"
+       data-modal-target="overlay"
+       data-action="click->modal#closeOnOverlay"></div>
+
+  <div class="modal active" id="modal" data-modal-target="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Editar Template</h2>
+      </div>
+
+      <div class="modal-body">
+        <%= render 'templates/form' %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ensure body overflow is hidden when modal is loaded via Turbo Frame
+    document.body.style.overflow = 'hidden'
+  </script>
+
+  <%# Question Template (hidden, used for cloning) %>
+  <template id="question-template">
+    <div class="question-item" data-template-form-target="questionItem">
+      <div class="question-content">
+        <div class="question-fields">
+          <div class="question-field-group">
+            <label class="question-label">Tipo</label>
+            <select class="question-type-select">
+              <option value="text">Text</option>
+            </select>
+          </div>
+          <div class="question-field-group">
+            <label class="question-label">Pergunta</label>
+            <input type="text"
+                   class="question-input"
+                   placeholder="Digite a pergunta">
+          </div>
+        </div>
+        <button type="button"
+                class="btn-remove-question"
+                data-action="click->template-form#removeQuestion"
+                title="Remover pergunta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </template>
+<% end %>

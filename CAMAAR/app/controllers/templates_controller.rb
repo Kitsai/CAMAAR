@@ -4,6 +4,8 @@ class TemplatesController < ApplicationController
 
   def index
     @templates = current_admin.templates.includes(:question_set)
+    @template = Template.new
+    @template.build_question_set
   end
 
   def new
@@ -25,6 +27,9 @@ class TemplatesController < ApplicationController
   end
 
   def edit
+    # @template is already set by before_action :set_template
+    # Ensure question_set is loaded
+    @template.build_question_set unless @template.question_set
   end
 
   def update
@@ -43,11 +48,22 @@ class TemplatesController < ApplicationController
   private
 
   def set_template
-    @template = current_admin.templates.find(params[:id])
+    @template = current_admin.templates.includes(:question_set).find(params[:id])
   end
 
   def template_params
-    params.require(:template).permit(:name, question_set_attributes: [ :id, :data ])
+    permitted = params.require(:template).permit(:name, question_set_attributes: [ :id, :data ])
+
+    # Parse the JSON data string into an array
+    if permitted[:question_set_attributes] && permitted[:question_set_attributes][:data].is_a?(String)
+      begin
+        permitted[:question_set_attributes][:data] = JSON.parse(permitted[:question_set_attributes][:data])
+      rescue JSON::ParserError
+        # If parsing fails, leave it as is and let validation handle it
+      end
+    end
+
+    permitted
   end
 
   def require_admin

@@ -30,6 +30,8 @@ body {
 @import 'components/navigation.css';
 @import 'components/sidebar.css';
 @import 'components/page_structure.css';
+@import 'components/modal.css';
+@import 'components/template_form.css';
 
 /* Pages */
 @import 'login.css';

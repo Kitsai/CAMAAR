@@ -1,6 +1,11 @@
 <% content_for :page_title, "Gerenciamento - Templates" %>
 
-<%= render 'shared/page_container', title: 'Templates' do %>
+<div data-controller="modal">
+  <%= turbo_frame_tag "template_modal" do %>
+    <%= render 'templates/template_modal' %>
+  <% end %>
+
+  <%= render 'shared/page_container', title: 'Templates' do %>
   <div class="templates-grid">
     <% @templates.each do |template| %>
       <div class="template-card">
@@ -8,7 +13,10 @@
           <h3 class="template-card-title"><%= template.name %></h3>
 
           <div class="template-card-actions">
-            <%= link_to edit_template_path(template), class: "btn-icon btn-edit", title: "Edit" do %>
+            <%= link_to edit_template_path(template),
+                class: "btn-icon btn-edit",
+                title: "Edit",
+                data: { turbo_frame: "template_modal" } do %>
               <svg
                 width="20"
                 height="20"
@@ -50,7 +58,9 @@
       </div>
     <% end %>
 
-    <%= link_to new_template_path, class: "template-card add-template-card" do %>
+    <button type="button"
+            class="template-card add-template-card"
+            data-action="click->modal#open">
       <div class="add-template-icon">
         <svg
           width="48"
@@ -64,6 +74,38 @@
           <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
       </div>
-    <% end %>
+    </button>
   </div>
-<% end %>
+  <% end %>
+
+  <%# Question Template (hidden, used for cloning) %>
+  <template id="question-template">
+    <div class="question-item" data-template-form-target="questionItem">
+      <div class="question-content">
+        <div class="question-fields">
+          <div class="question-field-group">
+            <label class="question-label">Tipo</label>
+            <select class="question-type-select">
+              <option value="text">Text</option>
+            </select>
+          </div>
+          <div class="question-field-group">
+            <label class="question-label">Pergunta</label>
+            <input type="text"
+                   class="question-input"
+                   placeholder="Digite a pergunta">
+          </div>
+        </div>
+        <button type="button"
+                class="btn-remove-question"
+                data-action="click->template-form#removeQuestion"
+                title="Remover pergunta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </template>
+</div>
