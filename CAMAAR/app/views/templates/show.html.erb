@@ -1,0 +1,29 @@
+<div class="container">
+  <h1><%= @template.name %></h1>
+
+  <div class="template-details">
+    <h2>Questions</h2>
+    <% if @template.question_set&.data %>
+      <ol>
+        <% @template.question_set.data.each do |question| %>
+          <li>
+            <strong><%= question["question"] %></strong>
+            <span class="badge"><%= question["type"] %></span>
+            <% if question["options"] %>
+              <ul>
+                <% question["options"].each do |option| %>
+                  <li><%= option %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
+    <% else %>
+      <p>No questions defined.</p>
+    <% end %>
+  </div>
+
+  <%= link_to "Edit", edit_template_path(@template) %>
+  <%= link_to "Back", templates_path %>
+</div>

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password validations: false
 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true, if: :password_digest_changed?
+  validates :password, presence: true, confirmation: true, length: { minimum: 8 }, if: :password_digest_changed?
 
   # Teacher relationship
   has_many :taught_courses, class_name: "Course", foreign_key: "teacher_id"
