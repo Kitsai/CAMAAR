@@ -2,16 +2,6 @@
 
 # Background steps
 
-Given('I am an admin user') do
-  # Create a user with admin privileges
-  @user = User.create!(
-    email: 'admin@example.com',
-    password: 'password123',
-    password_confirmation: 'password123'
-  )
-  @admin = Admin.create!(user: @user)
-end
-
 Given('I am on "gerenciamento" page') do
   visit gerenciamento_path
 end

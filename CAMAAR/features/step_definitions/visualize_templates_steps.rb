@@ -56,6 +56,9 @@ Then("I should be redirected to {string}") do |path|
 end
 
 Then("I should see the templates list") do
+  # Refresh the page to show the newly created templates
+  visit current_path
+
   @templates.each do |template|
     expect(page).to have_content(template.name)
   end

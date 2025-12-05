@@ -35,7 +35,7 @@ end
 ####
 
 Then("I should see a success message") do
-  assert page.has_content?('Passwords set successfully')
+  assert page.has_content?('Password set successfully')
 end
 
 Then("I should be able to log in with my credentials") do

@@ -1,5 +1,6 @@
 Feature: Create Form Template
 
+  @javascript
   Scenario: Template created successfully with valid data
     Given I am an admin
     And I am on the gerenciamento - templates page
@@ -8,6 +9,7 @@ Feature: Create Form Template
     And I add at least one question
     Then the new template should appear in the template list
 
+  @javascript
   Scenario: Tried to create a template with no questions
     Given I am an admin
     And I am on the gerenciamento - templates page
@@ -15,6 +17,7 @@ Feature: Create Form Template
     And I do not add questions
     Then I should receive an error that I should add questions
 
+  @javascript
   Scenario: Tried to create a template with no name
     Given I am an admin
     And I am on the gerenciamento - templates page
