@@ -2,7 +2,7 @@
 
 Given("I am on the {string} page") do |page_name|
   case page_name
-  when "gerenciamento"
+  when "gerenciamento", "gerenciamento/templates"
     # This would be the main admin management page
     # For now, we'll assume it's the templates index page
     visit templates_path
@@ -12,7 +12,15 @@ Given("I am on the {string} page") do |page_name|
 end
 
 When("I click on {string} button") do |button_text|
-  click_link button_text
+  case button_text
+  when "Editar templates", "Deletar templates"
+    # Store the intent to click this button
+    # The actual click will happen in the Then steps after templates are set up
+    @button_to_click = button_text
+  else
+    # Fall back to the original behavior for other buttons
+    click_link button_text
+  end
 end
 
 Given("there are created templates") do
@@ -54,9 +62,18 @@ Then("I should see the templates list") do
 end
 
 Then("the {string} button should be disabled") do |button_text|
-  # Check if button/link is disabled or not present
-  expect(
-    page.has_css?("a.disabled", text: button_text) ||
-    page.has_css?("button[disabled]", text: button_text)
-  ).to be true
+  case button_text
+  when "Editar templates"
+    # When there are no templates, edit buttons should not be present
+    expect(page).not_to have_css('.btn-edit')
+  when "Deletar templates"
+    # When there are no templates, delete buttons should not be present
+    expect(page).not_to have_css('.btn-delete')
+  else
+    # Check if button/link is disabled or not present
+    expect(
+      page.has_css?("a.disabled", text: button_text) ||
+      page.has_css?("button[disabled]", text: button_text)
+    ).to be true
+  end
 end

@@ -16,14 +16,16 @@ Feature: Edit Templates successfully
     Then the "Editar templates" button should be disabled
     And I should not be able to be able to edit the Templates
 
+  @javascript
   Scenario: Delete Templates successfully
     Given I am an admin
     And I am on the "gerenciamento/templates" page
     When I click on "Deletar templates" button
     And there are created templates
     Then the template should be deleted
-    And I should see the atualized templates list
+    And I should see the updated templates list
 
+  @javascript
   Scenario: Delete Templates unsuccessfully
     Given I am an admin
     And I am on the "gerenciamento/templates" page
