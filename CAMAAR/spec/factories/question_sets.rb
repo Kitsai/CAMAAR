@@ -3,7 +3,7 @@ FactoryBot.define do
     data do
       [
         { question: "What is your name?", type: "text" },
-        { question: "How would you rate this course?", type: "scale", min: 1, max: 5 },
+        { question: "How would you rate this course?", type: "radio", options: ["Excellent", "Good", "Average", "Poor", "Very Poor"] },
         { question: "What did you like most?", type: "text" }
       ]
     end
