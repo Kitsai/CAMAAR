@@ -12,6 +12,9 @@ Given("I am on the {string} page") do |page_name|
 end
 
 When("I click on {string} button") do |button_text|
+  # Map "Resultados" to "Avaliações" since we renamed it in the sidebar
+  button_text = "Avaliações" if button_text == "Resultados"
+  
   case button_text
   when "Editar templates", "Deletar templates"
     # Store the intent to click this button
@@ -49,6 +52,8 @@ Then("I should be redirected to {string}") do |path|
   expected_path = case path
   when "gerenciamento/templates"
     templates_path
+  when "gerenciamento/resultados"
+    "/gerenciamento/resultados"
   else
     "/#{path}"
   end

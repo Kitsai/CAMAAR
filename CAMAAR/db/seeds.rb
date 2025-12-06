@@ -55,6 +55,65 @@ if Rails.env.development? && Admin.exists?
 
     puts "✓ Created sample template: Course Evaluation"
   end
+
+  # Create sample courses and forms
+  unless Course.exists?(code: 'CS101')
+    teacher_user = User.find_or_create_by!(email: 'teacher@camaar.com') do |u|
+      u.password = 'teacher123'
+      u.password_confirmation = 'teacher123'
+      u.name = 'Professor João Silva'
+    end
+
+    course1 = Course.create!(
+      name: 'Introdução à Programação',
+      code: 'CS101',
+      classCode: 'A',
+      semester: '2024.2',
+      teacher: teacher_user
+    )
+
+    course2 = Course.create!(
+      name: 'Estruturas de Dados',
+      code: 'CS201',
+      classCode: 'B',
+      semester: '2024.2',
+      teacher: teacher_user
+    )
+
+    course3 = Course.create!(
+      name: 'Banco de Dados',
+      code: 'CS301',
+      classCode: 'A',
+      semester: '2024.2',
+      teacher: teacher_user
+    )
+
+    puts "✓ Created sample courses"
+
+    # Create forms using existing templates
+    template = Template.first
+    if template
+      Form.create!(
+        admin: admin,
+        course: course1,
+        question_set: template.question_set
+      )
+
+      Form.create!(
+        admin: admin,
+        course: course2,
+        question_set: template.question_set
+      )
+
+      Form.create!(
+        admin: admin,
+        course: course3,
+        question_set: template.question_set
+      )
+
+      puts "✓ Created sample forms for courses"
+    end
+  end
 end
 
 puts "Seeds completed successfully!"

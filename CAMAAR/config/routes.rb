@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   # Templates routes
   resources :templates
 
+  # Forms routes (gerenciamento/resultados)
+  get "gerenciamento/resultados", to: "forms#index", as: :forms
+
   # Defines the root path route ("/")
   root "sessions#new"
 end

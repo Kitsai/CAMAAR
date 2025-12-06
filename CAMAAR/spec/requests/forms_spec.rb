@@ -33,8 +33,7 @@ RSpec.describe "Forms", type: :request do
 
       it "shows access denied message" do
         get "/gerenciamento/resultados"
-        follow_redirect!
-        expect(response.body).to include("Access denied")
+        expect(flash[:alert]).to include("Access denied")
       end
     end
 
