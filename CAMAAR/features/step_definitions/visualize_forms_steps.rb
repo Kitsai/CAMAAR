@@ -23,14 +23,18 @@ When("I click in {string} button") do |button_text|
   # If clicking "Avaliações" and we don't have forms created yet, create them
   if button_text == "Avaliações" && !defined?(@forms)
     @forms = []
+    admin = FactoryBot.create(:user, :admin).admin
     3.times do |i|
       question_set = FactoryBot.create(:question_set)
       course = FactoryBot.create(:course)
-      @forms << FactoryBot.create(:form,
-        admin: @admin,
+      form = FactoryBot.create(:form,
+        admin: admin,
         course: course,
         question_set: question_set
       )
+      # Create form_request to assign the form to the current user
+      FormRequest.create!(user: @user, form: form)
+      @forms << form
     end
   end
   
@@ -38,8 +42,8 @@ When("I click in {string} button") do |button_text|
 end
 
 Given("there are not created forms") do
-  # Ensure no forms exist for this admin
-  @admin.forms.destroy_all if @admin
+  # Ensure no form_requests exist for this user
+  @user.form_requests.destroy_all if @user
 end
 
 Given("there are created forms") do
@@ -75,5 +79,5 @@ Then("the button should not be clickable") do
   # Click the button and verify it goes to the page with empty state
   click_link 'Avaliações'
   expect(page).to have_current_path("/gerenciamento/resultados")
-  expect(page).to have_content("Nenhum formulário criado")
+  expect(page).to have_content("Nenhuma avaliação pendente")
 end

@@ -6,7 +6,14 @@
       <% @forms.each do |form| %>
         <div class="template-card">
           <div class="template-card-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
-            <h3 class="template-card-title" style="margin-bottom: 0.1rem;"><%= form.course.name %></h3>
+            <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-bottom: 0.1rem;">
+              <h3 class="template-card-title" style="margin: 0; flex: 1;"><%= form.course.name %></h3>
+              <% if current_user == form.course.teacher %>
+                <span style="background-color: #4299e1; color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600;">
+                  Professor
+                </span>
+              <% end %>
+            </div>
             <p class="template-card-subtitle" style="color: #718096; margin: 0 0 0.3rem 0; font-size: 0.9rem;">
               <%= form.course.semester %>
             </p>
@@ -34,8 +41,8 @@
         <line x1="16" y1="17" x2="8" y2="17"></line>
         <polyline points="10 9 9 9 8 9"></polyline>
       </svg>
-      <h3 style="color: #4a5568; margin-bottom: 0.5rem;">Nenhum formulário criado</h3>
-      <p style="color: #718096;">Você ainda não criou nenhum formulário para suas turmas.</p>
+      <h3 style="color: #4a5568; margin-bottom: 0.5rem;">Nenhuma avaliação pendente</h3>
+      <p style="color: #718096;">Você não possui avaliações para responder no momento.</p>
     </div>
   <% end %>
 <% end %>
