@@ -1,10 +1,15 @@
 <% content_for :page_title, "Avaliações" %>
 
 <%= render 'shared/page_container', title: 'Avaliações' do %>
+  <%= turbo_frame_tag "form_modal" %>
+
   <% if @forms.any? %>
     <div class="templates-grid">
       <% @forms.each do |form| %>
-        <div class="template-card">
+        <%= link_to form_path(form), 
+            data: { turbo_frame: "form_modal" },
+            class: "template-card", 
+            style: "text-decoration: none; color: inherit; cursor: pointer;" do %>
           <div class="template-card-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
             <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-bottom: 0.1rem;">
               <h3 class="template-card-title" style="margin: 0; flex: 1;"><%= form.course.name %></h3>
@@ -21,7 +26,7 @@
               Professor: <%= form.course.teacher.name %>
             </p>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   <% else %>

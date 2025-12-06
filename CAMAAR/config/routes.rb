@@ -23,6 +23,12 @@ Rails.application.routes.draw do
 
   # Forms routes (gerenciamento/resultados)
   get "gerenciamento/resultados", to: "forms#index", as: :forms
+  
+  resources :forms, only: [:show] do
+    member do
+      post :submit
+    end
+  end
 
   # Defines the root path route ("/")
   root "sessions#new"
