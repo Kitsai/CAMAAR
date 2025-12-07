@@ -69,8 +69,16 @@ class FormsController < ApplicationController
   end
 
   def verify_form_access
-    unless FormRequest.exists?(user: current_user, form: @form)
-      redirect_to forms_path, alert: "Este formulário não está mais disponível para você"
+    # Admins can access forms they created
+    # Regular users can only access forms they have a FormRequest for
+    if current_user.admin?
+      unless @form.admin_id == current_user.admin.user_id
+        redirect_to forms_path, alert: "Você não tem permissão para acessar este formulário"
+      end
+    else
+      unless FormRequest.exists?(user: current_user, form: @form)
+        redirect_to forms_path, alert: "Este formulário não está mais disponível para você"
+      end
     end
   end
 end
