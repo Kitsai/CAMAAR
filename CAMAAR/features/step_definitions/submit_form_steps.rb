@@ -9,7 +9,7 @@ Given("I am on the Avaliações page") do
   fill_in 'Senha', with: 'password123'
   click_button 'Entrar'
   
-  expect(page).to have_current_path(forms_path)
+  expect(page).to have_current_path(avaliacoes_path)
 end
 
 Given("there are available forms") do
@@ -74,11 +74,11 @@ Then("the form should be submitted successfully") do
 end
 
 Then("I should be redirected back to the Avaliações page") do
-  expect(page).to have_current_path(forms_path)
+  expect(page).to have_current_path(avaliacoes_path)
 end
 
 Then("I should be redirected to the Avaliações page") do
-  expect(page).to have_current_path(forms_path)
+  expect(page).to have_current_path(avaliacoes_path)
 end
 
 Then("the submitted form should no longer be available") do

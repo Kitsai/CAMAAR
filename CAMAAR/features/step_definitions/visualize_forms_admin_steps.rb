@@ -27,9 +27,6 @@ Given("there are no created forms") do
 end
 
 When("I click in {string} button") do |button_text|
-  # Map "Resultados" to "Avaliações" since we renamed it in the sidebar
-  button_text = "Avaliações" if button_text == "Resultados"
-  
   click_link button_text
 end
 
@@ -41,5 +38,5 @@ Then("I should view the page with created forms") do
 end
 
 Then("I should see a message indicating no forms exist") do
-  expect(page).to have_content("Nenhuma avaliação pendente")
+  expect(page).to have_content("Nenhum formulário criado")
 end

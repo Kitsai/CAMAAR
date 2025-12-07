@@ -8,15 +8,15 @@ RSpec.describe "Forms", type: :request do
   let(:admin_user) { create(:user, :admin) }
   let(:admin) { admin_user.admin }
 
-  describe "GET /gerenciamento/resultados (forms#index)" do
+  describe "GET /avaliacoes (forms#index) - for regular users" do
     context "when not logged in" do
       it "redirects to login page" do
-        get "/gerenciamento/resultados"
+        get "/avaliacoes"
         expect(response).to redirect_to(login_path)
       end
 
       it "shows an alert message" do
-        get "/gerenciamento/resultados"
+        get "/avaliacoes"
         follow_redirect!
         expect(response.body).to include("You must be logged in")
       end
@@ -28,7 +28,7 @@ RSpec.describe "Forms", type: :request do
       end
 
       it "returns http success" do
-        get "/gerenciamento/resultados"
+        get "/avaliacoes"
         expect(response).to have_http_status(:success)
       end
 
@@ -43,7 +43,7 @@ RSpec.describe "Forms", type: :request do
         form3 = create(:form, admin: admin, course: create(:course), question_set: question_set)
         FormRequest.create!(user: user2, form: form3)
 
-        get "/gerenciamento/resultados"
+        get "/avaliacoes"
         
         # Should see own forms
         expect(response.body).to include(form1.course.name)
@@ -60,7 +60,7 @@ RSpec.describe "Forms", type: :request do
       end
 
       it "returns http success" do
-        get "/gerenciamento/resultados"
+        get "/avaliacoes"
         expect(response).to have_http_status(:success)
       end
 
@@ -70,21 +70,65 @@ RSpec.describe "Forms", type: :request do
         FormRequest.create!(user: user1, form: form1)
         FormRequest.create!(user: user1, form: form2)
         
-        get "/gerenciamento/resultados"
+        get "/avaliacoes"
         expect(response.body).to include(form1.course.name)
         expect(response.body).to include(form2.course.name)
       end
 
       context "when user has no forms assigned" do
         it "returns success with empty list" do
-          get "/gerenciamento/resultados"
+          get "/avaliacoes"
           expect(response).to have_http_status(:success)
         end
 
         it "shows appropriate message for no forms" do
-          get "/gerenciamento/resultados"
+          get "/avaliacoes"
           expect(response).to have_http_status(:success)
         end
+      end
+    end
+  end
+
+  describe "GET /gerenciamento/resultados (forms#results) - for admins" do
+    context "when logged in as admin" do
+      before do
+        post login_path, params: { email: admin_user.email, password: "password123" }
+      end
+
+      it "returns http success" do
+        get "/gerenciamento/resultados"
+        expect(response).to have_http_status(:success)
+      end
+
+      it "displays forms created by the admin" do
+        form1 = create(:form, admin: admin, course: course, question_set: question_set)
+        form2 = create(:form, admin: admin, course: create(:course), question_set: question_set)
+        
+        get "/gerenciamento/resultados"
+        
+        expect(response.body).to include(form1.course.name)
+        expect(response.body).to include(form2.course.name)
+      end
+
+      it "does not display forms created by other admins" do
+        other_admin = create(:user, :admin).admin
+        other_form = create(:form, admin: other_admin, course: create(:course), question_set: question_set)
+        
+        get "/gerenciamento/resultados"
+        
+        expect(response.body).not_to include(other_form.course.name)
+      end
+    end
+
+    context "when logged in as regular user" do
+      before do
+        post login_path, params: { email: user1.email, password: "password123" }
+      end
+
+      it "redirects to avaliacoes with access denied" do
+        get "/gerenciamento/resultados"
+        expect(response).to redirect_to(avaliacoes_path)
+        expect(flash[:alert]).to include("Acesso negado")
       end
     end
   end
@@ -99,7 +143,7 @@ RSpec.describe "Forms", type: :request do
 
       # Login as user1
       post login_path, params: { email: user1.email, password: "password123" }
-      get "/gerenciamento/resultados"
+      get "/avaliacoes"
       
       expect(response.body).to include(form1.course.name)
       expect(response.body).not_to include(form2.course.name) unless form1.course.name == form2.course.name
@@ -148,7 +192,7 @@ RSpec.describe "Forms", type: :request do
 
       it "redirects to forms index" do
         get "/forms/#{form.id}"
-        expect(response).to redirect_to(forms_path)
+        expect(response).to redirect_to(avaliacoes_path)
       end
 
       it "shows access denied message" do
@@ -204,7 +248,7 @@ RSpec.describe "Forms", type: :request do
 
         it "redirects to forms index" do
           post "/forms/#{form.id}/submit", params: { answers: valid_answers }
-          expect(response).to redirect_to(forms_path)
+          expect(response).to redirect_to(avaliacoes_path)
         end
 
         it "shows success message" do
@@ -253,7 +297,7 @@ RSpec.describe "Forms", type: :request do
 
       it "redirects to forms index" do
         post "/forms/#{form.id}/submit", params: { answers: [] }
-        expect(response).to redirect_to(forms_path)
+        expect(response).to redirect_to(avaliacoes_path)
       end
 
       it "shows error message" do

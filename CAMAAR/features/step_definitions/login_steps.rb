@@ -56,7 +56,7 @@ end
 
 # Then steps - Assertions
 Then('I should see the homepage') do
-  assert_equal root_path, current_path
+  assert_equal avaliacoes_path, current_path
   assert page.has_content?('Successfully logged in')
 end
 
