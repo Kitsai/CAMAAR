@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   # Forms routes
   get "avaliacoes", to: "forms#index", as: :avaliacoes
   get "gerenciamento/resultados", to: "forms#results", as: :forms
+  get "gerenciamento/resultados/:course_code/csv", to: "forms#export_csv", as: :export_class_csv
   
   resources :forms, only: [:show] do
     member do
