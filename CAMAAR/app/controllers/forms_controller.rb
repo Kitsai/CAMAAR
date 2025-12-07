@@ -4,9 +4,13 @@ class FormsController < ApplicationController
   before_action :verify_form_access, only: [:show, :submit]
 
   def index
-    # Show forms that the current user needs to respond to
-    # Uses the form_requests relationship table
-    @forms = current_user.forms.includes(:course, :question_set)
+    # For admins: show forms they have created
+    # For regular users: show forms they need to respond to
+    if current_user.admin?
+      @forms = current_user.admin.forms.includes(:course, :question_set)
+    else
+      @forms = current_user.forms.includes(:course, :question_set)
+    end
   end
 
   def show
