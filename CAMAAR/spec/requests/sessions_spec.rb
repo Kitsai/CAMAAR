@@ -25,12 +25,12 @@ RSpec.describe "Sessions", type: :request do
         expect(session[:user_id]).to eq(user.id)
       end
 
-      it "redirects to root path" do
+      it "redirects to avaliacoes path for regular users" do
         post login_path, params: {
           email: user.email,
           password: "password123"
         }
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(avaliacoes_path)
       end
 
       it "shows success message" do

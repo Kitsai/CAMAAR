@@ -12,7 +12,13 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # Login successful
       session[:user_id] = user.id
-      redirect_to forms_path, notice: "Successfully logged in"
+      
+      # Redirect based on user role
+      if user.admin?
+        redirect_to forms_path, notice: "Successfully logged in"
+      else
+        redirect_to avaliacoes_path, notice: "Successfully logged in"
+      end
     else
       # Login failed
       flash.now[:alert] = "Invalid email or password"
@@ -33,7 +39,7 @@ class SessionsController < ApplicationController
       if current_user.admin?
         redirect_to forms_path, notice: "You are already logged in"
       else
-        redirect_to root_path, notice: "You are already logged in"
+        redirect_to avaliacoes_path, notice: "You are already logged in"
       end
     end
   end
