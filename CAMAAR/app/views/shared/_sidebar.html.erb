@@ -20,7 +20,7 @@
         <span>Templates</span>
       <% end %>
 
-      <%= link_to forms_path, class: "sidebar-item #{current_page?(forms_path) ? 'active' : ''}" do %>
+      <%= link_to avaliacoes_path, class: "sidebar-item #{current_page?(avaliacoes_path) ? 'active' : ''}" do %>
         <svg
           width="20"
           height="20"
@@ -36,6 +36,20 @@
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
         <span>Avaliações</span>
+      <% end %>
+
+      <%= link_to forms_path, class: "sidebar-item #{current_page?(forms_path) ? 'active' : ''}" do %>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+        </svg>
+        <span>Resultados</span>
       <% end %>
 
       <%= link_to "#", class: "sidebar-item" do %>

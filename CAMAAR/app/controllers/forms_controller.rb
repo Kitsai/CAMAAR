@@ -4,13 +4,18 @@ class FormsController < ApplicationController
   before_action :verify_form_access, only: [:show, :submit]
 
   def index
+    # For users: show forms they need to respond to
+    @forms = current_user.forms.includes(:course, :question_set)
+  end
+
+  def results
     # For admins: show forms they have created
-    # For regular users: show forms they need to respond to
-    if current_user.admin?
-      @forms = current_user.admin.forms.includes(:course, :question_set)
-    else
-      @forms = current_user.forms.includes(:course, :question_set)
+    unless current_user.admin?
+      redirect_to avaliacoes_path, alert: "Acesso negado"
+      return
     end
+    
+    @forms = current_user.admin.forms.includes(:course, :question_set)
   end
 
   def show
@@ -57,7 +62,7 @@ class FormsController < ApplicationController
     # Remove the form_request (mark as submitted)
     FormRequest.where(user: current_user, form: @form).destroy_all
 
-    redirect_to forms_path, notice: "Avaliação enviada com sucesso!"
+    redirect_to avaliacoes_path, notice: "Avaliação enviada com sucesso!"
   end
 
   private
@@ -65,7 +70,7 @@ class FormsController < ApplicationController
   def find_form
     @form = Form.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to forms_path, alert: "Formulário não encontrado"
+    redirect_to avaliacoes_path, alert: "Formulário não encontrado"
   end
 
   def verify_form_access
@@ -73,11 +78,11 @@ class FormsController < ApplicationController
     # Regular users can only access forms they have a FormRequest for
     if current_user.admin?
       unless @form.admin_id == current_user.admin.user_id
-        redirect_to forms_path, alert: "Você não tem permissão para acessar este formulário"
+        redirect_to avaliacoes_path, alert: "Você não tem permissão para acessar este formulário"
       end
     else
       unless FormRequest.exists?(user: current_user, form: @form)
-        redirect_to forms_path, alert: "Este formulário não está mais disponível para você"
+        redirect_to avaliacoes_path, alert: "Este formulário não está mais disponível para você"
       end
     end
   end

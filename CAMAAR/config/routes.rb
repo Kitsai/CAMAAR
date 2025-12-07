@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   # Templates routes
   resources :templates
 
-  # Forms routes (gerenciamento/resultados)
-  get "gerenciamento/resultados", to: "forms#index", as: :forms
+  # Forms routes
+  get "avaliacoes", to: "forms#index", as: :avaliacoes
+  get "gerenciamento/resultados", to: "forms#results", as: :forms
   
   resources :forms, only: [:show] do
     member do
