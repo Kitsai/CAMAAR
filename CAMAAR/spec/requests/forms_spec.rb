@@ -8,6 +8,56 @@ RSpec.describe "Forms", type: :request do
   let(:admin_user) { create(:user, :admin) }
   let(:admin) { admin_user.admin }
 
+  describe "POST /forms" do
+    context "when form is created successfully" do
+      it "creates a new form and assigns it to classes" do
+        post "/forms", params: {
+          form: {
+            template_id: template.id,
+            class_ids: [class_a.id, class_b.id]
+          }
+        }
+
+        expect(response).to have_http_status(:found)
+        expect(flash[:success]).to eq("Formulário enviado com sucesso.")
+
+        form = Form.last
+        expect(form.template).to eq(template)
+        expect(form.student_classes).to contain_exactly(class_a, class_b)
+      end
+    end
+
+    context "when no template is selected" do
+      it "returns an error message" do
+        post "/forms", params: {
+          form: {
+            template_id: nil,
+            class_ids: [class_a.id]
+          }
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash[:error]).to eq("Você precisa selecionar um template.")
+        expect(Form.count).to eq(0)
+      end
+    end
+
+    context "when no classes are selected" do
+      it "returns an error message" do
+        post "/forms", params: {
+          form: {
+            template_id: template.id,
+            class_ids: []
+          }
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash[:error]).to eq("Você precisa selecionar pelo menos uma turma.")
+        expect(Form.count).to eq(0)
+      end
+    end
+  end
+
   describe "GET /avaliacoes (forms#index) - for regular users" do
     context "when not logged in" do
       it "redirects to login page" do
