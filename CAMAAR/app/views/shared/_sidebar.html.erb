@@ -52,7 +52,7 @@
         <span>Resultados</span>
       <% end %>
 
-      <%= link_to "#", class: "sidebar-item" do %>
+      <%= link_to gerenciamento_path, class: "sidebar-item #{current_page?(gerenciamento_path) ? 'active' : ''}" do %>
         <svg
           width="20"
           height="20"
