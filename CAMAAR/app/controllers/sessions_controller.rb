@@ -12,13 +12,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # Login successful
       session[:user_id] = user.id
-      
-      # Redirect based on user role
-      if user.admin?
-        redirect_to forms_path, notice: "Successfully logged in"
-      else
-        redirect_to avaliacoes_path, notice: "Successfully logged in"
-      end
+
+      redirect_to avaliacoes_path, notice: "Successfully logged in"
     else
       # Login failed
       flash.now[:alert] = "Invalid email or password"
