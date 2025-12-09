@@ -1,0 +1,30 @@
+<% content_for :page_title, "Nova Turma" %>
+
+<%= render 'shared/page_container', title: 'Criar Turma' do %>
+  <%= form_with model: @course, url: turmas_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Nome da Turma" %>
+      <%= f.text_field :name, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :code, "Código" %>
+      <%= f.text_field :code, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :classCode, "Turma (classCode)" %>
+      <%= f.text_field :classCode, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :semester, "Semestre" %>
+      <%= f.text_field :semester, class: "form-control" %>
+    </div>
+
+    <div style="margin-top: 1rem;">
+      <%= f.submit "Criar Turma", class: "button" %>
+      <%= link_to "Cancelar", turmas_path, class: "button button-secondary" %>
+    </div>
+  <% end %>
+<% end %>

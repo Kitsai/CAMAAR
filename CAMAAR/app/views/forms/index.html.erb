@@ -50,4 +50,24 @@
       <p style="color: #718096;">Você não possui avaliações para responder no momento.</p>
     </div>
   <% end %>
+
+  <h2>Turmas</h2>
+
+  <div class="templates-grid">
+    <% @courses.each do |course| %>
+      <div class="template-card">
+        <div class="template-card-content">
+          <h3 class="template-card-title"><%= link_to course.name, turma_path(course) %></h3>
+          <p class="template-card-subtitle"><%= course.code if course.respond_to?(:code) %></p>
+          <p class="form-card-details"><%= course.description.truncate(120) if course.respond_to?(:description) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @courses.empty? %>
+    <div class="empty-state">
+      Nenhuma turma encontrada.
+    </div>
+  <% end %>
 <% end %>

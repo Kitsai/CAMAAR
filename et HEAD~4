@@ -1,0 +1,2249 @@
+[33mcommit 8c8a28b89c0fd0d71586ad612a05c4eb1b82b0ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msprint-2[m[33m)[m
+Merge: 23cb6d0 5c84697
+Author: Vanterson1 <vanterson15@gmail.com>
+Date:   Mon Dec 8 22:41:22 2025 -0300
+
+    Merge branch 'sprint-2' of https://github.com/Kitsai/CAMAAR into sprint-2
+
+[33mcommit 5c84697df60cb20fb4b92fd733498c9c058af55b[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Dec 8 22:37:38 2025 -0300
+
+    fix: correct redirect
+
+[33mcommit 23cb6d03ce8b080dfb39395dea6c12cfed7c218e[m
+Merge: 801f9a3 5ddcad0
+Author: Vanterson1 <vanterson15@gmail.com>
+Date:   Mon Dec 8 21:42:57 2025 -0300
+
+    Merge branch 'sprint-2' of https://github.com/Kitsai/CAMAAR into sprint-2
+
+[33mcommit 801f9a3aa203afa927b4733a8c45c05edb0ba6e8[m
+Author: Vanterson1 <vanterson15@gmail.com>
+Date:   Mon Dec 8 21:40:51 2025 -0300
+
+    adiciona criação de turmas e atualização de membros da turma pelo json que simula uma integração com o SIGAA
+
+[33mcommit 5ddcad09e90908a8a8582b4a002afc9f63b30190[m[33m ([m[1;31morigin/sprint-2[m[33m)[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Dec 8 20:31:40 2025 -0300
+
+    fixed view forms bdd
+
+[33mcommit fbf41b6578ddd94b85769eca307fcf35f203fcb4[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 18:53:01 2025 -0300
+
+    feat: Update login redirection for regular users to avaliacoes path
+
+[33mcommit 41cfca535fcc3c16f985360ebfb1f78ef2d046a0[m[33m ([m[1;31morigin/import_csv[m[33m)[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 18:11:17 2025 -0300
+
+    Update coverage timestamps in resultset and index files
+
+[33mcommit 87811ada44d49a65eeec80a52a1f4abbfd023c0a[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 18:10:56 2025 -0300
+
+    Add CSV export feature for class performance and remove old manage classes feature
+
+[33mcommit 3699755228398439cbdc142f232cfbc2063acd42[m[33m ([m[1;31morigin/visualize-form[m[33m)[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 16:56:31 2025 -0300
+
+    Refactor form paths and update step definitions
+
+[33mcommit bdfbfd596e121692c7f550c6dea2268e6b5acdf3[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 16:42:40 2025 -0300
+
+    feat: Update gerenciamento de forms e view de resultados, ajusta rotas e sidebar
+
+[33mcommit 37726edd7783313baa24ad905d81996fdb67a887[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 16:11:27 2025 -0300
+
+    Remove step definitions for admin visualize forms feature
+
+[33mcommit bc57f33cc63b82da8a692ea9c59bc651f8cb9510[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 15:56:28 2025 -0300
+
+    feat: Enhance form access verification for admins and regular users
+
+[33mcommit 4f16be26e3a826a84c1a7d660db3f38795a3a42c[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Dec 7 15:50:38 2025 -0300
+
+    feat: Implement admin visualize forms feature
+
+[33mcommit f5fd20362b887e3cc2eb155876bbcb58fdedc4bf[m[33m ([m[1;31morigin/16-responder-formulário[m[33m)[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sat Dec 6 16:47:43 2025 -0300
+
+    Funcionalidade de responder formulários
+
+[33mcommit 50749281821a2193eaf2c07e7e5669b44a9c8945[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sat Dec 6 16:47:25 2025 -0300
+
+    Tests para responder formulário
+
+[33mcommit 1169de5407ef4af1947cb3292252644e0a075c53[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sat Dec 6 15:46:49 2025 -0300
+
+    fix/vizualicacao agora usa trelacao correta
+
+[33mcommit 73108204d8913a8facb126d0b303cab3ee73c36d[m[33m ([m[1;31morigin/visualizar-forms[m[33m)[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Fri Dec 5 23:08:07 2025 -0300
+
+    feat: criação e redirecionamento para paginas de avaliacoes
+
+[33mcommit 28f3c5be692a928075deaa275757e3f737a86111[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Fri Dec 5 22:22:58 2025 -0300
+
+    adiciona testes BDD e unitarios para visualize_forms
+
+[33mcommit d239f374fb4beb5041f09f7b8ba3d0c11d55f420[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Fri Dec 5 13:09:25 2025 -0300
+
+    steps fixed
+
+[33mcommit e2b8f27deb7548fcdc7d85bbd4c2d822b3610011[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Fri Dec 5 12:03:23 2025 -0300
+
+    edit and delete steps
+
+[33mcommit e2855c1ca27ddfc823ac776ef2587a76074f9ef7[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Fri Dec 5 00:24:01 2025 -0300
+
+    initiating import data tests
+
+[33mcommit 2bf1eb93d306dc741024c0bf1d80abf5cb425205[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Fri Dec 5 00:08:40 2025 -0300
+
+    import data initial steps definition
+
+[33mcommit 280b16d8fa4266e4a0383a74a4416e130070e030[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Wed Dec 3 16:09:45 2025 -0300
+
+    better test coverage
+
+[33mcommit 090bbf4a963adf2564eafd8013fb1ec4cc13763f[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Wed Dec 3 13:38:54 2025 -0300
+
+    refactors for rubocop
+
+[33mcommit 68f2b32ac1f857c5f9c968f3604bf6d681e98c73[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Wed Dec 3 11:41:58 2025 -0300
+
+    Radio questions
+
+[33mcommit 854cd0b525fcb96de60a52669ebd176553497d30[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Wed Dec 3 11:18:42 2025 -0300
+
+    create modal
+
+[33mcommit a89fed0dabfc82db670fc0b7cd149dafee7b1ce1[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Tue Dec 2 12:39:02 2025 -0300
+
+    Template view page
+
+[33mcommit 25d2582e7d12c3f134d95f3f0512a5d7988b2e66[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Tue Dec 2 12:27:00 2025 -0300
+
+    navigation partial
+
+[33mcommit 7eca653dab1663ba7ce1eb3b8cf0d02c676517ca[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Tue Dec 2 10:19:53 2025 -0300
+
+    controller
+
+[33mcommit 835dabfa06f3aee8ae54c8673d06d91dc29472d4[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Tue Dec 2 10:19:36 2025 -0300
+
+    visualize tests
+
+[33mcommit fe8fc49e391f6278add3fb9a2d91074da54860eb[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Dec 1 22:10:37 2025 -0300
+
+    tests
+
+[33mcommit ca207938c999096697b85e838db97761c54bd512[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Dec 1 21:16:31 2025 -0300
+
+    feat: password setup
+
+[33mcommit d98b2ff2f11df3f6d9838f2a20f12e7fa000797b[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Thu Nov 27 12:04:55 2025 -0300
+
+    authorization
+
+[33mcommit 839fd9ead3b8b6ebb6a4ab11be8087da990823b0[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Thu Nov 27 11:57:11 2025 -0300
+
+    feat/auth
+
+[33mcommit 1c4e66430697826e18affbb44534bc3690b410ea[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Wed Nov 26 22:27:29 2025 -0300
+
+    login page style
+
+[33mcommit 436b13c5ad8695ecf181fa017d490716663491c7[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Wed Nov 26 21:12:12 2025 -0300
+
+    feat/User login
+
+[33mcommit 9bddd8014e0b8c17f792d39e4cc12a3b6709031d[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 15:27:33 2025 -0300
+
+    question set validations
+
+[33mcommit e9905182348e861ae6830f73664b6188698e0379[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:58:32 2025 -0300
+
+    answer model
+
+[33mcommit 4e0609667e9c27e8d2b5c3a3cc26d68aa7312132[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:53:10 2025 -0300
+
+    form request model
+
+[33mcommit ffb8c6cf94bb92e0fcdb9b27cfb21e672f23512e[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:44:36 2025 -0300
+
+    form model
+
+[33mcommit 6788285d6714ee02a94ba1ccac73081c318598f0[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:36:38 2025 -0300
+
+    template model
+
+[33mcommit 5c9d230a0102dcecdf885443282bdba3f6c760f0[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:26:12 2025 -0300
+
+    question set model
+
+[33mcommit 0da9c4ef9d28124a27295b393cb00c9ab081f7e4[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:18:23 2025 -0300
+
+    admin specialization
+
+[33mcommit 64c6fafa1b1d0cfa00a03531c94e83bfd29cf3be[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 14:11:36 2025 -0300
+
+    Courses model
+
+[33mcommit f66f1d85c9da65be1a35cef8f21cbe2936cf4de9[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 24 13:42:46 2025 -0300
+
+    user model creation
+
+[33mcommit cc16e347995bda5611e8356a7ca8048771f19ebc[m[33m ([m[1;31morigin/sprint-1[m[33m)[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 17 17:40:26 2025 -0300
+
+    read me finished
+
+[33mcommit a0eeb0ba47d197d07691faf935512a38435454c8[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Mon Nov 17 14:40:28 2025 -0300
+
+    read_me
+
+[33mcommit 70e1c73754f58ee26c673cedb98c890b3be29faa[m
+Author: Vanterson <vanterson15@gmail.com>
+Date:   Sun Nov 16 19:52:25 2025 -0300
+
+    Cria BDD para historias de usuários
+
+[33mcommit 0847b541f961e183f4d84363eb3cf5ae6d55cfaa[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Sun Nov 16 14:48:39 2025 -0300
+
+    create answer/submit form feature bdd
+
+[33mcommit 965935652ee70d30d4c01100967380d1dbf1e4a3[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Sun Nov 16 14:01:29 2025 -0300
+
+    create register user feature bdd
+
+[33mcommit 12260ca32237875fffb261b07e7f338f38e5480f[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Sun Nov 16 13:46:36 2025 -0300
+
+    added sad paths to generate report
+
+[33mcommit 5b56d4eb84479cd99712ed50c3689a9e61795c97[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Sun Nov 16 13:31:13 2025 -0300
+
+    create import data feature bdd
+
+[33mcommit 601590ac9e7e79b8a3795daded4d7a9ef736d7f0[m
+Author: Marcolino5 <102527399+Marcolino5@users.noreply.github.com>
+Date:   Sun Nov 16 12:54:35 2025 -0300
+
+    create generate report feature bdd
+
+[33mcommit f73c61990c93954a8fc8feea1c6be8d738832f67[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Nov 16 01:56:53 2025 -0300
+
+    Adiciona BDD de requisito bônus: criação de formulário para docentes ou
+    dicentes
+
+[33mcommit 198778b1ffc7fd03c2605d8398e134caf797cf86[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Nov 16 01:24:23 2025 -0300
+
+    Adiciona BDD de edição e deletar templates para admin
+
+[33mcommit cd74d05bb1485551ba57c7190bde720b52b23bdf[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Nov 16 01:23:54 2025 -0300
+
+    Adiciona BDD de visualização de templates para admin
+
+[33mcommit 32dc34b01d9357828220eac8c0e361ab31c42b85[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Nov 16 01:00:01 2025 -0300
+
+    Update visualize_forms.feature
+
+[33mcommit e9b736948ee97e92434a3bc9a80566fd39f6f59f[m
+Author: gabie762 <gabihenriques821@gmail.com>
+Date:   Sun Nov 16 00:59:57 2025 -0300
+
+    Criação de BDD de visualização de forms para dmin
+
+[33mcommit 3946750c5934059726c3e3fac1fc9fdb2180736f[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Thu Nov 13 16:45:29 2025 -0300
+
+    create form bdd
+
+[33mcommit 8a0ea782f9ebb0f7a18cc42bb5cbff153da5f708[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Thu Nov 13 16:39:08 2025 -0300
+
+    user password regstration do not register again
+
+[33mcommit 530bdb08587df1de497113c3544e3be835087dc6[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Thu Nov 13 16:36:08 2025 -0300
+
+    user password registration
+
+[33mcommit 424514c1d034377edfda928f44b728b5b88c3091[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Thu Nov 13 16:27:11 2025 -0300
+
+    create template bdd
+
+[33mcommit f27a8ffa1e1d874227475abe3b880f175a2a95f0[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Tue Nov 11 19:54:24 2025 -0300
+
+    user login feature
+    
+    First bdd feature for examplification
+
+[33mcommit 3bdcfdb50249a6a43fdd272f0c2ccce1b519d60e[m
+Author: Kitsai <lucas.rocha.3801@gmail.com>
+Date:   Tue Nov 11 18:23:05 2025 -0300
+
+    initial commit
+
+[33mcommit 27f63d29d534cafdf53adabe83051893f637fabb[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Fri May 24 17:09:18 2024 -0300
+
+    Code, classCode and semester added to each group of classMembers
+
+[33mcommit 5557dfd2e9f8de1ff12b2131594459bec3c028e6[m
+Author: Caio Peluti <cpeluti@gmail.com>
+Date:   Wed May 22 23:01:16 2024 -0300
+
+    json examples added
+
+[33mcommit 77e36bcba6b181a0977013759cb67d3212cce1a9[m
+Author: Caio Peluti <cpeluti@gmail.com>
+Date:   Wed May 22 21:11:24 2024 -0300
+
+    cleaning old project after transfering everything to the "old" branch
+
+[33mcommit 0d355dcafa5f04233b082e7be11679abbaed8f52[m
+Merge: 0f3292c a6d789a
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Fri Jul 28 13:38:46 2023 -0300
+
+    Merge pull request #93 from kleberjr/sprint-3
+    
+    Grupo 08 - #33 Cadastrar usuários no sistema
+
+[33mcommit a6d789a5b29132797f9fa799ade9ac7c4ea5987e[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Thu Feb 16 22:07:20 2023 -0300
+
+    doc: refine mailer doc
+
+[33mcommit 3da106c23b12fdddea82e12713f6c73363d332c9[m
+Author: Ruan Petrus <xastroboyx11@gmail.com>
+Date:   Thu Feb 16 14:13:07 2023 -0300
+
+    Remoções de testes de controllers não utilizadas.
+
+[33mcommit 3fb1cc9ebfc8c27101cafd03c2051bdf0e4e924f[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Thu Feb 16 13:41:33 2023 -0300
+
+    Add after hook to redefinicao feature
+
+[33mcommit d246282f0821b3c4e75f2d01e3cedf0b5e147413[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Thu Feb 16 13:07:06 2023 -0300
+
+    test: add new test
+
+[33mcommit a6023a13c745dd749a7e93babde05a93991e21ec[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Thu Feb 16 10:54:37 2023 -0300
+
+    refactor: change tests
+
+[33mcommit bf6d6ab3c3a32e7ebff303ee2d4e98c330151ee5[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Wed Feb 15 23:33:33 2023 -0300
+
+    finish project
+
+[33mcommit 662949f86ebd53e290eb86988e17aad19ad0c96a[m
+Merge: b5a1d2e dce19b3
+Author: Ruan Petrus Alves Leite <62266310+RuanPetrus@users.noreply.github.com>
+Date:   Wed Feb 15 22:45:27 2023 -0300
+
+    Merge pull request #5 from kleberjr/feat/redef_test
+    
+    fix e2e tests
+
+[33mcommit b5a1d2e9ce0e58ca3e6f8f8a0f4d9be73afbdb70[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Wed Feb 15 22:43:49 2023 -0300
+
+    Adionar jwt_secret no README
+
+[33mcommit dce19b34358c74e68477eba01f906074ddc66605[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 22:37:21 2023 -0300
+
+    fix e2e tests
+
+[33mcommit a85890f7798f1f1dfe8ed4d48745c2fb6c963b81[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Wed Feb 15 22:20:04 2023 -0300
+
+    doc: generate doc and reports for backend
+
+[33mcommit d930493415340854c1670bbf0f4e8f7f33cd5b75[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Wed Feb 15 22:19:10 2023 -0300
+
+    doc: generate doc and reports
+
+[33mcommit cade6e906160d819ee4c42756cbb98b89007813b[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 16:16:22 2023 -0300
+
+    redefinicao de senha feature
+
+[33mcommit b0baca0ade656beaec360726a63e1978bef0c3fb[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 16:15:26 2023 -0300
+
+    redefinicao de senha feature
+
+[33mcommit 43fccb3622358e666bf51d275921bca5e2d3511d[m
+Author: Ruan Petrus <xastroboyx11@gmail.com>
+Date:   Wed Feb 15 12:00:26 2023 -0300
+
+    Nao é necessario do metodo create em sessions_controller
+
+[33mcommit e8247678a8d0537ce4a89292e142bd8f9e7d440a[m
+Merge: 38ba605 019ea29
+Author: Ruan Petrus <xastroboyx11@gmail.com>
+Date:   Wed Feb 15 11:53:42 2023 -0300
+
+    Merge branch 'sprint-3' of https://github.com/kleberjr/CAMAAR into sprint-3
+
+[33mcommit 38ba605b9fd411eb30a4596c87cd3fd228310a40[m
+Author: Ruan Petrus <xastroboyx11@gmail.com>
+Date:   Wed Feb 15 11:53:06 2023 -0300
+
+    Esta funcionando a redefinicao de senha
+
+[33mcommit 019ea29cbdeb51bdb879f7c54023ca54b471d17d[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 11:50:59 2023 -0300
+
+    delete login.js
+
+[33mcommit 7dee371007518f0ca5f8352af2d0f73bf4804ec9[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 11:43:45 2023 -0300
+
+    fix login.feature
+
+[33mcommit 06c42cbb307284cd7c888707f4ab4e291f8afa2f[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 11:42:31 2023 -0300
+
+    add login.feature integration tests
+
+[33mcommit 781c10ef72157b309b790d02b2b9e263c6363854[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Wed Feb 15 11:40:14 2023 -0300
+
+    bugfix on members_controller and sessions_controller
+
+[33mcommit 24ddfc97973055c01e0d56b3df166eb14cf5b842[m
+Author: Ruan Petrus <xastroboyx11@gmail.com>
+Date:   Wed Feb 15 10:57:03 2023 -0300
+
+    O arquivo de seed agora cria o usuario com uma senha padrao
+
+[33mcommit bd6253653d6529c9b4382f645ccad3e9b0a09d40[m
+Merge: 486152a b6bf56d
+Author: Ruan Petrus Alves Leite <62266310+RuanPetrus@users.noreply.github.com>
+Date:   Wed Feb 15 01:54:28 2023 -0300
+
+    Merge pull request #4 from kleberjr/feat/redefinition-link
+    
+    Foram adcionados novas funcionalidades de login e a view de reSenha
+
+[33mcommit b6bf56d376cc5ae3256b611963afedb13ca0b555[m
+Merge: 9019888 486152a
+Author: Ruan Petrus Alves Leite <62266310+RuanPetrus@users.noreply.github.com>
+Date:   Wed Feb 15 01:54:18 2023 -0300
+
+    Merge branch 'sprint-3' into feat/redefinition-link
+
+[33mcommit 9019888f886dfdb9c5e1a8730829e7dd3f9d746b[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Wed Feb 15 01:49:36 2023 -0300
+
+    Foram adcionados novas funcionalidades de login e a view de redefinicao de senha
+
+[33mcommit 486152a578351de84a72ceb2910251d3e294982b[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Wed Feb 15 00:29:29 2023 -0300
+
+    doc: documentation for environment settings
+
+[33mcommit acd77abe2eb80e38eb6e0e426bed9642f9fb430e[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Wed Feb 15 00:27:40 2023 -0300
+
+    doc: update readme about environment variables
+
+[33mcommit 787b19e554ae35f85614a5834298fbd3eac62e0b[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Wed Feb 15 00:15:44 2023 -0300
+
+    doc: documenting methods and classes
+
+[33mcommit 346178cd65c68d6028e54f193997bfde31c8ea42[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Tue Feb 14 23:01:14 2023 -0300
+
+    Finalmente consegui fazer o rspec funcionar com o jwt token, maioria das modificacoes no back end, pequena mudanca na request do front end
+
+[33mcommit e5779ac9878a4a9e77bc0c2b538523812fe7b01b[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Tue Feb 14 19:09:36 2023 -0300
+
+    Resolvi os problemas com os testes dos membros, criei factories para membros e roles, e adicionei os testes sem depender do banco de dados para link valido invalido e sem link
+
+[33mcommit 83020f93a7dbcb33f6c79f4b4ccaa367e49018d9[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Tue Feb 7 09:33:08 2023 -0300
+
+    Fixed redefinition link rspec
+
+[33mcommit 8190b60520effe92fdb7c1bd61bae264b493a628[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Mon Feb 6 22:23:53 2023 -0300
+
+    Change redirected password route, and add failing test for members controller
+
+[33mcommit 468a8c4ef0082ca31ea3774be15b2cf60289c446[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Mon Feb 6 14:33:37 2023 -0300
+
+    new register page + redefinition link
+
+[33mcommit 5865dbcd9fa1a2debd9b0ee44ca511ab223ddf80[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Mon Feb 6 09:07:53 2023 -0300
+
+    rspec test for login
+
+[33mcommit 3ab9512a3b650f94099831281a90a8ab47e30af7[m
+Merge: aa204c0 5f3a55e
+Author: Ruan Petrus Alves Leite <62266310+RuanPetrus@users.noreply.github.com>
+Date:   Mon Jan 30 22:12:47 2023 -0300
+
+    Merge pull request #2 from kleberjr/feat/login-authentication
+    
+    Feat/login authentication
+
+[33mcommit aa204c01150ee4aefbc805fc93ba4f1d65b72bdb[m
+Merge: 08b41c8 27b60b2
+Author: Ruan Petrus Alves Leite <62266310+RuanPetrus@users.noreply.github.com>
+Date:   Mon Jan 30 22:10:40 2023 -0300
+
+    Merge pull request #1 from kleberjr/feat/application-mailer
+    
+    Feat/application mailer
+
+[33mcommit 27b60b2f532bfc563adea1ca822d8477a395faf0[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Mon Jan 30 21:56:09 2023 -0300
+
+    Add generic user email test
+
+[33mcommit 2e942f231ad072a4ddb96738d4f635126530c386[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Mon Jan 30 21:22:05 2023 -0300
+
+    feat: add params and generalize function
+
+[33mcommit ab7c6d6ffd542898602630d8357dbca206b7ed82[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Mon Jan 30 20:53:50 2023 -0300
+
+    add application mailers spec
+
+[33mcommit 5f3a55e65d7dfaf345a699031141f0bb74e19938[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Mon Jan 30 10:16:34 2023 -0300
+
+    undo jwt.secret
+
+[33mcommit 864d33da71e72a231aea4e9afb21a984ab2222be[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Sun Jan 29 21:54:37 2023 -0300
+
+    Add rspec to simple application mailer
+
+[33mcommit 888ebf5e7b11d1b36517b5757989925f014275d7[m
+Author: maldisco <filipe.sf04@gmail.com>
+Date:   Sun Jan 29 15:14:17 2023 -0300
+
+    feat: basic login authentication
+
+[33mcommit 750f89c330617112a4a47f4c306d27640d1483f3[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Sun Jan 29 12:45:02 2023 -0300
+
+    feat: setting up mailer
+
+[33mcommit 08b41c8ca38e5c161749c54068ea56446d22bfc8[m
+Author: kleberjr <kleb3r.jr@gmail.com>
+Date:   Tue Jan 24 11:01:01 2023 -0300
+
+    refactor: add spaces to make code more readable
+
+[33mcommit bcdb405e637f316eeaa408716ce1aa767eccbebc[m
+Author: Kleber Junior <kleber.junior@pushstart.com.br>
+Date:   Fri Jan 20 19:38:59 2023 -0300
+
+    fix: add more possible scenarios
+
+[33mcommit cfaf590bf69037af429a23091b4b32b6b4d636c9[m
+Author: Filipe <filipe.sf04@gmail.com>
+Date:   Thu Jan 19 20:44:32 2023 -0300
+
+    fix redirect after authentication
+
+[33mcommit 34fa882959244bf4ac713fd59b50b796a95e9820[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Thu Jan 19 20:42:35 2023 -0300
+
+    Changing background to the right name in portuguese
+
+[33mcommit fd151d1251f123ef2a0694088ddf87ea9525c1b6[m
+Author: Filipe <filipe.sf04@gmail.com>
+Date:   Thu Jan 19 20:36:34 2023 -0300
+
+    add login feature
+
+[33mcommit ed9fa1cd98e5acb7d96a67f34c57216a15a70214[m
+Author: Ruan Petrus Alves Leite <ruan@pop-os.localdomain>
+Date:   Thu Jan 19 20:15:18 2023 -0300
+
+    Small errors in feature
+
+[33mcommit 42d1588ce80ba23637999d55e7361da9b0ebd2b6[m
+Author: Ruan Petrus <xastroboyx11@gmail.com>
+Date:   Thu Jan 19 15:10:35 2023 -0300
+
+    Added redefinicao de senha user history
+
+[33mcommit 0f3292c742a62ae7b247ddb57c12b7b36e7d6290[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Sat Sep 3 11:58:37 2022 -0300
+
+    Update database.yml
+
+[33mcommit e1402400026adabd9c6c2f2802b48f37c79420ea[m
+Author: Caio Peluti <cpeluti@gmail.com>
+Date:   Mon Aug 15 22:13:45 2022 -0300
+
+    Ordem dos migrates corrigida
+
+[33mcommit 3e6fb4435c9b3e7719b1e0b22fc57f185a98efcb[m
+Merge: 8f70b65 f74d3f4
+Author: Danilo Inácio <39836001+daniloinacio@users.noreply.github.com>
+Date:   Tue Aug 2 20:22:30 2022 -0300
+
+    Merge pull request #44 from EngSwCIC/feature-questionarios
+    
+    Feature questionarios
+
+[33mcommit f74d3f413002235a5ab88344215e9beffabeaa6f[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon Aug 1 23:05:29 2022 -0300
+
+    Delete sigaa-scrapper/helpers directory
+
+[33mcommit aff27f6feca3cb1ed3b5a41296315c5f2f88b12f[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon Aug 1 23:05:16 2022 -0300
+
+    Delete sigaa-scrapper/queries directory
+
+[33mcommit 111819303a0f652ef9a5e66f4fc93bfd11205a84[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon Aug 1 23:05:01 2022 -0300
+
+    Delete dbConnection.js
+
+[33mcommit 41194369ba54ed67b1195a21fffa4d2dbde04e28[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon Aug 1 23:04:32 2022 -0300
+
+    Update README.md
+
+[33mcommit 56327a666f2b0584bb8fe582aa879fc25a67ce8e[m
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon Aug 1 23:03:56 2022 -0300
+
+    Update README.md
+
+[33mcommit 58ffb0e2a5849731fe7dc726a150af84e262e092[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Wed Jul 27 18:48:36 2022 -0300
+
+    Alteracao do tipo das foreign keys nas migrations
+
+[33mcommit 2f3469728510dab7da873bd59cd9c25554f930e9[m
+Author: Caio Peluti <cpeluti@gmail.com>
+Date:   Wed Jul 27 17:15:31 2022 -0300
+
+    chamadas do frontend alteradas para usar os novos metodos dos surveys
+
+[33mcommit 9355c1c84d778f80baeeb83bbba1076c26096f10[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Tue Jul 26 20:32:51 2022 -0300
+
+    Fix serialization
+
+[33mcommit 52ba67ff0286bb793d7ede449c103542c99d948f[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Sun Jul 10 19:55:32 2022 -0300
+
+    Refatoracao das models, migrations e serializacoes
+
+[33mcommit 5f6a6e3d0a7f0b13673b1212f55c5f6809f6fdd1[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Wed Jun 29 19:14:40 2022 -0300
+
+    Refatoracao das models e migrations relacionadas aos questionarios
+
+[33mcommit 8f70b65862f400fa3b9866ec46748bb7b4cafd8c[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Mon Jun 27 21:45:58 2022 -0300
+
+    Remove a validacao de estudante da survey answers
+
+[33mcommit 2104a259a90ea60b23606f53ecc4fa47b4b35325[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Mon Jun 27 20:36:20 2022 -0300
+
+    Substituicao do campo occupation por role no member
+
+[33mcommit 8fae252a2d091471901382c79e623f137fb2210e[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Tue Jun 21 20:36:52 2022 -0300
+
+    Removido log do backend e script de start do front alterado
+
+[33mcommit 5027cf072cb678021069087c033d0646ee9b035f[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Tue Jun 21 20:29:27 2022 -0300
+
+    mysql conectado
+
+[33mcommit e5583806a9159dbec853f52aea7aeb7103cc59ae[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Sun Jun 19 23:01:37 2022 -0300
+
+    proxy adicionado ao quasar
+
+[33mcommit 1bcb83104c56196a2e8679929da67a6d76eb9e7f[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Sun Jun 19 23:01:13 2022 -0300
+
+    console.log removidos
+
+[33mcommit 150b548c0df7a08f14711ce6d4c15eaa05eaa698[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Sun Jun 19 22:59:57 2022 -0300
+
+    screenshot removido
+
+[33mcommit b41eead7fcd156e69efd258fc09d598989032aee[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Sun Jun 19 22:36:38 2022 -0300
+
+    Correções feitas para o import do camaar
+
+[33mcommit b43a3e3bd760f838affdd40635bfd093bcc69f58[m
+Merge: d31ef1f 14365fd
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Sat Jun 18 19:57:29 2022 -0300
+
+    Merge branch 'gabrielligoski-main' into main
+
+[33mcommit 14365fd7008ba598952a25b9fb3edf526880db55[m
+Merge: d31ef1f 0cc38a5
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Sat Jun 18 19:56:45 2022 -0300
+
+    Conflitos resolvidos
+
+[33mcommit d31ef1fec8205ad01050916d1d9258659aebcec4[m
+Merge: f3289ce 38ddff8
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Sat Jun 18 13:09:01 2022 -0300
+
+    Merge fork grupo 6
+
+[33mcommit f3289ce5a4080130bf404b2da08124d7611ec304[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Sat Jun 18 11:44:11 2022 -0300
+
+    Conflito nos routes do front resolvido
+
+[33mcommit 925e2ef29baa4081663cb2845e8fe651aa27e244[m
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Wed Jun 15 11:28:56 2022 -0300
+
+    Add model Role
+
+[33mcommit 629b6dcc1d1db1ca7f67c97b083b27b1060649ce[m
+Merge: f5fbec0 0e649a8
+Author: daniloinacio <daniloinaciossilva@gmail.com>
+Date:   Wed Jun 15 11:02:22 2022 -0300
+
+    Conflitos resolvidos
+
+[33mcommit f5fbec091e77c0cf1adee853fc1b0e30e586b2d4[m
+Merge: 71d58b7 a4901b4
+Author: Danilo Inácio <39836001+daniloinacio@users.noreply.github.com>
+Date:   Wed Jun 15 09:10:53 2022 -0300
+
+    Merge pull request #14 from CPeluti/main
+    
+    Features do bdd sobre as issues 1 e 4
+
+[33mcommit 0e649a8c2cf653f5fb45c1d92acebc6de9b33a4b[m
+Merge: d9b6e47 345ea21
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Wed May 11 13:31:14 2022 -0300
+
+    Merge pull request #42 from luizschonarth/fix/name_error
+    
+    Fixes NameError while accessing Survey's associations
+
+[33mcommit 345ea219a345e39bcaa4fa46b1fa83f87d6a43bf[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Wed May 11 13:30:51 2022 -0300
+
+    Fix association NameError and missing member_id
+
+[33mcommit 38ddff892ae699c6ef6adf04db1b1020e9541192[m
+Author: seninha <lucas@seninha.org>
+Date:   Thu May 5 21:13:24 2022 -0300
+
+    rdoc
+
+[33mcommit 50f44d6ce5edd324990b584f6f86704c88f5dec0[m
+Author: seninha <lucas@seninha.org>
+Date:   Thu May 5 21:12:14 2022 -0300
+
+    b
+
+[33mcommit 96d1c3f838e17f83e48430fb9d34f1ef87caf44b[m
+Author: seninha <lucas@seninha.org>
+Date:   Thu May 5 21:10:23 2022 -0300
+
+    commit
+
+[33mcommit 0322a160a0a885e7dad5529bab1392eec90a9d92[m
+Merge: 4a9cf50 71d58b7
+Author: Seninha <63266536+phillbush@users.noreply.github.com>
+Date:   Thu May 5 20:55:34 2022 -0300
+
+    Merge branch 'EngSwCIC:main' into main
+
+[33mcommit a4901b408cd9db7cab730ee2d3cb4df68a661a5d[m
+Merge: 0492786 6a62378
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Wed May 4 23:18:43 2022 -0300
+
+    Merge pull request #50 from CPeluti/hotfix/unitTests-front
+    
+    Hotfix/unit tests front
+
+[33mcommit 6a62378fd2d28ef0a4724c6b187dddc0b7f7e841[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Wed May 4 23:17:55 2022 -0300
+
+    pngs removidos
+
+[33mcommit bd65b54100fdc06f63734d60a9bb969b82bc3bd2[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Wed May 4 23:17:12 2022 -0300
+
+    teste atualizados
+
+[33mcommit 049278607bfe0d9876cd20733375d35bc0bd51d4[m
+Merge: 3d11edc 3a2c02f
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Wed May 4 22:06:41 2022 -0300
+
+    Merge pull request #49 from CPeluti/feature/CAMAAR-45
+    
+    rubycritic adicionado e codigo refatorado
+
+[33mcommit 3a2c02fa66cb3742d9af71ba4c3c659b1d3d88aa[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Wed May 4 21:55:30 2022 -0300
+
+    rubycritic adicionado e codigo refatorado
+
+[33mcommit 0cc38a544d5076204fe755ab278ae02760534bc4[m
+Merge: 91843f0 61c1071
+Author: Thiago574 <63917899+Thiago574@users.noreply.github.com>
+Date:   Wed May 4 20:09:11 2022 -0300
+
+    Merge pull request #23 from gabrielligoski/FuncionalidadeFiltro
+    
+    Refatoração e melhoria no código.
+
+[33mcommit 3d11edc67fb4d9f5c259cc39c31709274848cb9e[m
+Merge: a0dd1a4 38516d0
+Author: AnaJordao <56743649+AnaJordao@users.noreply.github.com>
+Date:   Tue May 3 22:07:29 2022 -0300
+
+    Merge pull request #48 from CPeluti/feature/CAMAAR-31
+    
+    Feature/camaar 31 - Testes unitários do método index do scrapper_controller
+
+[33mcommit 38516d0e8f7733825a97957c4a631228d0feb89b[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Tue May 3 21:54:02 2022 -0300
+
+    scrapper_spec extra deletado
+
+[33mcommit 966dae880aad6765a87d3b6938f8cc40ff7b3081[m
+Merge: 8c88d9a a0dd1a4
+Author: Camila <camilizx2021@gmail.com>
+Date:   Tue May 3 21:13:22 2022 -0300
+
+    Testes implementados
+
+[33mcommit 8c88d9a61895199051ac23cc4b096bee8ed08d80[m
+Author: Camila <camilizx2021@gmail.com>
+Date:   Tue May 3 21:01:14 2022 -0300
+
+    Testes implementados
+
+[33mcommit a0dd1a426173b53c414acf762df3c5cfbcd29203[m
+Merge: 402b8e6 8fcacda
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Tue May 3 20:29:12 2022 -0300
+
+    Merge pull request #43 from CPeluti/feature/CAMAAR-32
+    
+    Testes do método do scrapper_controller terminados
+
+[33mcommit 76ffc4f75b5b890f5dbf72e58bd4b1abf306a0b5[m
+Merge: 2968357 402b8e6
+Author: Camila <camilizx2021@gmail.com>
+Date:   Tue May 3 19:19:04 2022 -0300
+
+    merge feito com a master
+
+[33mcommit 2968357482137c080cdff31a99566aea44331e2b[m
+Author: Camila <camilizx2021@gmail.com>
+Date:   Tue May 3 19:15:36 2022 -0300
+
+    implementação do teste iniciado
+
+[33mcommit 8fcacdaffe77b82515d94c89b3baf79574f75165[m
+Merge: 0ef8d4f 402b8e6
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Tue May 3 17:18:05 2022 -0300
+
+    Testes do metodo show do scrapper_controller terminados
+
+[33mcommit 0ef8d4f5baa883661a4ebcc67e958fbeed369b08[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Tue May 3 17:03:46 2022 -0300
+
+    Testes do metodo show do scrapper_controller terminados
+
+[33mcommit 93e8e5c962d224111b0b49963779b0277142b52b[m
+Merge: a56df1e f123a4d
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Mon May 2 21:00:00 2022 -0300
+
+    primeiro teste do metodo show do scrapper_controller feito
+
+[33mcommit 402b8e64ef09e26234ac7d41e7ae69b4289f689c[m
+Merge: f123a4d 62110b6
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon May 2 20:31:22 2022 -0300
+
+    Merge pull request #42 from CPeluti/hotfix/turmasCadastradas
+    
+    Hotfix/turmas cadastradas
+
+[33mcommit 62110b6213fa5cf76de5d2d3d57f889f3d07d8fd[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon May 2 20:29:22 2022 -0300
+
+    Testes BDD finalizados
+
+[33mcommit 5aefa6c06100959da837407e9e49ac6f7e63a4d1[m
+Merge: d04cdf8 f123a4d
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon May 2 18:52:07 2022 -0300
+
+    Merge branch 'main' of https://github.com/CPeluti/CAMAAR into hotfix/turmasCadastradas
+
+[33mcommit d04cdf8163d88b4e372546f6ccf4b73396b7b90e[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon May 2 18:48:04 2022 -0300
+
+    Portas trocadas
+
+[33mcommit 0d8717ac97971e93e8fab65b9e18e5dea8aa184e[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon May 2 18:10:43 2022 -0300
+
+    Adicionados testes do BDD
+
+[33mcommit 91843f02be6df0a67781945468b6ecad3ee4d674[m
+Merge: e0db1cf fcad117
+Author: Gabriel Ligoski <53530697+gabrielligoski@users.noreply.github.com>
+Date:   Mon May 2 12:13:47 2022 -0300
+
+    Merge pull request #22 from gabrielligoski/develop/feature/visualizar-turma
+    
+    #19 Intregração das telas
+
+[33mcommit fcad1176428c1b7eee02aeffb6080fabea23e8d3[m
+Author: gabrielligoski <gabriel.ligoski@gmail.com>
+Date:   Mon May 2 12:11:22 2022 -0300
+
+    #19 Intregração das telas
+
+[33mcommit 61c107145840eadb641113c00fcce6c6fa08bd2a[m
+Author: Mateus <mateusoliveirap@hotmail.com>
+Date:   Sun May 1 10:36:37 2022 -0300
+
+    Refatoração e melhoria no código.
+
+[33mcommit d9b6e47acf57cf1890afe5f859b1ed52d52ce056[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu Apr 28 21:13:37 2022 -0300
+
+    Remove methods duplicado
+
+[33mcommit 3fcd2393cc88af7bcdd3835363a3dd716a3bfaf6[m
+Merge: bdd8849 4d52bfb
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 23:43:15 2022 -0300
+
+    Merge pull request #41 from luizschonarth/docs/backend_docs
+    
+    Gera documentação do backend
+
+[33mcommit bdd88497c2e2eaf5a0fab9dc24129abc6188894f[m
+Merge: 6f4a1c5 8f0ebec
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 23:00:26 2022 -0300
+
+    Merge pull request #40 from luizschonarth/feature/survey_page
+    
+    Implementa rota `/surveys` no frontend da aplicação
+
+[33mcommit 8f0ebec610a044f756447dbd6e1249cda2922684[m
+Merge: 4ffa897 6f4a1c5
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 23:00:15 2022 -0300
+
+    Merge branch 'main' into feature/survey_page
+
+[33mcommit 6f4a1c51181afcb280002ee55329db2804f1b67d[m
+Merge: 24ee9eb 337d94c
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 21:48:32 2022 -0300
+
+    Merge pull request #39 from luizschonarth/fix/survey_answer_submit
+    
+    Adiciona member_id ao survey_answer
+
+[33mcommit 24ee9eb5cf9a5d8213b5c8c3b8c3bb65b29d0f15[m
+Merge: c07a372 8ce962d
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 21:40:38 2022 -0300
+
+    Merge pull request #38 from luizschonarth/test/survey_answer_update
+    
+    Remove testes não implementados de update de `survey_answers`
+
+[33mcommit 4ffa897fca5828ce537fcc778fa73c4259f738ce[m
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Thu May 5 19:22:16 2022 -0300
+
+    styling 3
+
+[33mcommit f5266586b27b65ebca28cacf59e5de52c1f81dc6[m
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Thu May 5 19:11:29 2022 -0300
+
+    styling 2
+
+[33mcommit 592519932efe42874a78be5cdcc7cb4eece91fb5[m
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Thu May 5 17:51:52 2022 -0300
+
+    styling
+
+[33mcommit 375487903c6064c1b2a98a87ff62af64b75826e6[m
+Merge: 80e91f5 9e31258
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Thu May 5 15:45:32 2022 -0300
+
+    Merge branch 'main' of https://github.com/luizschonarth/CAMAAR into feature/survey_page
+
+[33mcommit 9e31258fe12fb34a1e63faecdcba2bb4eb02af82[m
+Merge: 6ce73a3 359a6c5
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 07:19:08 2022 -0300
+
+    Merge pull request #35 from luizschonarth/test/models_tests
+    
+    Implementa testes de models do backend
+
+[33mcommit 359a6c5d72fbc12f3c2a3a9f84d5d1a607870a9e[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:14:07 2022 -0300
+
+    Implementa teste de likert_answer
+
+[33mcommit 1b3bebd99967ee959c83f5ef9bf88251ec426101[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:13:03 2022 -0300
+
+    Implementa teste de answer
+
+[33mcommit dc959be5db79efa14368dbc28da8a9a40d190f50[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:06:27 2022 -0300
+
+    Implementa teste de likert_question
+
+[33mcommit f891be25b3a4619bd709bcd38390a7ad882b018b[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:05:25 2022 -0300
+
+    Implementa teste de likert_scale
+
+[33mcommit b8bf0b973b3bd2b5953f8bcd9926fdd1bc803dc2[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:03:17 2022 -0300
+
+    Implementa teste de option
+
+[33mcommit a5086575e3e27e7cfa5083d0b0d85919fae19c98[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:01:53 2022 -0300
+
+    Implementa teste de multiple_choice
+
+[33mcommit 7ced232239213c49ccf74638fffe21ea4faaaddc[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 07:00:44 2022 -0300
+
+    Implementa teste de survey_answer
+
+[33mcommit c785af45694df1bcb9ef5cb22628b59ad35dee75[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 06:57:42 2022 -0300
+
+    Implementa teste de survey_question
+
+[33mcommit 436d4c234e646d7e38a33e9106d634e261fc552e[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 06:57:12 2022 -0300
+
+    Implementa teste de survey
+
+[33mcommit 80e91f5b8a350cac4ef48df931b2cc8c2c062d5a[m
+Merge: 21c9e8f 6ce73a3
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Wed May 4 00:03:43 2022 -0300
+
+    Merge branch 'main' of https://github.com/luizschonarth/CAMAAR into feature/survey_page
+
+[33mcommit 21c9e8f8b8a46bf7deb9a98e1469e3382949215c[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 23:26:33 2022 -0300
+
+    Adiciona mais um survey nas seeds
+
+[33mcommit d039c71282d0f7643efb5f329b931cb4a6eae0bd[m
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Tue May 3 23:09:09 2022 -0300
+
+    integracao completaback no card
+
+[33mcommit 6ce73a3b483d2e182be2050f8c1268de4333b298[m
+Merge: 80e23a9 919953b
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Tue May 3 22:16:11 2022 -0300
+
+    Merge pull request #34 from luizschonarth/feature/validate_answers
+    
+    Adiciona validação para respostas obrigatórias
+
+[33mcommit 919953bf6a32d42a79170abcf9835384fa825cf5[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 22:12:10 2022 -0300
+
+    Adiciona notificação de erro perguntas obrigatórias não foram respondidas
+
+[33mcommit 6b31e33d367744cb0c92edeacd586c4726c7456d[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 22:03:05 2022 -0300
+
+    Adiciona validação para respostas de escala de likert
+
+[33mcommit 4361c73df689fdc3ddbbee6e0a3ba43fb1c5fd53[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 22:02:30 2022 -0300
+
+    Adiciona validação para respostar desicusivar e multipla escolha
+
+[33mcommit 80e23a925e9b96765c1d6ff7860bc108b33423ba[m
+Merge: 8d131a8 171d8a0
+Author: PlinioMayer <55549580+PlinioMayer@users.noreply.github.com>
+Date:   Tue May 3 21:51:26 2022 -0300
+
+    Merge pull request #33 from luizschonarth/fix/cucumber_feature_syntax
+    
+    Adiciona linguagem ao início dos arquivos .feature a serem executados…
+
+[33mcommit dc1bf0cfd77facbec4be3c6016fbe37ee59a9d05[m
+Merge: cb8c0f2 8d131a8
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Tue May 3 21:34:35 2022 -0300
+
+    Merge branch 'main' of https://github.com/luizschonarth/CAMAAR into feature/survey_page
+
+[33mcommit cb8c0f24f0ec4bfc7c3001a490985d0f998b5c73[m
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Tue May 3 21:31:33 2022 -0300
+
+    integracao back no card
+
+[33mcommit 171d8a00e672b3eee63276a41498e9c18a4b869f[m
+Author: Plínio Mayer <pctmayer@gmail.com>
+Date:   Tue May 3 21:03:23 2022 -0300
+
+    Adiciona linguagem ao início dos arquivos .feature a serem executados pelo cucumber.
+
+[33mcommit 8d131a83ed67d2046a99276eb3d220b3742e85b5[m
+Merge: 9858e5e c55bc50
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Tue May 3 20:34:36 2022 -0300
+
+    Merge pull request #32 from luizschonarth/feature/survey_page
+    
+    Implementa página `/surveys/:id`
+
+[33mcommit c55bc50caf0e2983c02d87a43d732f062034a016[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 20:30:50 2022 -0300
+
+    Modifica JSON para teste de survey
+
+[33mcommit 6b9daef1759b114c1078d5f0d27a9e3cc33c06bc[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 20:30:15 2022 -0300
+
+    Modifica tags HTML por components do Quasar
+
+[33mcommit 2a527cf6639e3b8f7a42ffbdd000bb5f555e1e70[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 15:08:16 2022 -0300
+
+    Remove before_action para testar protótipo sem funcionalidade de login
+
+[33mcommit 94dfc3844caf9171cc1a4b74af5911dd852aca0f[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue May 3 15:06:45 2022 -0300
+
+    Adiciona botão de submit de resposta
+
+[33mcommit c077acd21daac8df2d28bc35f516e21a2ed2cfb9[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Mon May 2 20:21:43 2022 -0300
+
+    Adiciona SurveyQuestions e implementa captura de respostas
+
+[33mcommit 18dd1f7aa4cac7ecdb01648ea67aa8343e49be63[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Mon May 2 20:20:14 2022 -0300
+
+    Adiciona componente para pergunta de questionário
+
+[33mcommit 8131685eb2f607e78e7c29cf33a4af4cb055d393[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Mon May 2 20:16:57 2022 -0300
+
+    Muda rota /survey/:id /surveys/:id
+
+[33mcommit d3f06da7eefe0978137533f1454cb84a07ce6998[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sun May 1 15:32:08 2022 -0300
+
+    Corrige requisição ao backend
+
+[33mcommit adffbe014f3d2e73fa7e093468aac7f48dc39a57[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sun May 1 15:25:33 2022 -0300
+
+    Adiciona fetching de survey
+
+[33mcommit 1b8fac1b3ecf61e1b4e2dcb889d949857e96a6ed[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sun May 1 15:24:49 2022 -0300
+
+    Adiciona fetching de survey
+
+[33mcommit 1cbc4f46a870bde87b37daa3f749c6817a4766a8[m
+Author: anapaulaonc <anapaulaoncosta@gmail.com>
+Date:   Sun May 1 14:24:29 2022 -0300
+
+    pagina principal e questionarios
+
+[33mcommit 9858e5e8cd6fcf386e0a012fa45a06d224d89eeb[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 30 16:04:28 2022 -0300
+
+    Remove variável desnecessária em seeds.rb
+
+[33mcommit 4d52bfb3b4315916144b936ace912109fb1e6f47[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu Apr 28 21:02:09 2022 -0300
+
+    Gera documentação do código
+
+[33mcommit 337d94c86be32fefc6bb7a74acd5c2c75807ddf4[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu Apr 28 19:07:50 2022 -0300
+
+    Adiciona member_id ao survey_answer
+
+[33mcommit 8ce962d0235184579d24043d2cb78c1a04767240[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu Apr 28 18:59:20 2022 -0300
+
+    Remove testes não implementados
+
+[33mcommit c07a37297cf4cfeef9baa619fcebada25e85d6ae[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu Apr 28 18:46:43 2022 -0300
+
+    Refatora métodos de acordo com o resultado do rubycritic
+
+[33mcommit a58bbacd9a8d3be121795802ed020e9447b25da3[m
+Merge: d6646e9 329b5ac
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 19:01:08 2022 -0300
+
+    Merge pull request #37 from luizschonarth/test/request_tests
+    
+    Adiciona gemas de teste e documentação
+
+[33mcommit 329b5ac27f958ec4555d3a9488132d02e0e775a1[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 18:53:19 2022 -0300
+
+    Adiciona gemas de teste
+
+[33mcommit d6646e9b7d69b98628385d4f9797fad1ed417df6[m
+Merge: 9e31258 f78a2d8
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Thu May 5 16:00:43 2022 -0300
+
+    Merge pull request #36 from luizschonarth/test/request_tests
+    
+    Test/request tests
+
+[33mcommit f78a2d8b2ff3c555772490ce2e78c977b917a232[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 15:58:54 2022 -0300
+
+    Implementa testes de requisições de survey_answers
+
+[33mcommit a87076c1e22b74a143cf849975503c49f3066efc[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Thu May 5 15:58:20 2022 -0300
+
+    Implementa testes de requisições de survey
+
+[33mcommit 851349cf8ac34a4acc6a81eaa03a9a77b27a0ece[m
+Merge: b10e747 2377fff
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Sat Apr 23 23:42:55 2022 -0300
+
+    Merge pull request #31 from luizschonarth/feature/create_survey_answers
+    
+    Requisição para criação de `survey_answer`
+
+[33mcommit 44cb79ea1ddd2cc9ee80576222165b3fe89dc607[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Sat Apr 23 23:20:26 2022 -0300
+
+    puts removido
+
+[33mcommit f123a4deffbce2a2fd636dea2d6d39ff0ec0d27f[m
+Merge: b6a976b 313b08f
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Sat Apr 23 23:15:55 2022 -0300
+
+    Merge pull request #39 from CPeluti/hotfix/turmasCadastradas
+    
+    Hotfix/turmas cadastradas
+
+[33mcommit 313b08fcc84fabbf30c88f0f4ab6796273ecde84[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Sat Apr 23 23:09:11 2022 -0300
+
+    Backend foi refatorado para adicionar turma somente na hora da importação( consequentemente teve que alterar MUITA coisa)
+
+[33mcommit 2377fffd1e7bb5af1eb8d6438e34f8c209ca93da[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 22:50:52 2022 -0300
+
+    Cria endpoint /survey_answers e método create
+
+[33mcommit d7718093cef88054ee52b8ac99f97699f9d472d8[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 22:43:07 2022 -0300
+
+    Conserta relacionamentos entre models
+
+[33mcommit 4d1bcd90af80dea5660ae20ec7c6fbf9a064e302[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 22:42:00 2022 -0300
+
+    Cria model para likert_answers
+
+[33mcommit 565b4db8fb7db65c2bd54bc29811cec9f43904e2[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Sat Apr 23 21:39:27 2022 -0300
+
+    Adiciona mounted para viewCard
+
+[33mcommit cd1f233cbcc3ddb5f6b35c3618ef4f5095d01a1d[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Sat Apr 23 21:08:29 2022 -0300
+
+    Atualiza cadastradas ao importar
+
+[33mcommit e0db1cf1a0802030475ddfddaee76e1f720a2660[m
+Merge: 75645e8 772f0f4
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Sat Apr 23 20:45:40 2022 -0300
+
+    Merge pull request #18 from gabrielligoski/develop/hotfix/exibir-semestre-na-lista
+    
+    exibir semestre na listagem de turmas
+
+[33mcommit 95bbeb4169068e433323ab6475796bbbd4d93657[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 20:24:03 2022 -0300
+
+    Resolve conflit
+
+[33mcommit 07342789dfa28802f8cd627ec43c37f6be266db3[m
+Merge: 90328aa b6a976b
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Sat Apr 23 20:18:40 2022 -0300
+
+    Atualizado branch com branch main
+
+[33mcommit b10e7478d9e3f3018009f0b86d9dad172aababf1[m
+Merge: d97a119 259154e
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Sat Apr 23 20:16:23 2022 -0300
+
+    Merge pull request #29 from luizschonarth/fix/member_subjects
+    
+    Muda rota de subjects para cclasses
+
+[33mcommit 259154e45b826fc719182ecacbb4492d02d83f01[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 20:13:00 2022 -0300
+
+    Muda rota de subjects para cclasses
+
+[33mcommit b6a976b6fa2f8a17eacf9dba8e1aa7a9e8161924[m
+Merge: f8a85fa c70913b
+Author: Eduardo Lemos Rocha <dudulr10@gmail.com>
+Date:   Sat Apr 23 20:10:55 2022 -0300
+
+    Merge pull request #37 from CPeluti/cypress-bdd
+    
+    Cypress bdd
+
+[33mcommit 90328aac0fe59a181e341f45465df910eeb3247f[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Sat Apr 23 19:52:21 2022 -0300
+
+    search do import card atualizado
+
+[33mcommit c70913b887052a349e44501505730fede8a44adf[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Sat Apr 23 19:36:52 2022 -0300
+
+    bdd finalizado
+
+[33mcommit 2763ba4a8a49816a4657594bd4b6aadc7e08e160[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Sat Apr 23 19:03:36 2022 -0300
+
+    Implementação do teste de importação iniciada
+
+[33mcommit 75645e8ab45f2c26e3b57bd5604b9f90ed6f0749[m
+Merge: 63e521b df9c750
+Author: Thiago574 <63917899+Thiago574@users.noreply.github.com>
+Date:   Sat Apr 23 18:58:59 2022 -0300
+
+    Merge pull request #17 from gabrielligoski/FuncionalidadeFiltro
+    
+    Funcionalidade filtro
+
+[33mcommit 47c389ec340212e55a196eedf64b9b70fa835f58[m
+Merge: b409471 f8a85fa
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Sat Apr 23 18:49:25 2022 -0300
+
+    merge feito
+
+[33mcommit d97a119b452705c9fd7de812a497a7bbc3adf890[m
+Merge: 6e04024 75d8311
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Sat Apr 23 18:37:24 2022 -0300
+
+    Merge pull request #28 from luizschonarth/feature/member_subjects
+    
+    Cria requisição de /members/:member_id/subjects
+
+[33mcommit 75d831132458cc453d4052a6a231aa345d5e7ad3[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 18:35:01 2022 -0300
+
+    Refatora método index de subjects_controller
+
+[33mcommit 52053318406e5738bb77ff043902afda27161e99[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 18:13:49 2022 -0300
+
+    Cria requisição de /members/:member_id/subjects
+
+[33mcommit 6e040241b78bd319046cf71dc587ad48c25d51fb[m
+Merge: 6b1a4cf d2002dc
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Sat Apr 23 17:19:15 2022 -0300
+
+    Merge pull request #27 from luizschonarth/feature/survey_requests
+    
+    Adiciona requisições necessárias para `surveys`
+
+[33mcommit df9c750751541ce77406064e9607851498aa9f91[m
+Author: Thiago574 <thiagoeliasdosreis01@gmail.com>
+Date:   Sat Apr 23 17:14:06 2022 -0300
+
+    #10 reslove  changes
+
+[33mcommit d2002dcffeb9492d83c3bb442ce720e01cba762c[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 17:11:07 2022 -0300
+
+    Adiciona endpoint /surveys/open
+
+[33mcommit 89f64f02d55302bf91a1a608a9d45f09e4a70f53[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 16:21:28 2022 -0300
+
+    Adiciona atributos aninhados à renderização de surveys
+
+[33mcommit a56df1e56516e39899d7a61b2fec15272300e640[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Sat Apr 23 15:06:26 2022 -0300
+
+    Merge branch 'main' of https://github.com/CPeluti/CAMAAR into feature/CAMAAR-32
+
+[33mcommit 3e3b3c83a36bded6e9a36087b61562f57dad66f3[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Sat Apr 23 14:29:33 2022 -0300
+
+    Merge branch 'main' of https://github.com/CPeluti/CAMAAR into main
+
+[33mcommit 772f0f48ebe6b90ecffdafb82f4273c5b4c89a9d[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Sat Apr 23 13:50:13 2022 -0300
+
+    adiciona semestre na listagem de turmas
+
+[33mcommit f8a85fa24ea7530224239f40eb075ecc2fae9ace[m
+Merge: 2121c86 e380190
+Author: Eduardo Lemos Rocha <dudulr10@gmail.com>
+Date:   Sat Apr 23 01:00:47 2022 -0300
+
+    Merge pull request #33 from CPeluti/feature/CAMAAR-11
+    
+    botao de importar adicionado
+
+[33mcommit 2121c865bce869a249ac97bd711b313d673d9a71[m
+Merge: 1b84f65 2aa85c3
+Author: Eduardo Lemos Rocha <dudulr10@gmail.com>
+Date:   Sat Apr 23 00:56:26 2022 -0300
+
+    Merge pull request #35 from CPeluti/hotfix/backend
+    
+    scrapper controller corrigido para guardar no banco de dados
+
+[33mcommit 6b1a4cfae8391d05e1a864e9e83a84e7acf0c674[m
+Merge: 18628f4 f5d6e82
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Sat Apr 23 00:22:41 2022 -0300
+
+    Merge pull request #26 from luizschonarth/feature/models_spec
+    
+    Feature/models spec
+
+[33mcommit f5d6e82013cc17281019c7cb9d97a650adb4c6d3[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Sat Apr 23 00:22:13 2022 -0300
+
+    Adiciona questionário teste às seeds
+
+[33mcommit cd0c06a4c2cfb120aa30698ee24d791607b0156d[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Fri Apr 22 23:48:31 2022 -0300
+
+    Adiciona validações e atributos aninhados aos models
+
+[33mcommit f0b3b1b983867a99141eb0c9fbb087dee83a5044[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Fri Apr 22 23:46:18 2022 -0300
+
+    Remove rotas desnecessárias
+
+[33mcommit 141e74f31a80b791ede84cea29ac008bd966ed22[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Fri Apr 22 23:44:18 2022 -0300
+
+    Modifica método create de survey
+
+[33mcommit 7f63676636e273a69db956ef614632f4d1ba7165[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Fri Apr 22 23:41:08 2022 -0300
+
+    Renomeia e adiciona colunas às migrações
+
+[33mcommit c9a2331b9a5f1f5717900f88e3a1f23cf12a869f[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Fri Apr 22 23:37:10 2022 -0300
+
+    Remove arquivos desnecessários
+
+[33mcommit 63e521bb0c08693cb3798720c731e94b0921ac04[m
+Merge: b648fde d63781a
+Author: Gabriel Ligoski <53530697+gabrielligoski@users.noreply.github.com>
+Date:   Fri Apr 22 22:27:21 2022 -0300
+
+    Merge pull request #15 from gabrielligoski/develop/feature/visualizar-turma
+    
+    Develop/feature/visualizar turma
+
+[33mcommit d63781a8ff8f17f7c76c7b23103ec3f67253ae59[m
+Merge: fb5d6c4 b648fde
+Author: Gabriel Ligoski <53530697+gabrielligoski@users.noreply.github.com>
+Date:   Fri Apr 22 22:26:56 2022 -0300
+
+    Merge branch 'main' into develop/feature/visualizar-turma
+
+[33mcommit fb5d6c4c53b73507a0c4658a911ec775b43e3903[m
+Author: gabrielligoski <gabriel.ligoski@gmail.com>
+Date:   Fri Apr 22 21:58:44 2022 -0300
+
+    #7 Unit tests
+
+[33mcommit 6c47ed785d33486057da6420bd074c68e8d6a534[m
+Merge: 6f8a474 1b84f65
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Fri Apr 22 20:19:38 2022 -0300
+
+    tdd da rota turmas
+
+[33mcommit 0150de6b78bf40a286095f161cc00a9e046ec7ee[m
+Author: Mateus <mateusoliveirap@hotmail.com>
+Date:   Fri Apr 22 20:01:31 2022 -0300
+
+    FIltro agora funciona na lista de disciplinas.
+
+[33mcommit 2aa85c3084f114f86c860b2bb32b6d9a5df31499[m
+Merge: 8b99e06 1b84f65
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Thu Apr 21 20:19:50 2022 -0300
+
+    Merge com a main
+
+[33mcommit 510566c264704aaa08adb27a264d10f53256c4d6[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 20:17:53 2022 -0300
+
+    #10 remove arquivo duplicado
+
+[33mcommit 8b99e060287bf870b536df34201aed1f2392d614[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Thu Apr 21 20:16:02 2022 -0300
+
+    scrapper controller corrigido para guardar no banco de dados
+
+[33mcommit a9643ddc6d455d798431acc03de342bd0751c817[m
+Merge: a3ed683 c31e4f6
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 20:07:37 2022 -0300
+
+    resolve pull conflicts
+
+[33mcommit a3ed683bf8ee14c1f4c1ffc6ea7f21808ef46b56[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 19:59:43 2022 -0300
+
+    #10 adiciona o componente de pesquisa na tela inicial
+
+[33mcommit e380190f9a45823da64cccea907b5197dfdccd53[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Thu Apr 21 19:57:19 2022 -0300
+
+    botao de importar adicionado
+
+[33mcommit 4ae8b32c317c36b9658aa15ca8b6a90463a1a6bb[m
+Author: Mateus <mateusoliveirap@hotmail.com>
+Date:   Thu Apr 21 18:07:38 2022 -0300
+
+    Filtro por nome e código. #10
+
+[33mcommit 4f996ad9c30dafc2d376db757635f1d972c0562d[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 19:50:01 2022 -0300
+
+    #10 resolve demais conflitos
+
+[33mcommit 4e86c36b44a234838b36e448ee35813f83137203[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 19:45:11 2022 -0300
+
+    #10 rebase com main front end
+
+[33mcommit a4173fe2059d0284eca6a665a53047a5d5570f03[m
+Author: Thiago574 <thiagoeliasdosreis01@gmail.com>
+Date:   Sun Apr 17 18:02:57 2022 -0300
+
+    #10 teste funcionalidade filtro
+
+[33mcommit b4094716553d45cdd701feddfd4d662826224388[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Thu Apr 21 19:08:09 2022 -0300
+
+    implementação do bdd com cypress adicionada
+
+[33mcommit b648fde4cec90aa4efa4019c484d24514f4b10e4[m
+Merge: bdfbb3c a2652f4
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 18:51:42 2022 -0300
+
+    Merge pull request #14 from gabrielligoski/develop/feature/componente-dropdown-da-disciplina
+    
+    Componente Dropdown da Disciplina
+
+[33mcommit 1dee35479b627b67dd911df1b4dff2023199c934[m
+Merge: 6392b34 10c0eec
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Thu Apr 21 18:27:04 2022 -0300
+
+    Merge branch 'main' of github.com:CPeluti/CAMAAR into main
+
+[33mcommit 6392b34fd929072bbd3cc2a38ad2b0d7ad6bedb0[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Thu Apr 21 18:26:51 2022 -0300
+
+    bdd recuperado
+
+[33mcommit c31e4f68c33b3901fdd4da1280d904ef0d2e01a0[m
+Author: Mateus <mateusoliveirap@hotmail.com>
+Date:   Thu Apr 21 18:07:38 2022 -0300
+
+    Filtro por nome e código. #10
+
+[33mcommit f0a642b1a117e0a18dcb698232d8c5223dd0ac05[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Thu Apr 21 16:56:10 2022 -0300
+
+    Adicionado arquivos de teste de BDD
+
+[33mcommit 1b84f655d8c7ee52409f9dcd384e48fd60e50db8[m
+Merge: db917c3 b8854ad
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Thu Apr 21 16:29:03 2022 -0300
+
+    Merge pull request #30 from CPeluti/'feature/CAMAAR-7'
+    
+    Feature/camaar 7
+
+[33mcommit b8854ad31f76648f153be01e912023041754eb07[m
+Merge: 152ce1a db917c3
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Thu Apr 21 16:28:57 2022 -0300
+
+    Merge branch 'main' into 'feature/CAMAAR-7'
+
+[33mcommit db917c3bd8678fe35ab06decce848157f4d1a2c7[m
+Merge: 1dee354 9b0d5cf
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Thu Apr 21 16:27:16 2022 -0300
+
+    Merge pull request #29 from CPeluti/feature/CAMMAR-8
+    
+    Feature/cammar 8
+
+[33mcommit 9b0d5cfd92355fe4e2bde6209f543ba0cfd3d4c5[m
+Merge: 9a6c2c6 1dee354
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Thu Apr 21 16:27:09 2022 -0300
+
+    Merge branch 'main' into feature/CAMMAR-8
+
+[33mcommit 9a6c2c674f28192450a58a09f7d77b16aec9c068[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Thu Apr 21 15:21:43 2022 -0300
+
+    Rota /turmas feita no backend para buscar todas as turmas
+
+[33mcommit bdfbb3cfdbc50c8045c23d34763dd5739ee5a287[m
+Merge: 565d490 cfff8bb
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 13:32:00 2022 -0300
+
+    Merge pull request #12 from gabrielligoski/develop/feature/componente-lista-de-disciplinas
+    
+    Componente Lista de Disciplinas
+
+[33mcommit a2652f4e409802e5f295492e77f35df254b120d6[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Thu Apr 21 13:20:39 2022 -0300
+
+    #13 altera nome da rota no frontend e remove logs
+
+[33mcommit 2b4fb93228e05bbc3d9b20bc377cde343d62504a[m
+Author: Thiago574 <thiagoeliasdosreis01@gmail.com>
+Date:   Thu Apr 21 09:40:42 2022 -0300
+
+    #10 Funcionalidade Filtro
+
+[33mcommit f66829baf1b1c89060b8300990e8a96c8638d0d1[m
+Author: gabrielligoski <gabriel.ligoski@gmail.com>
+Date:   Wed Apr 20 23:39:27 2022 -0300
+
+    #7 Cucumber tests
+
+[33mcommit ac37aed5168fd0338c3d6c5fce866915b368164e[m
+Author: gabrielligoski <gabriel.ligoski@gmail.com>
+Date:   Wed Apr 20 22:17:36 2022 -0300
+
+    #7 Unit tests
+
+[33mcommit 152ce1a6ab619c11fbb6fd625661b80e1cc9fe2e[m
+Author: Camila <camilizx2021@gmail.com>
+Date:   Wed Apr 20 19:56:48 2022 -0300
+
+    Importadas turmas do scrapper para o backend
+    
+    Na camada controllers foi criado o arquivo scrapper_controller.
+    Modificado o arquivo routes e adicionada uma nova gem.
+
+[33mcommit 10c0eecd1a2707d3c098a26ff7cdb740a0f734cc[m
+Merge: e1cbf48 ea3e47e
+Author: José Roberto <robertointeraminense@gmail.com>
+Date:   Wed Apr 20 19:38:20 2022 -0300
+
+    Merge pull request #28 from CPeluti/feature/CAMAAR-27
+    
+    HOTFIX BOTÃO ELEIÇÃO
+
+[33mcommit ea3e47ecccfc01dc1670759b4f343c56eb736e5c[m
+Author: Jose Roberto Interaminense Soares <robertointeraminense@gmail.com>
+Date:   Wed Apr 20 19:23:51 2022 -0300
+
+    HOTFIX BOTÃO ELEIÇÃO
+    
+    Arrumado bug no scrapper devido ao novo botão 'continuar' devido as
+    eleições do DCE, no SIGAA.
+
+[33mcommit 3dc525612cb851faa59f49a4e22697e8142c5e4e[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Wed Apr 20 12:05:16 2022 -0300
+
+    #13 realiza as requisicoes axios corretamente para mostrar o professor
+
+[33mcommit 92b7679f3d21f87d56941a8c5f0eb084a260519d[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Wed Apr 20 12:03:44 2022 -0300
+
+    #13 adiciona mais registros na seed
+
+[33mcommit e1cbf48068bbdba8171968d7e5af6291db008d4c[m
+Merge: 451a838 ecfcc18
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Wed Apr 20 08:01:30 2022 -0300
+
+    Merge pull request #26 from CPeluti/feature/CAMAAR-8
+    
+    Feature/camaar 8
+
+[33mcommit 04da4a949c16e8e2a54d51b3a7088e7a93cd726f[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Wed Apr 20 02:05:41 2022 -0300
+
+    #13 implementa o dropdown mostrando as turmas da disciplina
+
+[33mcommit 30cb04f9722d6392999855085e3db0b998e31ffa[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 23:10:55 2022 -0300
+
+    #13 passa nos testes do rspec para o members_controller
+
+[33mcommit 4f7eb762fbcdd65812965714ec9ffdd888e62a6e[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 22:58:24 2022 -0300
+
+    #13 cria os testes para o members_controller recem criado
+
+[33mcommit b530ba93710e5dd866d795772c9e985a01a2be53[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 22:24:47 2022 -0300
+
+    #13 refatora as rotas e cria a rota de members
+
+[33mcommit f4aac93dfbe77a16adb225663c55b4d0b3819ae9[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue Apr 19 21:11:29 2022 -0300
+
+    Criando models relacionadas aos questionários dos alunos
+
+[33mcommit a355c64338597a342b467a269b6768c732fbaf67[m
+Author: Luiz Schonarth <luizcschonarth@gmail.com>
+Date:   Tue Apr 19 21:10:25 2022 -0300
+
+    Criando models relacionadas aos questionários dos alunos
+
+[33mcommit 2ee839989339ac554773f644619fbeededa07e22[m
+Author: Thiago574 <thiagoeliasdosreis01@gmail.com>
+Date:   Tue Apr 19 20:31:17 2022 -0300
+
+    #10 Funcionalidade Filtro
+
+[33mcommit 56fa8f2acbdc50229b5443fe9bf06c08a21f690c[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 17:28:49 2022 -0300
+
+    #13 passa nos testes de rspec dos controllers cclasses e subjects
+
+[33mcommit cfff8bb4cf91ee24f3d436c210137ab5e852c15b[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 16:41:05 2022 -0300
+
+    #9 adiciona controllers das models Cclass e Subject e suas rotas
+
+[33mcommit d2e63af0fd84ae39ef562096c8b2a3b95a42fba2[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 16:10:21 2022 -0300
+
+    #9 renomeia pagina do relatorio
+
+[33mcommit ae9f4ab3b0d75fee13464a5071f96d3b4d3adecd[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 15:56:40 2022 -0300
+
+    #9 estiliza a pagina
+
+[33mcommit ecfcc1826abae0b0d6408843a2a8d0cd9fad8a17[m
+Merge: 705faaf eb6780c
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Tue Apr 19 13:41:32 2022 -0300
+
+    corrigido array inicial
+
+[33mcommit 705faaf9c03bc0530b977e70049a0e7c36764011[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Tue Apr 19 13:35:24 2022 -0300
+
+    ImportPage refatorada para componentes menores e ImportCard adicionado
+
+[33mcommit eb6780c144a502596a672fd9650e597ffb1a17b2[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Tue Apr 19 13:35:24 2022 -0300
+
+    ImportPage refatorada para componentes menores e ImportCard adicionado
+
+[33mcommit 4f0dcc2e7fa206616761fe8f389af0ebb95a6f29[m
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Tue Apr 19 11:51:52 2022 -0300
+
+    filtro adicionado na tabela generica
+
+[33mcommit 4285ab8b36bed20ac9474da93e4191caf693d1ba[m
+Merge: 7da6b3f 451a838
+Author: Caio Otavio Peluti Alencar <caio.alencar@icolabora.com>
+Date:   Tue Apr 19 11:22:03 2022 -0300
+
+    Merge branch 'main' of github.com:CPeluti/CAMAAR into main
+
+[33mcommit e7dda7c6004aeaa78c29a55a203ea29ecd8d8450[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Tue Apr 19 02:21:12 2022 -0300
+
+    #9 mostra a lista de disciplinas cadastradas no sistema
+
+[33mcommit 6f5f247d520dcc58cdfdcb7823902640896f804b[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Mon Apr 18 23:46:51 2022 -0300
+
+    #9 cria as step_definitions
+
+[33mcommit 451a8389b74428b62aa353eea3c6f6c692573707[m
+Merge: 0edcc5f c7ce1fa
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Mon Apr 18 21:54:48 2022 -0300
+
+    Merge pull request #25 from CPeluti/feature/CAMAAR-4
+    
+    Feature/camaar 4
+
+[33mcommit c7ce1faec17eaed11a072e3c4e6ffdf4b821df0a[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon Apr 18 21:53:00 2022 -0300
+
+    Terminado os testes
+
+[33mcommit 453b15253ab54fc52e93a7a4ab3156a6b70a67a1[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon Apr 18 20:53:50 2022 -0300
+
+    Adicionado teste para células na tabela
+
+[33mcommit ab1fe0b7be7b61e5b493c4a5aebe4bf77813b654[m
+Author: Thiago574 <thiagoeliasdosreis01@gmail.com>
+Date:   Mon Apr 18 20:33:22 2022 -0300
+
+    #10 Funcionalidade Filtro thiago
+
+[33mcommit 86a42513fc5247053c67ce8a6124713e9bb4c59b[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Mon Apr 18 14:08:38 2022 -0300
+
+    #9 altera o local das steps e renomeia arquivos para PascalCase
+
+[33mcommit c27611690833ca187ea02368ed0066b68011e42d[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Mon Apr 18 00:49:57 2022 -0300
+
+    Corrigido os testes + prints removidos
+
+[33mcommit bcc073e248c8f9f27c247a99426ff80743ad58bc[m
+Author: Felipe Farias <felipecostasdc@gmail.com>
+Date:   Sun Apr 17 21:50:08 2022 -0300
+
+    #9 alteracao nos arquivos para realizar BDD com cypress
+
+[33mcommit f73d7681423c29c438d2b6188160784d5508d8e4[m
+Author: Thiago574 <thiagoeliasdosreis01@gmail.com>
+Date:   Sun Apr 17 18:02:57 2022 -0300
+
+    #10 teste funcionalidade filtro
+
+[33mcommit 756d5318f15bb15e64afb873b830c1e6452daee4[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Sun Apr 17 14:44:05 2022 -0300
+
+    Adicionado testes para a página de importar dados
+
+[33mcommit 87b911e5c1817406817b9942d4007af0b0402a64[m
+Author: Caio Alencar <caio.alencar@icolabora.com>
+Date:   Sun Apr 17 01:08:55 2022 -0300
+
+    teste de GenericTable corrigido
+
+[33mcommit 8a4ec8942510c94be8e31ed25dbdf0819ddeae74[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Sat Apr 16 22:49:21 2022 -0300
+
+    Add generic table component
+
+[33mcommit 15934e1696848858b67495c889e39486f535eeb8[m
+Author: Eduardo Lemos <dudulr10@gmail.com>
+Date:   Sat Apr 16 21:08:41 2022 -0300
+
+    Add initial tests for registered table
+
+[33mcommit 0edcc5f24d80dc7790c7969e1d1a35b8393c2c59[m
+Merge: af8492d de2d0c6
+Author: José Roberto <robertointeraminense@gmail.com>
+Date:   Fri Apr 15 23:48:27 2022 -0300
+
+    Merge pull request #24 from CPeluti/feature/CAMAAR-10
+    
+    Feature/camaar 10
+
+[33mcommit 12c9a4d61aeb8c772b876a1bd56e456d9336e693[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Fri Apr 15 17:32:09 2022 -0300
+
+    Rota do backend para buscar turmas quase pronto
+
+[33mcommit 565d490c5a65f1a71fd017a044bad43cefccb0c6[m
+Merge: 1fc0399 3de2bf2
+Author: gabrielligoski <gabriel.ligoski@gmail.com>
+Date:   Thu Apr 14 18:34:40 2022 -0300
+
+    Merge branch 'EngSwCIC-main' into main
+
+[33mcommit 3de2bf20cf4afab578529d425a23557a88dc9ce4[m
+Merge: 1fc0399 71d58b7
+Author: gabrielligoski <gabriel.ligoski@gmail.com>
+Date:   Thu Apr 14 18:34:05 2022 -0300
+
+    resolving merge conflicts
+
+[33mcommit 6f8a47448cbe5f11623e544ff5a49fe3f272aad4[m
+Author: AnaJordao <acjpjvjp@gmail.com>
+Date:   Thu Apr 14 14:58:28 2022 -0300
+
+    commit da main para fazer checkout
+
+[33mcommit af8492d0dc95578bdd8d07681cf26d8aacadb814[m
+Merge: 3f84417 50c041b
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Wed Apr 13 20:34:03 2022 -0300
+
+    Merge pull request #23 from CPeluti/hotfix/CAMAAR-22
+    
+    Adicionado codigo da turma e materia na extracao dos participantes
+
+[33mcommit de2d0c6a887885bcab6e2a7f55439a97c15e2e70[m
+Author: Jose Roberto Interaminense Soares <robertointeraminense@gmail.com>
+Date:   Wed Apr 13 20:27:03 2022 -0300
+
+    Criada pagina de importacao (ImportPage.vue) assim como sua rota (routes.js)
+
+[33mcommit 50c041bc15f268b2578181972cdc545470a4167c[m
+Author: Jose Roberto Interaminense Soares <robertointeraminense@gmail.com>
+Date:   Wed Apr 13 20:04:03 2022 -0300
+
+    Retirado a screenshot, e console log (server.js)
+
+[33mcommit 3f844174046caf22086ed11247edc439d558666d[m
+Merge: 70f330d 71d58b7
+Author: Caio Peluti <37275856+CPeluti@users.noreply.github.com>
+Date:   Wed Apr 13 11:11:26 2022 -0300
+
+    Merge branch 'EngSwCIC:main' into main
+
+[33mcommit b5681c471216c113814efa60c7181cc4bfe7bff4[m
+Author: Jose Roberto Interaminense Soares <robertointeraminense@gmail.com>
+Date:   Tue Apr 12 19:36:50 2022 -0300
+
+    Adicionado codigo da turma e materia na extracao dos participantes
+
+[33mcommit 18628f4d6467e05c818bb788f0e49d54b8a00a85[m
+Merge: be81b00 71d58b7
+Author: Luiz Schonarth <67851507+luizschonarth@users.noreply.github.com>
+Date:   Tue Apr 12 13:33:16 2022 -0300
+
+    Merge branch 'EngSwCIC:main' into main

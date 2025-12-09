@@ -1,0 +1,38 @@
+<h2><%= @course.name %></h2>
+
+<% content_for :page_title, @course.name %>
+
+<%= render 'shared/page_container', title: @course.name do %>
+  <p><strong>Código:</strong> <%= @course.code.presence || "-" %></p>
+  <p><strong>Professor:</strong> <%= @course.teacher.try(:name) %></p>
+  <p><strong>Semestre:</strong> <%= @course.semester.presence || "-" %></p>
+
+  <h3>Alunos</h3>
+  <% if @course.students.any? %>
+    <ul>
+      <% @course.students.each do |s| %>
+        <li><%= s.name.presence || s.email %> (<%= s.email %>)</li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Nenhum aluno inscrito.</p>
+  <% end %>
+
+  <%# Apenas professores/admins podem ver o formulário de import de membros %>
+  <% if current_user&.teacher? || current_user&.admin? %>
+    <h4>Importar membros (JSON)</h4>
+    <p>Envie um arquivo JSON com um array de emails ou objetos. Ex.: <code>["a@b.com","c@d.com"]</code> ou <code>[{"email":"a@b.com","name":"Fulano"}]</code></p>
+
+    <%= form_with url: import_members_turma_path(@course), local: true, method: :post, multipart: true do |f| %>
+      <div class="form-group">
+        <%= file_field_tag :members_file, accept: "application/json" %>
+      </div>
+      <div style="margin-top: 0.5rem;">
+        <%= submit_tag "Importar membros", class: "button" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%# se quiser manter listagem de avaliações da turma, inclua abaixo %>
+  
+<% end %>

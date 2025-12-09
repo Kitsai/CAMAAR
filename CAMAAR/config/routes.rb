@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # Courses routes
+  resources :courses, path: "turmas", as: "turmas", only: [:index, :show, :new, :create] do
+    member do
+      post :import_members
+    end
+  end
+
   # Defines the root path route ("/")
   root "sessions#new"
 end

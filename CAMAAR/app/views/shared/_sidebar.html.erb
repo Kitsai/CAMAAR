@@ -68,6 +68,22 @@
         </svg>
         <span>Gerenciamento</span>
       <% end %>
+
+      <%= link_to turmas_path, class: "sidebar-item #{current_page?(turmas_path) ? 'active' : ''}" do %>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 7h18M3 12h18M3 17h18"></path>
+        </svg>
+        <span>Turmas</span>
+      <% end %>
+    <% end %>
+
+    <% if current_user&.teacher? %>
+      <%= link_to new_turma_path, class: "sidebar-item" do %>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+        <span>Nova Turma</span>
+      <% end %>
     <% end %>
   </nav>
 </aside>

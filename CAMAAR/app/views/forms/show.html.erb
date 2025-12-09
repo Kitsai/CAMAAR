@@ -75,3 +75,18 @@
     document.body.style.overflow = 'hidden';
   </script>
 <% end %>
+
+<h2><%= @course.name %></h2>
+
+<p><strong>Código:</strong> <%= @course.code if @course.respond_to?(:code) %></p>
+<p><strong>Professor:</strong> <%= @course.teacher.try(:name) if @course.respond_to?(:teacher) %></p>
+
+<%# listar formulários/avaliacoes da turma se achar útil %>
+<% if @course.respond_to?(:forms) %>
+  <h3>Avaliações</h3>
+  <ul>
+    <% @course.forms.each do |f| %>
+      <li><%= link_to f.title, form_path(f) %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -18,6 +18,15 @@ class User < ApplicationRecord
     admin.present?
   end
 
+  # Role helpers
+  def teacher?
+    role == 'teacher'
+  end
+
+  def student?
+    role == 'student'
+  end
+
   has_many :form_requests
   has_many :forms, through: :form_requests
 end

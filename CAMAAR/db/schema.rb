@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_02_002829) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_08_234333) do
   create_table "admins", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,8 +88,10 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_02_002829) do
     t.string "email", null: false
     t.string "name"
     t.string "password_digest"
+    t.string "role", default: "student", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["role"], name: "index_users_on_role"
   end
 
   add_foreign_key "admins", "users"
