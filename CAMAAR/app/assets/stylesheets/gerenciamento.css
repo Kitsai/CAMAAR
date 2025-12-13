@@ -118,6 +118,10 @@
   width: 100%;
 }
 
+.info-item:last-child .divider {
+  display: none;
+}
+
 .spacer {
   display: flex;
   margin-left: auto;
