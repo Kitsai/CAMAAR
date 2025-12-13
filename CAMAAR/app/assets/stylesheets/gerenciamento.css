@@ -133,6 +133,10 @@
   background: white;
   border-color: lightgray;
   color: gray;
-  padding-left: 16px;
-  padding-right: 16px;
+  outline:none;
+}
+
+.custom-select:focus {
+  border-color: #16a34a;
+  border-width: 2px;
 }
