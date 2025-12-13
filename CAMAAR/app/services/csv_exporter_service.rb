@@ -71,10 +71,10 @@ class CsvExporterService
   end
 
   def parse_answer_data(data)
-    # Use CSV parser instead of simple split to handle commas in answers
+    # Usa parser CSV ao invés de split simples para lidar com vírgulas nas respostas
     CSV.parse_line(data) || []
   rescue CSV::MalformedCSVError
-    # Fallback for legacy data
+    # Fallback para dados legados
     data.split(',')
   end
 

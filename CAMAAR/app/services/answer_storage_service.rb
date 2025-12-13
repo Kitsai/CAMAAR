@@ -29,7 +29,7 @@ class AnswerStorageService
   def normalize_answers(answers_data)
     return answers_data if answers_data.is_a?(Array)
     
-    # Convert hash format to array
+    # Converte formato hash para array
     answers_hash = answers_data.to_unsafe_h
     answers_hash.values
   end
@@ -59,7 +59,7 @@ class AnswerStorageService
       answer_data[:answer] || answer_data["answer"]
     end
     
-    # Use CSV generator to properly escape commas and quotes
+    # Usa gerador CSV para escapar corretamente vírgulas e aspas
     CSV.generate_line(answer_values).strip
   end
 
