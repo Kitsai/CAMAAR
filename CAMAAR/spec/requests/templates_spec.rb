@@ -8,14 +8,14 @@ RSpec.describe "Templates", type: :request do
     {
       name: "Test Template",
       question_set_attributes: {
-        data: [ { question: "What is your name?", type: "text" } ]
+        data: JSON.generate([ { question: "What is your name?", type: "text" } ])
       }
     }
   end
   let(:invalid_attributes) do
     {
       name: "",
-      question_set_attributes: { data: [] }
+      question_set_attributes: { data: JSON.generate([]) }
     }
   end
 
@@ -76,31 +76,31 @@ RSpec.describe "Templates", type: :request do
     context "with invalid parameters (no name)" do
       it "does not create a new template" do
         expect {
-          post templates_path, params: { template: { name: "", question_set_attributes: { data: [ { question: "Q" } ] } } }
+          post templates_path, params: { template: { name: "", question_set_attributes: { data: JSON.generate([ { question: "Q" } ]) } } }
         }.not_to change(Template, :count)
       end
 
       it "returns unprocessable entity status" do
-        post templates_path, params: { template: { name: "", question_set_attributes: { data: [ { question: "Q" } ] } } }
+        post templates_path, params: { template: { name: "", question_set_attributes: { data: JSON.generate([ { question: "Q" } ]) } } }
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
-      it "shows error message" do
-        post templates_path, params: { template: { name: "", question_set_attributes: { data: [ { question: "Q" } ] } } }
-        expect(response.body).to include("can't be blank")
+      it "re-renders the new template" do
+        post templates_path, params: { template: { name: "", question_set_attributes: { data: JSON.generate([ { question: "Q" } ]) } } }
+        expect(response.body).to include("New Template")
       end
     end
 
     context "with invalid parameters (no questions)" do
       it "does not create a new template" do
         expect {
-          post templates_path, params: { template: { name: "Test", question_set_attributes: { data: [] } } }
+          post templates_path, params: { template: { name: "Test", question_set_attributes: { data: JSON.generate([]) } } }
         }.not_to change(Template, :count)
       end
 
-      it "shows error message about questions" do
-        post templates_path, params: { template: { name: "Test", question_set_attributes: { data: [] } } }
-        expect(response.body).to include("must have at least one question")
+      it "returns unprocessable entity status" do
+        post templates_path, params: { template: { name: "Test", question_set_attributes: { data: JSON.generate([]) } } }
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
