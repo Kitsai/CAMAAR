@@ -63,4 +63,54 @@ RSpec.describe Answer, type: :model do
       expect(Answer.find_by(id: answer_id)).to be_nil
     end
   end
+
+  describe '#parsed_data' do
+    let(:teacher) { create(:user) }
+    let(:course) { create(:course, teacher: teacher) }
+    
+    context 'with properly formatted CSV data' do
+      it 'parses simple CSV data' do
+        answer = Answer.create!(form: form, data: CSV.generate_line(["Answer 1", "Answer 2"]).strip)
+        expect(answer.parsed_data).to eq(["Answer 1", "Answer 2"])
+      end
+
+      it 'parses CSV data with commas' do
+        answer = Answer.create!(form: form, data: CSV.generate_line(["Answer with, comma", "Normal answer"]).strip)
+        expect(answer.parsed_data).to eq(["Answer with, comma", "Normal answer"])
+      end
+
+      it 'parses CSV data with quotes' do
+        answer = Answer.create!(form: form, data: CSV.generate_line(['Answer with "quotes"', "Normal"]).strip)
+        expect(answer.parsed_data).to eq(['Answer with "quotes"', "Normal"])
+      end
+    end
+
+    context 'with legacy data format' do
+      it 'falls back to simple split for old data' do
+        answer = Answer.create!(form: form, data: "Answer1,Answer2")
+        expect(answer.parsed_data).to eq(["Answer1", "Answer2"])
+      end
+    end
+  end
+
+  describe '#answer_at' do
+    it 'returns the answer at specific index' do
+      answer = Answer.create!(form: form, data: CSV.generate_line(["First", "Second", "Third"]).strip)
+      expect(answer.answer_at(0)).to eq("First")
+      expect(answer.answer_at(1)).to eq("Second")
+      expect(answer.answer_at(2)).to eq("Third")
+    end
+
+    it 'returns nil for invalid index' do
+      answer = Answer.create!(form: form, data: CSV.generate_line(["First", "Second"]).strip)
+      expect(answer.answer_at(10)).to be_nil
+    end
+  end
+
+  describe '#answers' do
+    it 'returns all answers as array' do
+      answer = Answer.create!(form: form, data: CSV.generate_line(["A", "B", "C"]).strip)
+      expect(answer.answers).to eq(["A", "B", "C"])
+    end
+  end
 end
