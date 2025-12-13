@@ -66,7 +66,7 @@ RSpec.describe "Passwords", type: :request do
       it "shows success message" do
         post set_password_path, params: valid_params
         follow_redirect!
-        expect(response.body).to include("Passwords set successfully")
+        expect(response.body).to include("Password set successfully")
       end
     end
 
