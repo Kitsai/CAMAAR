@@ -4,76 +4,69 @@
      data-action="click->modal#closeOnOverlay"></div>
 
 <div class="modal form-modal" id="modal" data-modal-target="modal">
-  <div class="modal-box" data-controller="create-form">
-    <div class="field-group">
-      <label for="templateSelect">Template:</label>
-      <select 
-        id="templateSelect" 
-        name="selected_template"
-        data-create-form-target="select"
-        data-action="change->create-form#add"
-        class="custom-select"
-      >
-        <option value="">Template</option>
+  <%= form_with model: @form,
+                url: "/forms",
+                method: :post,
+                data: { controller: "create-form", turbo_frame: "_top" } do |f| %>
 
-        <% @templates.each do |template| %>
-          <option 
-            value="<%= template.id %>"
-            data-name="<%= template.name %>"
-            data-semester="2025.2"
-            data-code="TMP0123"
-          >
-            <%= template.name %>
-          </option>
+    <div class="modal-box">
+
+      <div class="field-group">
+        <label for="templateSelect">Template:</label>
+
+        <select
+          id="templateSelect"
+          name="template_id"
+          data-create-form-target="select"
+          data-action="change->create-form#add"
+          class="custom-select"
+        >
+          <option value="">Template</option>
+
+          <% @templates.each do |template| %>
+            <option
+              value="<%= template.id %>"
+              data-name="<%= template.name %>"
+              data-semester="2024.2"
+              data-code="CS101"
+              data-course-id=1
+              data-question-set-id="<%= template.question_set_id %>"
+            >
+              <%= template.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="template-info" data-create-form-target="list">
+        <div class="template-info-header">
+          <span>Nome</span>
+          <div class="spacer">
+            <span>Semestre</span>
+            <span>Código</span>
+          </div>
+        </div>
+         <% @courses.each do |course| %>
+          <div class="info-item">
+            <input type="checkbox" class="green-checkbox" name="course_ids[]" value="<%= course.id %>" checked>
+            <div class="info-item-content">
+              <div class="item-content">
+                <span><%= course.name %></span>
+                <div class="spacer">
+                  <span><%= course.semester %></span>
+                  <span><%= course.code %></span>
+                </div>
+              </div>
+              <div class="divider"></div>
+            </div>
+          </div>
         <% end %>
-      </select>
-    </div>
-
-    <div class="template-info" data-create-form-target="list">
-      <div class="template-info-header">
-        <span>Nome</span>
-        <div class="spacer">
-          <span>Semestre</span>
-          <span>Código</span>
-        </div>
       </div>
 
-      <div class="info-item">
-        <input type="checkbox" class="green-checkbox">
-        <div class="info-item-content">
-          <div class="item-content"> 
-            <span>Template Exemplo</span>
-            <div class="spacer">
-              <span>2024.1</span>
-              <span>TMP001</span>
-            </div>
-          </div>
-          <div class="divider"></div>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <input type="checkbox" class="green-checkbox">
-        <div class="info-item-content">
-          <div class="item-content"> 
-            <span>Template Exemplo</span>
-            <div class="spacer">
-              <span>2024.1</span>
-              <span>TMP001</span>
-            </div>
-          </div>
-          <div class="divider"></div>
-        </div>
+      <div class="modal-footer">
+        <%= f.submit "Enviar", class: "btn-submit" %>
       </div>
 
     </div>
-    <div class="modal-footer">
-      <button 
-        class="btn-submit"
-        data-action="click->create-form#submitForms"
-      >
-        Enviar
-      </button>
-    </div>
-  </div>
+  <% end %>
 </div>
