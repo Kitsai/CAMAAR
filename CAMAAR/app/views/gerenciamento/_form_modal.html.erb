@@ -4,13 +4,65 @@
      data-action="click->modal#closeOnOverlay"></div>
 
 <div class="modal" id="modal" data-modal-target="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2> Formulário </h2>
+  <div class="modal-box">
+    <div class="field-group">
+      <label for="templateSelect">Template:</label>
+      <select 
+        id="templateSelect" 
+        name="selected_template"
+        data-create-form-target="templateSelect"
+        data-action="change->create-form#loadTemplateInfo"
+        class="custom-select"
+      >
+        <option value="">Template</option>
+      </select>
     </div>
 
-    <div class="modal-body">
-      <%= render 'gerenciamento/modal' %>
+    <div class="template-info">
+      <div class="template-info-header">
+        <span>Nome</span>
+        <div class="spacer">
+          <span>Semestre</span>
+          <span>Código</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <input type="checkbox" class="green-checkbox">
+        <div class="info-item-content">
+          <div class="item-content"> 
+            <span>Template Exemplo</span>
+            <div class="spacer">
+              <span>2024.1</span>
+              <span>TMP001</span>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <input type="checkbox" class="green-checkbox">
+        <div class="info-item-content">
+          <div class="item-content"> 
+            <span>Template Exemplo</span>
+            <div class="spacer">
+              <span>2024.1</span>
+              <span>TMP001</span>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button 
+        class="btn-submit"
+        data-action="click->create-form#submitForms"
+      >
+        Enviar
+      </button>
     </div>
   </div>
 </div>
