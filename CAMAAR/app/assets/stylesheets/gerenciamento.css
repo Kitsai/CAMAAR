@@ -32,11 +32,107 @@
   background-color: var(--primary-green);
   color: white;
   border-radius: 6px;
+  border: none;
   text-decoration: none;
   font-size: 16px;
   transition: background 0.2s;
+  cursor: pointer;
 }
 
 .btn-gerenciamento:hover {
   background-color: #86EFAC;
+}
+
+/* Modal CSS */
+
+.modal-box {
+  width: 1023px;
+  height: 772px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.green-checkbox {
+  accent-color: #16a34a;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.template-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 530px;
+}
+
+.template-info-header {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #828282;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  width: 500px;
+  margin-left: auto;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.info-item-content {
+  flex: 1;
+}
+
+.item-content {
+  display: flex;
+}
+
+.divider {
+  margin-top: 8px;              /* distance from content */
+  height: 1px;
+  background-color: lightgray;
+  width: 100%;
+}
+
+.spacer {
+  display: flex;
+  margin-left: auto;
+  gap: 40px;
+}
+
+.modal-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.field-group {
+  display: flex;
+  gap: 20px;
+}
+
+
+.custom-select {
+  width: 163px;
+  height: 25px;
+  border-radius: 8px;
+  border-width: 1px;
+  gap: 16px;
+  background: white;
+  border-color: lightgray;
+  color: gray;
+  padding-left: 16px;
+  padding-right: 16px;
 }
