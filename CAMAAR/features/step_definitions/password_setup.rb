@@ -34,7 +34,7 @@ end
 
 ####
 
-Then("I should see a success message") do
+Then("I should see a password created success message") do
   assert page.has_content?('Password set successfully')
 end
 

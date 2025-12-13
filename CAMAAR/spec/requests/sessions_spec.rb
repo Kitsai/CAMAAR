@@ -132,5 +132,61 @@ RSpec.describe "Sessions", type: :request do
       follow_redirect!
       expect(response.body).to include("Gerenciamento")
     end
+
+    it "redirects admin to avaliacoes path after login" do
+      post login_path, params: {
+        email: admin_user.email,
+        password: "password123"
+      }
+      expect(response).to redirect_to(avaliacoes_path)
+    end
+  end
+
+  describe "GET /login when already logged in" do
+    context "as regular user" do
+      let(:user) { create(:user) }
+
+      it "redirects to avaliacoes path" do
+        post login_path, params: {
+          email: user.email,
+          password: "password123"
+        }
+        get login_path
+        expect(response).to redirect_to(avaliacoes_path)
+      end
+
+      it "shows already logged in message" do
+        post login_path, params: {
+          email: user.email,
+          password: "password123"
+        }
+        get login_path
+        follow_redirect!
+        expect(response.body).to include("You are already logged in")
+      end
+    end
+
+    context "as admin user" do
+      let(:admin_user) { create(:user, :admin) }
+
+      it "redirects to forms path" do
+        post login_path, params: {
+          email: admin_user.email,
+          password: "password123"
+        }
+        get login_path
+        expect(response).to redirect_to(forms_path)
+      end
+
+      it "shows already logged in message" do
+        post login_path, params: {
+          email: admin_user.email,
+          password: "password123"
+        }
+        get login_path
+        follow_redirect!
+        expect(response.body).to include("You are already logged in")
+      end
+    end
   end
 end
