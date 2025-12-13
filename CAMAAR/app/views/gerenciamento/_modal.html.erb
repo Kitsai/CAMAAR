@@ -1,0 +1,12 @@
+<div data-controller="template-form">
+  <%= form_with model: @template, class: "template-form", data: { action: "submit->form-form#submit", turbo_frame: "_top" } do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Nome do Template", class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Digite o nome do template", required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit @template.persisted? ? "Atualizar" : "Criar", class: "btn-submit" %>
+    </div>
+  <% end %>
+</div>
