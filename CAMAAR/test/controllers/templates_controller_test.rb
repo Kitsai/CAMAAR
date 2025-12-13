@@ -15,7 +15,7 @@ class TemplatesControllerTest < ActionDispatch::IntegrationTest
   test "should redirect to login if not logged in" do
     get templates_url
     assert_redirected_to login_path
-    assert_equal "You must be logged in to acces this page.", flash[:alert]
+    assert_equal "You must be logged in to access this page.", flash[:alert]
   end
 
   test "should redirect to root if not admin" do
