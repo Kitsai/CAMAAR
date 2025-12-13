@@ -4,6 +4,8 @@ class GerenciamentoController < ApplicationController
   def index
     @templates = current_admin.templates.includes(:question_set)
     @template = Template.new
+    @courses = Course.includes(:students, :teacher).all
+    @form = Form.new
   end
 
   private
