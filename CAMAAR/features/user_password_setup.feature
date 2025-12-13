@@ -5,7 +5,7 @@ Feature: User Password Setup
     When I click on the registration link
     And I enter a valid password
     And I confirm the password correctly
-    Then I should see a success message
+    Then I should see a password created success message
     And I should be able to log in with my credentials
 
   Scenario: Passwords do not match
