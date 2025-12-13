@@ -1,20 +1,5 @@
 # Step definitions for create template feature
 
-Given("I am an admin") do
-  @user = User.create!(
-    email: 'admin@example.com',
-    password: 'password123',
-    password_confirmation: 'password123'
-  )
-  @admin = Admin.create!(user: @user)
-
-  # Log in as admin
-  visit login_path
-  fill_in 'Email', with: @user.email
-  fill_in 'Senha', with: 'password123'
-  click_button 'Entrar'
-end
-
 Given("I am on the gerenciamento - templates page") do
   visit templates_path
 end
