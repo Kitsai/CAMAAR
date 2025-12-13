@@ -45,9 +45,23 @@
 
 /* Modal CSS */
 
+.form-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 1300;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    max-width: 763px;
+    width: 90%;
+    max-height: 90vh;
+}
+
 .modal-box {
-  width: 1023px;
-  height: 772px;
+  width: 763px;
+  height: 545px;
   background: white;
   padding: 20px;
   border-radius: 10px;
