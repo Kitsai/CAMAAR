@@ -5,20 +5,20 @@ class Answer < ApplicationRecord
 
   validates :data, presence: true
 
-  # Parse answer data from CSV format
+  # Faz parsing dos dados de resposta do formato CSV
   def parsed_data
     CSV.parse_line(data) || []
   rescue CSV::MalformedCSVError
-    # Fallback for legacy data stored with simple comma separation
+    # Fallback para dados legados armazenados com separação simples por vírgula
     data.split(',')
   end
 
-  # Get a specific answer by index
+  # Retorna uma resposta específica pelo índice
   def answer_at(index)
     parsed_data[index]
   end
 
-  # Get all answers as an array
+  # Retorna todas as respostas como um array
   def answers
     parsed_data
   end

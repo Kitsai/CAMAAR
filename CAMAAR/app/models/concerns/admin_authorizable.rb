@@ -1,3 +1,4 @@
+# Concern para lógica de autorização de admin
 module AdminAuthorizable
   extend ActiveSupport::Concern
 
