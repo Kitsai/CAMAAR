@@ -1,3 +1,17 @@
+# Service responsável por exportar respostas de formulários em formato CSV
+#
+# Uso:
+#   service = CsvExporterService.new(admin, course_code)
+#   result = service.call
+#
+# Retorna:
+#   { success: true, csv_data: String, filename: String } em caso de sucesso
+#   { success: false, error: String } em caso de erro
+#
+# Características:
+#   - Usa CSV.generate_line para escape correto de vírgulas e aspas
+#   - Valida permissões do admin para acessar o curso
+#   - Compatível com dados legados
 class CsvExporterService
   require 'csv'
 

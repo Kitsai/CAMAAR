@@ -1,3 +1,17 @@
+# Service responsável por armazenar respostas de formulários em formato CSV
+#
+# Uso:
+#   service = AnswerStorageService.new(form, answers_data)
+#   result = service.call
+#
+# Retorna:
+#   { success: true, answer: Answer } em caso de sucesso
+#   { success: false, error: String } em caso de erro
+#
+# Características:
+#   - Valida que todas as questões foram respondidas
+#   - Aceita dados em formato Array ou Hash
+#   - Usa CSV.generate_line para escape correto de caracteres especiais
 class AnswerStorageService
   require 'csv'
 
