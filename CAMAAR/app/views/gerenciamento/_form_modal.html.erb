@@ -48,7 +48,7 @@
         </div>
          <% @courses.each do |course| %>
           <div class="info-item">
-            <input type="checkbox" class="green-checkbox" name="course_ids[]" value="<%= course.id %>" checked>
+            <input type="checkbox" class="green-checkbox" name="course_ids[]" value="<%= course.id %>" unchecked>
             <div class="info-item-content">
               <div class="item-content">
                 <span><%= course.name %></span>
