@@ -1,43 +1,40 @@
 class CsvExporterService
   require 'csv'
 
-  def initialize(admin, course_code)
+  def initialize(admin, form_id)
     @admin = admin
-    @course_code = course_code
+    @form_id = form_id
   end
 
   def call
     return error_result("Admin não encontrado") unless @admin
-    return error_result("Código do curso não fornecido") if @course_code.blank?
+    return error_result("ID do formulário não fornecido") if @form_id.blank?
 
-    forms = find_admin_forms
-    return error_result("Você não tem permissão para acessar esta turma") if forms.empty?
+    form = find_admin_form
+    return error_result("Você não tem permissão para acessar este formulário") unless form
 
     {
       success: true,
-      csv_data: generate_csv(forms),
-      filename: generate_filename
+      csv_data: generate_csv(form),
+      filename: generate_filename(form)
     }
   end
 
   private
 
-  def find_admin_forms
+  def find_admin_form
     @admin.forms
-          .joins(:course)
-          .where(courses: { code: @course_code })
-          .includes(:course, :question_set, answers: :form)
+          .includes(:course, :question_set, :answers)
+          .find_by(id: @form_id)
   end
 
-  def generate_csv(forms)
-    question_set = forms.first.question_set
-    questions = question_set.data
-    answers = Answer.where(form_id: forms.pluck(:id))
-                    .includes(form: [:course, :question_set])
+  def generate_csv(form)
+    questions = form.question_set.data
+    answers = form.answers.includes(form: [:course, :question_set])
 
     CSV.generate(headers: true) do |csv|
       csv << build_header(questions)
-      
+
       answers.each do |answer|
         csv << build_row(answer, questions)
       end
@@ -78,8 +75,8 @@ class CsvExporterService
     data.split(',')
   end
 
-  def generate_filename
-    "#{@course_code}_performance_#{Date.today.strftime('%Y%m%d')}.csv"
+  def generate_filename(form)
+    "#{form.course.code}_form_#{form.id}_#{Date.today.strftime('%Y%m%d')}.csv"
   end
 
   def error_result(message)

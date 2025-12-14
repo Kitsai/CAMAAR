@@ -371,7 +371,7 @@ RSpec.describe "Forms", type: :request do
     end
   end
 
-  describe "GET /gerenciamento/resultados/:course_code/csv (forms#export_csv)" do
+  describe "GET /gerenciamento/resultados/forms/:form_id/csv (forms#export_csv)" do
     let(:course1) { create(:course, code: "CIC0097") }
     let(:course2) { create(:course, code: "CIC0202") }
     let(:form1) { create(:form, admin: admin, course: course1, question_set: question_set) }
@@ -379,7 +379,7 @@ RSpec.describe "Forms", type: :request do
 
     context "when not logged in" do
       it "redirects to login page" do
-        get "/gerenciamento/resultados/CIC0097/csv"
+        get "/gerenciamento/resultados/forms/#{form1.id}/csv"
         expect(response).to redirect_to(login_path)
       end
     end
@@ -389,7 +389,7 @@ RSpec.describe "Forms", type: :request do
         post login_path, params: { email: admin_user.email, password: "password123" }
       end
 
-      context "with a course they manage" do
+      context "with a form they manage" do
         before do
           form1 # Create form
           # Create some answers
@@ -398,27 +398,27 @@ RSpec.describe "Forms", type: :request do
         end
 
         it "returns http success" do
-          get "/gerenciamento/resultados/CIC0097/csv"
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response).to have_http_status(:success)
         end
 
         it "returns CSV content type" do
-          get "/gerenciamento/resultados/CIC0097/csv"
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response.content_type).to include("text/csv")
         end
 
         it "sets attachment disposition" do
-          get "/gerenciamento/resultados/CIC0097/csv"
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response.headers['Content-Disposition']).to include('attachment')
         end
 
         it "includes correct filename" do
-          get "/gerenciamento/resultados/CIC0097/csv"
-          expect(response.headers['Content-Disposition']).to include("CIC0097_performance_")
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
+          expect(response.headers['Content-Disposition']).to include("CIC0097_form_#{form1.id}_")
         end
 
         it "includes CSV headers" do
-          get "/gerenciamento/resultados/CIC0097/csv"
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response.body).to include("Formulário")
           expect(response.body).to include("Turma")
           expect(response.body).to include("Questão")
@@ -426,7 +426,7 @@ RSpec.describe "Forms", type: :request do
         end
 
         it "includes answer data" do
-          get "/gerenciamento/resultados/CIC0097/csv"
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response.body).to include("Answer 1")
           expect(response.body).to include("Answer 2")
           expect(response.body).to include("Answer A")
@@ -434,7 +434,7 @@ RSpec.describe "Forms", type: :request do
         end
       end
 
-      context "with a course they don't manage" do
+      context "with a form they don't manage" do
         let(:other_admin) { create(:user, :admin).admin }
         let(:other_course) { create(:course, code: "CIC0105") }
         let(:other_form) { create(:form, admin: other_admin, course: other_course, question_set: question_set) }
@@ -444,30 +444,30 @@ RSpec.describe "Forms", type: :request do
         end
 
         it "redirects to forms path" do
-          get "/gerenciamento/resultados/CIC0105/csv"
+          get "/gerenciamento/resultados/forms/#{other_form.id}/csv"
           expect(response).to redirect_to(forms_path)
         end
 
         it "shows access denied message" do
-          get "/gerenciamento/resultados/CIC0105/csv"
-          expect(flash[:alert]).to include("Você não tem permissão para acessar esta turma")
+          get "/gerenciamento/resultados/forms/#{other_form.id}/csv"
+          expect(flash[:alert]).to include("Você não tem permissão para acessar este formulário")
         end
 
         it "does not return CSV" do
-          get "/gerenciamento/resultados/CIC0105/csv"
+          get "/gerenciamento/resultados/forms/#{other_form.id}/csv"
           expect(response.content_type).not_to include("text/csv")
         end
       end
 
-      context "with non-existent course" do
+      context "with non-existent form" do
         it "redirects to forms path" do
-          get "/gerenciamento/resultados/NONEXISTENT/csv"
+          get "/gerenciamento/resultados/forms/99999/csv"
           expect(response).to redirect_to(forms_path)
         end
 
         it "shows access denied message" do
-          get "/gerenciamento/resultados/NONEXISTENT/csv"
-          expect(flash[:alert]).to include("Você não tem permissão para acessar esta turma")
+          get "/gerenciamento/resultados/forms/99999/csv"
+          expect(flash[:alert]).to include("Você não tem permissão para acessar este formulário")
         end
       end
     end
@@ -478,13 +478,13 @@ RSpec.describe "Forms", type: :request do
       end
 
       it "redirects to avaliacoes with access denied" do
-        get "/gerenciamento/resultados/CIC0097/csv"
+        get "/gerenciamento/resultados/forms/#{form1.id}/csv"
         expect(response).to redirect_to(avaliacoes_path)
         expect(flash[:alert]).to include("Acesso negado")
       end
 
       it "does not return CSV" do
-        get "/gerenciamento/resultados/CIC0097/csv"
+        get "/gerenciamento/resultados/forms/#{form1.id}/csv"
         expect(response.content_type).not_to include("text/csv")
       end
     end

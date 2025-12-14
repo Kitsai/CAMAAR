@@ -66,8 +66,8 @@ When("I click to export CSV for a course") do
 end
 
 When("I try to access the CSV export for a course I don't manage") do
-  # Try to access a course code that doesn't belong to this admin
-  visit export_class_csv_path("CIC0105")
+  # Try to access a form that doesn't belong to this admin (using a non-existent form ID)
+  visit export_form_csv_path(99999)
 end
 
 Then("I should see my courses listed") do
@@ -84,7 +84,7 @@ Then("I should download a CSV file with the class performance data") do
 end
 
 Then("I should see an access denied message") do
-  expect(page).to have_content('Você não tem permissão para acessar esta turma')
+  expect(page).to have_content('Você não tem permissão para acessar este formulário')
 end
 
 Then("no CSV file should be downloaded") do

@@ -54,13 +54,13 @@ class FormsController < ApplicationController
   end
 
   def results
-    # For admins: show forms they have created
-    @forms = current_admin.forms.includes(:course, :question_set)
+    # For admins: show forms they have created, ordered by creation date
+    @forms = current_admin.forms.includes(:course, :question_set).order(created_at: :desc)
   end
 
   def export_csv
-    result = CsvExporterService.new(current_admin, params[:course_code]).call
-    
+    result = CsvExporterService.new(current_admin, params[:form_id]).call
+
     if result[:success]
       send_data result[:csv_data],
                 filename: result[:filename],
