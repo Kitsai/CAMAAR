@@ -20,6 +20,8 @@ class AnswerStorageService
     @answers_data = answers_data
   end
 
+  # Executa o armazenamento da resposta
+  # Valida e normaliza os dados antes de criar o registro
   def call
     return error_result("Formulário não encontrado") unless @form
     return error_result("Respostas não fornecidas") if @answers_data.blank?
@@ -40,6 +42,8 @@ class AnswerStorageService
 
   private
 
+  # Normaliza as respostas para formato de array
+  # Aceita tanto array quanto hash como entrada
   def normalize_answers(answers_data)
     return answers_data if answers_data.is_a?(Array)
     
@@ -48,6 +52,7 @@ class AnswerStorageService
     answers_hash.values
   end
 
+  # Valida se todas as questões foram respondidas
   def valid_answers?(answers)
     expected_count = @form.question_set.data.size
     
@@ -59,6 +64,7 @@ class AnswerStorageService
     end
   end
 
+  # Cria o registro Answer com os dados em formato CSV
   def create_answer(answers)
     csv_data = generate_csv_data(answers)
     
@@ -68,6 +74,7 @@ class AnswerStorageService
     )
   end
 
+  # Gera a string CSV com as respostas, escapando caracteres especiais
   def generate_csv_data(answers)
     answer_values = answers.map do |answer_data|
       answer_data[:answer] || answer_data["answer"]
@@ -77,6 +84,7 @@ class AnswerStorageService
     CSV.generate_line(answer_values).strip
   end
 
+  # Retorna um hash de erro padronizado
   def error_result(message)
     {
       success: false,

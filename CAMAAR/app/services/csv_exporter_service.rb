@@ -20,6 +20,8 @@ class CsvExporterService
     @course_code = course_code
   end
 
+  # Executa a exportação do CSV
+  # Valida permissões e retorna os dados CSV ou erro
   def call
     return error_result("Admin não encontrado") unless @admin
     return error_result("Código do curso não fornecido") if @course_code.blank?
@@ -36,6 +38,7 @@ class CsvExporterService
 
   private
 
+  # Busca os formulários criados pelo admin para o curso especificado
   def find_admin_forms
     @admin.forms
           .joins(:course)
@@ -43,6 +46,7 @@ class CsvExporterService
           .includes(:course, :question_set, answers: :form)
   end
 
+  # Gera o conteúdo CSV com cabeçalho e linhas de dados
   def generate_csv(forms)
     question_set = forms.first.question_set
     questions = question_set.data
@@ -58,6 +62,7 @@ class CsvExporterService
     end
   end
 
+  # Constrói a linha de cabeçalho do CSV
   def build_header(questions)
     header = ["Formulário", "Turma", "Semestre"]
     questions.each_with_index do |question, idx|
@@ -67,6 +72,7 @@ class CsvExporterService
     header
   end
 
+  # Constrói uma linha de dados do CSV com as respostas
   def build_row(answer, questions)
     row = [
       "Form #{answer.form.id}",
@@ -92,10 +98,12 @@ class CsvExporterService
     data.split(',')
   end
 
+  # Gera o nome do arquivo CSV com data atual
   def generate_filename
     "#{@course_code}_performance_#{Date.today.strftime('%Y%m%d')}.csv"
   end
 
+  # Retorna um hash de erro padronizado
   def error_result(message)
     {
       success: false,
