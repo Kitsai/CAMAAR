@@ -2,9 +2,9 @@
 
 Given("I am on the {string} page") do |page_name|
   case page_name
-  when "gerenciamento", "gerenciamento/templates"
-    # This would be the main admin management page
-    # For now, we'll assume it's the templates index page
+  when "gerenciamento"
+    visit gerenciamento_path
+  when "gerenciamento/templates"
     visit templates_path
   else
     raise "Unknown page: #{page_name}"
@@ -14,10 +14,13 @@ end
 When("I click on {string} button") do |button_text|
   # Map "Resultados" to "Avaliações" since we renamed it in the sidebar
   button_text = "Avaliações" if button_text == "Resultados"
-  
-  case button_text
-  when "Editar templates", "Deletar templates"
-    # Store the intent to click this button
+
+  # For "Editar templates" from gerenciamento page, navigate to templates
+  if button_text == "Editar templates" && current_path == "/gerenciamento"
+    # Fix case sensitivity: "Editar templates" -> "Editar Templates"
+    click_link "Editar Templates"
+  elsif button_text == "Editar templates" || button_text == "Deletar templates"
+    # Store the intent to click this button (for edit/delete actions on templates page)
     # The actual click will happen in the Then steps after templates are set up
     @button_to_click = button_text
   else

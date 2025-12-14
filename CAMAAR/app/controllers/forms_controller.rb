@@ -13,19 +13,20 @@ class FormsController < ApplicationController
 
   def create
     template_id = params[:template_id]
-    course_ids  = params[:course_ids]
+    course_ids  = (params[:course_ids] || []).reject(&:blank?)
 
-    if template_id.blank? && !course_ids.blank?
+    # Validate inputs before processing
+    if template_id.blank?
       redirect_to forms_path, alert: "É necessário selecionar um template"
       return
     end
 
-    if course_ids.blank? && !template_id.blank?
+    if course_ids.empty?
       redirect_to forms_path, alert: "É necessário selecionar pelo menos uma turma"
       return
     end
 
-    template = Template.find(params[:template_id])
+    template = Template.find(template_id)
 
     ActiveRecord::Base.transaction do
       course_ids.each do |course_id|

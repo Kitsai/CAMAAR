@@ -9,50 +9,64 @@ RSpec.describe "Forms", type: :request do
   let(:admin) { admin_user.admin }
 
   describe "POST /forms" do
+    let(:template) { create(:template, admin: admin) }
+    let(:class_a) { create(:course) }
+    let(:class_b) { create(:course) }
+
+    before do
+      post login_path, params: { email: admin_user.email, password: "password123" }
+    end
+
     context "when form is created successfully" do
       it "creates a new form and assigns it to classes" do
         post "/forms", params: {
-          form: {
-            template_id: template.id,
-            class_ids: [class_a.id, class_b.id]
-          }
+          template_id: template.id,
+          course_ids: [class_a.id, class_b.id]
         }
 
         expect(response).to have_http_status(:found)
-        expect(flash[:success]).to eq("Formulário enviado com sucesso.")
+        expect(flash[:notice]).to eq("Formulários criados com sucesso!")
 
-        form = Form.last
-        expect(form.template).to eq(template)
-        expect(form.student_classes).to contain_exactly(class_a, class_b)
+        # Should create one form per course
+        expect(Form.count).to eq(2)
+
+        # Both forms should have the question_set from the template
+        Form.all.each do |form|
+          expect(form.question_set_id).to eq(template.question_set_id)
+          expect(form.admin).to eq(admin)
+        end
+
+        # Should create forms for both courses
+        expect(Form.find_by(course: class_a)).to be_present
+        expect(Form.find_by(course: class_b)).to be_present
       end
     end
 
     context "when no template is selected" do
       it "returns an error message" do
         post "/forms", params: {
-          form: {
-            template_id: nil,
-            class_ids: [class_a.id]
-          }
+          template_id: nil,
+          course_ids: [class_a.id]
         }
 
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(flash[:error]).to eq("Você precisa selecionar um template.")
+        expect(response).to redirect_to(forms_path)
+        expect(flash[:alert]).to eq("É necessário selecionar um template")
         expect(Form.count).to eq(0)
       end
     end
 
     context "when no classes are selected" do
       it "returns an error message" do
+        # Force template creation before the POST
+        template_id_value = template.id
+
         post "/forms", params: {
-          form: {
-            template_id: template.id,
-            class_ids: []
-          }
+          template_id: template_id_value,
+          course_ids: []
         }
 
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(flash[:error]).to eq("Você precisa selecionar pelo menos uma turma.")
+        expect(response).to redirect_to(forms_path)
+        expect(flash[:alert]).to eq("É necessário selecionar pelo menos uma turma")
         expect(Form.count).to eq(0)
       end
     end
