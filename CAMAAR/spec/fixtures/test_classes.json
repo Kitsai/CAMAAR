@@ -1,0 +1,20 @@
+[
+  {
+    "code": "TEST001",
+    "name": "Test Course 1",
+    "class": {
+      "classCode": "TA",
+      "semester": "2024.1",
+      "time": "35T45"
+    }
+  },
+  {
+    "code": "TEST002",
+    "name": "Test Course 2",
+    "class": {
+      "classCode": "TB",
+      "semester": "2024.1",
+      "time": "24M12"
+    }
+  }
+]

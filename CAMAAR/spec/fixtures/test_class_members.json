@@ -1,0 +1,36 @@
+[
+  {
+    "code": "TEST001",
+    "classCode": "TA",
+    "semester": "2024.1",
+    "docente": {
+      "nome": "Professor Test",
+      "email": "prof.test@example.com"
+    },
+    "dicente": [
+      {
+        "nome": "Student One",
+        "email": "student1@example.com"
+      },
+      {
+        "nome": "Student Two",
+        "email": "student2@example.com"
+      }
+    ]
+  },
+  {
+    "code": "TEST002",
+    "classCode": "TB",
+    "semester": "2024.1",
+    "docente": {
+      "nome": "Another Professor",
+      "email": "prof2@example.com"
+    },
+    "dicente": [
+      {
+        "nome": "Student Three",
+        "email": "student3@example.com"
+      }
+    ]
+  }
+]

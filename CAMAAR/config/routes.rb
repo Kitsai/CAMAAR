@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   # Management dashboard route
   get "gerenciamento", to: "gerenciamento#index", as: :gerenciamento
 
+  # Import route (admin only - one-click import)
+  post "imports", to: "imports#create", as: :imports
+
   # Defines the root path route ("/")
   root "sessions#new"
 end

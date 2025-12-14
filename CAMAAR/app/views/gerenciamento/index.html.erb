@@ -7,7 +7,8 @@
   <% end %>
 
   <div class="botoes-grid">
-    <%= link_to "Importar Dados", '', class: "btn-gerenciamento" %>
+    <%= button_to "Importar Dados", imports_path, method: :post, class: "btn-gerenciamento",
+        data: { confirm: "Tem certeza? Isso importará dados de ../classes.json e ../class_members.json" } %>
     <%= link_to "Editar Templates", templates_path, class: "btn-gerenciamento" %>
     <button type="button"
             class="btn-gerenciamento"
