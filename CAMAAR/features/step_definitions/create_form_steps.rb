@@ -15,29 +15,53 @@ Given("I am an admin") do
   click_button 'Entrar'
 end
 
+Given("there is at least one template") do
+  admin = Admin.first || FactoryBot.create(:admin)
+  FactoryBot.create(:template, admin: admin)
+end
+
+Given("there is at least one class") do
+  teacher = FactoryBot.create(:user)
+  
+  @course = FactoryBot.create(
+    :course,
+    teacher: teacher,
+    semester: "2024.2",
+    code: "CS101"
+  )
+end
+
 Given("I am on the gerenciamento page") do
   visit gerenciamento_path
 end
 
+When("I open the send form modal") do
+  click_button "Enviar Formulários"
+end
+
 When("I click the send form button") do
-  click_link "Enviar Formularios"
+  click_button "Enviar"
 end
 
 When("I select a template") do
   @selected_template = Template.first || FactoryBot.create(:template)
-  select @selected_template.name, from: "template_id"
+
+  expect(page).to have_select("templateSelect", visible: true)
+
+  puts page.find("#templateSelect").all("option").map(&:text)
+
+  select @selected_template.name, from: "templateSelect"
 end
 
 When("I do not select a template") do
-  # Explicitly select the blank option if present
-  select "", from: "template_id"
+  select "", from: "templateSelect"
 end
 
 When("I select at least one class") do
-  @selected_class = Klass.first || FactoryBot.create(:klass)
+  @selected_course = Course.first || FactoryBot.create(:course)
   
   # Select checkbox by value
-  check("class_ids_#{@selected_class.id}")
+  find("input[type='checkbox'][value='#{@selected_course.id}']").check
 end
 
 When("I do not select any class") do
@@ -47,7 +71,7 @@ end
 # Success / Error Messages
 
 Then("I should see a success message") do
-  expect(page).to have_content("Formulário criado com sucesso")
+  expect(page).to have_content("Formulários criados com sucesso!")
 end
 
 Then("I should see an error message that I need to select a template") do
@@ -61,11 +85,10 @@ end
 # Forms result assertions
 
 Then("the new form should be assigned to the selected classes") do
-  form = Form.last
-  expect(form.klasses).to include(@selected_class)
+  expect(Form.where(course: @selected_course)).to exist
 end
 
 Then("the new form should be available on the gerenciamento - results page") do
   visit forms_path  # adjust if your results page has a different path
-  expect(page).to have_content(Form.last.name)
+  expect(page).to have_content(@selected_course.name)
 end

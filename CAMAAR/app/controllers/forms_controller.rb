@@ -11,6 +11,47 @@ class FormsController < ApplicationController
     @forms = current_user.forms.includes(:course, :question_set)
   end
 
+  def create
+    template_id = params[:template_id]
+    course_ids  = params[:course_ids]
+
+    if template_id.blank? && !course_ids.blank?
+      redirect_to forms_path, alert: "É necessário selecionar um template"
+      return
+    end
+
+    if course_ids.blank? && !template_id.blank?
+      redirect_to forms_path, alert: "É necessário selecionar pelo menos uma turma"
+      return
+    end
+
+    template = Template.find(params[:template_id])
+
+    ActiveRecord::Base.transaction do
+      course_ids.each do |course_id|
+        course = Course.find(course_id)
+
+        form = Form.create!(
+          admin: current_user.admin,
+          course: course,
+          question_set_id: template.question_set_id
+        )
+
+        # Create FormRequests for students + teacher
+        recipients = course.students.to_a
+        recipients << course.teacher if course.teacher.present?
+
+        recipients.each do |user|
+          FormRequest.find_or_create_by!(user: user, form: form)
+        end
+      end
+    end
+
+    redirect_to forms_path, notice: "Formulários criados com sucesso!"
+  rescue ActiveRecord::RecordNotFound
+    redirect_to forms_path, alert: "Template e curso inválidos"
+  end
+
   def results
     # For admins: show forms they have created
     @forms = current_admin.forms.includes(:course, :question_set)
