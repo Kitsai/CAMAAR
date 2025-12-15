@@ -1,3 +1,5 @@
+# Formulário de avaliação criado por admin para uma turma
+# Baseado em um QuestionSet e enviado via FormRequest aos usuários
 class Form < ApplicationRecord
   belongs_to :admin
   belongs_to :course

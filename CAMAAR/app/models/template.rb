@@ -1,3 +1,5 @@
+# Template reutilizável de formulários criado por admin
+# Contém um QuestionSet que pode ser usado para criar múltiplos Forms
 class Template < ApplicationRecord
   belongs_to :admin
   belongs_to :question_set

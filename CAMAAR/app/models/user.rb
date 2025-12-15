@@ -1,3 +1,5 @@
+# Representa um usuário do sistema (professor, aluno ou admin)
+# Possui autenticação via BCrypt e pode ter múltiplos papéis
 class User < ApplicationRecord
   has_secure_password validations: false
 

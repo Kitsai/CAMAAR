@@ -1,3 +1,5 @@
+# Conjunto de questões armazenadas em formato JSON
+# Usado por Templates e Forms
 class QuestionSet < ApplicationRecord
   has_one :template
   has_many :forms

@@ -1,3 +1,5 @@
+# Gerencia templates de formulários (CRUD)
+# Apenas admins podem criar/editar templates
 class TemplatesController < ApplicationController
   before_action :require_admin
   before_action :set_template, only: [ :show, :edit, :update, :destroy ]

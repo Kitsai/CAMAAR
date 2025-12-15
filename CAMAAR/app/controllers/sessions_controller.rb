@@ -1,14 +1,10 @@
+# Gerencia autenticação de usuários (login/logout)
+# Redireciona baseado no papel do usuário (admin ou regular)
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [ :new, :create ]
   before_action :redirect_if_logged_in, only: [ :new ]
 
-  # Renderiza a visualização do formulário de login.
-  #
-  # Este método não recebe argumentos.
-  #
-  # Este método não retorna valor; renderiza a visualização 'new'.
-  #
-  # Este método não possui efeitos colaterais.
+  # Exibe o formulário de login
   def new
     # Renders the login form
   end

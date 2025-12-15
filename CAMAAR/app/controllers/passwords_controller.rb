@@ -1,14 +1,9 @@
-# Controlador responsável por gerenciar a definição de senhas para usuários.
+# Gerencia definição e redefinição de senhas de usuários
+# Permite setup inicial e reset via email
 class PasswordsController < ApplicationController
   skip_before_action :require_login
 
-  # Renderiza o formulário para definir senha.
-  #
-  # Este método recebe argumentos dos parâmetros da requisição: params[:email].
-  #
-  # Este método não retorna valor; renderiza a visualização 'new' ou redireciona.
-  #
-  # Efeitos colaterais: Se o usuário já tiver senha, redireciona para login_path com alerta.
+  # Exibe formulário para definir/redefinir senha
   def new
     @user = User.find_by(email: params[:email]) if params[:email]
 

@@ -1,3 +1,5 @@
+# Página principal de gerenciamento para admins
+# Exibe templates, cursos e permite criar formulários
 class GerenciamentoController < ApplicationController
   before_action :require_admin
 
