@@ -62,8 +62,7 @@ RSpec.describe CreateFormService, type: :service do
         it 'assigns requests to student and teacher' do
           call_service
 
-          user_ids = FormRequest.last(2).pluck(:user_id)
-          expect(user_ids).to contain_exactly(student.id, teacher.id)
+          expect_form_requests_assigned_to(student, teacher)
         end
       end
     end

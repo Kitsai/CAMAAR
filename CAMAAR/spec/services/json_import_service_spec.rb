@@ -81,9 +81,8 @@ RSpec.describe JsonImportService, type: :service do
         it 'reuses existing users by email' do
           service.call
 
-          users = User.where(email: 'student1@example.com')
-          expect(users.count).to eq(1)
-          expect(users.first.name).to eq('Existing Student')
+          users = expect_user_count_by_email('student1@example.com', 1)
+          expect_user_attribute('student1@example.com', :name, 'Existing Student')
         end
 
         it 'does not create duplicate users' do
@@ -196,8 +195,7 @@ RSpec.describe JsonImportService, type: :service do
         service = create_import_service(classes_path: classes_file, members_path: incomplete_members_file)
         result = service.call
 
-        expect(result[:success]).to be true
-        expect(result[:data][:courses_skipped]).to be > 0
+        expect_successful_import_with_stat_gt(result, :courses_skipped)
       end
 
       it 'handles missing student email gracefully (skips student)' do
@@ -249,8 +247,7 @@ RSpec.describe JsonImportService, type: :service do
         service = create_import_service(classes_path: classes_file, members_path: incomplete_members_file)
         result = service.call
 
-        expect(result[:success]).to be true
-        expect(result[:data][:courses_created]).to be >= 0
+        expect_successful_import_with_stat_gte(result, :courses_created, 0)
       end
     end
 

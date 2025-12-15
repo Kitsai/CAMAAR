@@ -37,9 +37,7 @@ end
 
 Then("I should be redirected to the selected form page") do
   # With modal, we check that modal is visible instead of URL change
-  expect(page).to have_css('.modal.active', visible: true)
-  expect(page).to have_content(@selected_form.course.name)
-  expect(page).to have_button('Enviar Avaliação')
+  expect_form_modal_with_content(@selected_form)
 end
 
 When("I answer all questions in the form") do

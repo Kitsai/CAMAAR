@@ -29,13 +29,11 @@ RSpec.describe Template, type: :model do
 
   describe "associations" do
     it "belongs to admin" do
-      expect(Template.reflect_on_association(:admin)).to be_present
-      expect(Template.reflect_on_association(:admin).macro).to eq(:belongs_to)
+      verify_belongs_to(Template, :admin)
     end
 
     it "belongs to question_set" do
-      expect(Template.reflect_on_association(:question_set)).to be_present
-      expect(Template.reflect_on_association(:question_set).macro).to eq(:belongs_to)
+      verify_belongs_to(Template, :question_set)
     end
 
     it "accepts nested attributes for question_set" do
@@ -45,15 +43,9 @@ RSpec.describe Template, type: :model do
 
   describe "creating template with nested question_set" do
     it "can create template with nested question_set attributes" do
-      template = admin.templates.build(
-        name: "Nested Template",
-        question_set_attributes: {
-          data: [ { question: "Nested question", type: "text" } ]
-        }
-      )
-      expect(template.save).to be true
-      expect(template.question_set).to be_persisted
-      expect(template.question_set.data).to eq([ { "question" => "Nested question", "type" => "text" } ])
+      question_data = [ { question: "Nested question", type: "text" } ]
+      template = build_template_with_nested_question_set(admin, "Nested Template", question_data)
+      expect_template_saved_with_nested_question_set(template, [ { "question" => "Nested question", "type" => "text" } ])
     end
   end
 end

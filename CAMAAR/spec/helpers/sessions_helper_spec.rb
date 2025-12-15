@@ -11,9 +11,7 @@ RSpec.describe SessionsHelper, type: :helper do
       end
 
       it "memoizes the current user" do
-        session[:user_id] = user.id
-        expect(User).to receive(:find_by).once.and_return(user)
-        2.times { helper.current_user }
+        expect_memoization_of_current_user(user)
       end
     end
 

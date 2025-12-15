@@ -40,6 +40,63 @@ module ImportServiceHelpers
     expect(course.name).to eq(name) if name
     expect(course.teacher.email).to eq(teacher_email) if teacher_email
   end
+
+  def expect_user_count_by_email(email, expected_count)
+    users = User.where(email: email)
+    expect(users.count).to eq(expected_count)
+    users
+  end
+
+  def expect_user_attribute(email, attribute, value)
+    user = User.find_by(email: email)
+    expect(user.send(attribute)).to eq(value)
+  end
+
+  def expect_successful_import_with_stat_gt(result, stat_key, min_value = 0)
+    expect(result[:success]).to be true
+    expect(result[:data][stat_key]).to be > min_value
+  end
+
+  def expect_successful_import_with_stat_gte(result, stat_key, min_value)
+    expect(result[:success]).to be true
+    expect(result[:data][stat_key]).to be >= min_value
+  end
+
+  def call_and_expect_success(service)
+    result = service.call
+    expect(result[:success]).to be true
+    result
+  end
+
+  def build_simple_class_data(code, name, class_code, semester, time)
+    {
+      "code" => code,
+      "name" => name,
+      "class" => {
+        "classCode" => class_code,
+        "semester" => semester,
+        "time" => time
+      }
+    }
+  end
+
+  def build_simple_members_data(code, class_code, semester, teacher_data, students_data)
+    {
+      "code" => code,
+      "classCode" => class_code,
+      "semester" => semester,
+      "docente" => teacher_data,
+      "dicente" => students_data
+    }
+  end
+
+  def build_teacher_data(name, email)
+    { "nome" => name, "email" => email }
+  end
+
+  def build_student_data(name, email)
+    { "nome" => name, "email" => email }
+  end
 end
 
 RSpec.configure do |config|

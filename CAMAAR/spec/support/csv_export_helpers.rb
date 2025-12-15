@@ -43,6 +43,11 @@ module CsvExportHelpers
       expect(csv_data).to include(string)
     end
   end
+
+  # Creates an admin record from user with :admin trait
+  def create_admin_record_for_csv
+    create(:user, :admin).admin
+  end
 end
 
 RSpec.configure do |config|

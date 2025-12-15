@@ -77,6 +77,56 @@ module FormHelpers
   def check_by_value(value)
     find("input[type='checkbox'][value='#{value}']").check
   end
+
+  # Expects modal to be visible and active
+  #
+  # @example
+  #   expect_modal_visible
+  def expect_modal_visible
+    expect(page).to have_css('.modal.active', visible: true)
+  end
+
+  # Expects form modal to be visible with specific form content
+  #
+  # @param form [Form] The form object to verify in modal
+  # @example
+  #   expect_form_modal_with_content(@selected_form)
+  def expect_form_modal_with_content(form)
+    expect_modal_visible
+    expect(page).to have_content(form.course.name)
+    expect(page).to have_button('Enviar Avaliação')
+  end
+
+  # Fills in template name field
+  #
+  # @param name [String] The template name
+  # @example
+  #   fill_template_name('My Template')
+  def fill_template_name(name)
+    fill_in 'Nome do Template', with: name
+  end
+
+  # Adds a question to template form
+  #
+  # @param type [String] Question type ('Text', 'Radio', etc.)
+  # @param question_text [String] The question text
+  # @example
+  #   add_question_to_template('Text', 'What is your name?')
+  def add_question_to_template(type, question_text)
+    find('.btn-add-question').click
+    within(first('.question-item')) do
+      find('.question-type-select').select(type)
+      find('.question-input').fill_in with: question_text
+    end
+  end
+
+  # Submits template creation form
+  #
+  # @example
+  #   submit_template_creation
+  def submit_template_creation
+    click_button 'Criar'
+  end
 end
 
 World(FormHelpers)

@@ -16,19 +16,10 @@ When("I enter a valid name") do
 end
 
 When("I enter a invalid name") do
-  # Wait for modal to be visible
-  expect(page).to have_css('.modal.active', visible: true)
-  fill_in 'Nome do Template', with: ''
-
-  # Add a question so we can submit the form
-  find('.btn-add-question').click
-  within(first('.question-item')) do
-    find('.question-type-select').select('Text')
-    find('.question-input').fill_in with: 'Test question'
-  end
-
-  # Submit to trigger validation
-  click_button 'Criar'
+  expect_modal_visible
+  fill_template_name('')
+  add_question_to_template('Text', 'Test question')
+  submit_template_creation
 end
 
 When("I add at least one question") do

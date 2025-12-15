@@ -54,6 +54,15 @@ module QuestionSetUpdateHelpers
   def expect_question_set_count_unchanged
     expect { yield }.not_to change { QuestionSet.count }
   end
+
+  def create_admin_record
+    create(:user, :admin).admin
+  end
+
+  def create_admin_user_and_record
+    user = create(:user, :admin)
+    { user: user, admin: user.admin }
+  end
 end
 
 RSpec.configure do |config|

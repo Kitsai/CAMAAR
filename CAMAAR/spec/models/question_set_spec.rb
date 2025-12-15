@@ -37,11 +37,9 @@ RSpec.describe QuestionSet, type: :model do
     let(:question_set) { QuestionSet.create!(data: [ { question: "Original", type: "text" } ]) }
 
     it "updates the question_set data directly" do
-      original_id = question_set.id
-      question_set.update(data: [ { question: "Updated", type: "text" } ])
-      question_set.reload
-      expect(question_set.id).to eq(original_id)
-      expect(question_set.data).to eq([ { "question" => "Updated", "type" => "text" } ])
+      expect_question_set_updated_in_place(question_set, [ { "question" => "Updated", "type" => "text" } ]) do
+        question_set.update(data: [ { question: "Updated", type: "text" } ])
+      end
     end
   end
 end

@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe QuestionSetUpdateService, type: :service do
-  let(:admin_user) { create(:user, :admin) }
-  let(:admin) { admin_user.admin }
+  let(:admin) { create_admin_record }
   let(:question_set) { create(:question_set) }
   let(:template) { create(:template, admin: admin, question_set: question_set) }
 

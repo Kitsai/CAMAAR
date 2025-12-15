@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CsvExporterService, type: :service do
-  let(:admin_user) { create(:user, :admin) }
-  let(:admin) { admin_user.admin }
+  let(:admin) { create_admin_record_for_csv }
   let(:teacher) { create(:user) }
   let(:course) { create(:course, code: "CIC0097", teacher: teacher) }
   let(:question_set) { create(:question_set) }
