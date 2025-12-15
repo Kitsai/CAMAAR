@@ -16,45 +16,19 @@ class FormsController < ApplicationController
   # Cria formulários para turmas selecionadas a partir de um template
   # Gera FormRequests para alunos e professores das turmas
   def create
-    template_id = params[:template_id]
-    course_ids  = (params[:course_ids] || []).reject(&:blank?)
-
-    # Validate inputs before processing
-    if template_id.blank?
-      redirect_to forms_path, alert: "É necessário selecionar um template"
-      return
-    end
-
-    if course_ids.empty?
-      redirect_to forms_path, alert: "É necessário selecionar pelo menos uma turma"
-      return
-    end
-
-    template = Template.find(template_id)
-
-    ActiveRecord::Base.transaction do
-      course_ids.each do |course_id|
-        course = Course.find(course_id)
-
-        form = Form.create!(
-          admin: current_user.admin,
-          course: course,
-          question_set_id: template.question_set_id
-        )
-
-        # Create FormRequests for students + teacher
-        recipients = course.students.to_a
-        recipients << course.teacher if course.teacher.present?
-
-        recipients.each do |user|
-          FormRequest.find_or_create_by!(user: user, form: form)
-        end
-      end
-    end
+    CreateFormService.call(
+      admin: current_user.admin,
+      template_id: params[:template_id],
+      course_ids: params[:course_ids]
+    )
 
     redirect_to forms_path, notice: "Formulários criados com sucesso!"
-  rescue ActiveRecord::RecordNotFound
-    redirect_to forms_path, alert: "Template e curso inválidos"
+
+  rescue CreateFormService::MissingTemplate
+    redirect_to forms_path, alert: "É necessário selecionar um template"
+
+  rescue CreateFormService::MissingCourses
+    redirect_to forms_path, alert: "É necessário selecionar pelo menos uma turma"
   end
 
   # Lista formulários criados pelo admin (área de gerenciamento)
