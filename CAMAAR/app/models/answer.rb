@@ -1,3 +1,5 @@
+# Armazena respostas de formulários em formato CSV
+# Fornece métodos para parsing e acesso aos dados
 class Answer < ApplicationRecord
   require 'csv'
   
