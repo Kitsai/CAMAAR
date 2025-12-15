@@ -73,55 +73,73 @@ class JsonImportService
   end
 
   def import_course(class_entry, members_lookup)
-    code = class_entry['code']
-    class_code = class_entry.dig('class', 'classCode')
-    semester = class_entry.dig('class', 'semester')
+    course_data = extract_course_data(class_entry)
+    return unless validate_course_data(course_data)
 
-    # Validate required fields
-    if [code, class_code, semester].any?(&:blank?)
+    members_entry = find_members_entry(course_data, members_lookup)
+    return if course_exists?(course_data)
+
+    teacher = resolve_teacher(members_entry, course_data[:code])
+    return unless teacher
+
+    course = create_course_record(class_entry, course_data, teacher)
+    import_enrollments(course, members_entry['dicente'] || []) if members_entry
+  rescue => e
+    skip_course("Error importing #{course_data[:code]}: #{e.message}")
+  end
+
+  def extract_course_data(class_entry)
+    {
+      code: class_entry['code'],
+      class_code: class_entry.dig('class', 'classCode'),
+      semester: class_entry.dig('class', 'semester')
+    }
+  end
+
+  def validate_course_data(course_data)
+    if course_data.values.any?(&:blank?)
       skip_course("Missing code or class info")
-      return
+      false
+    else
+      true
     end
+  end
 
-    # Find matching members entry (optional)
-    lookup_key = "#{code}-#{class_code}-#{semester}"
-    members_entry = members_lookup[lookup_key]
+  def find_members_entry(course_data, members_lookup)
+    lookup_key = "#{course_data[:code]}-#{course_data[:class_code]}-#{course_data[:semester]}"
+    members_lookup[lookup_key]
+  end
 
-    # Check for duplicate course
-    if Course.exists?(code: code, classCode: class_code, semester: semester)
+  def course_exists?(course_data)
+    if Course.exists?(code: course_data[:code], classCode: course_data[:class_code], semester: course_data[:semester])
       @stats[:courses_skipped] += 1
-      return
+      true
+    else
+      false
     end
+  end
 
-    # Create/find teacher (from members if available, otherwise create placeholder)
+  def resolve_teacher(members_entry, code)
     teacher = if members_entry && members_entry['docente']
       find_or_create_user(members_entry['docente'])
     else
-      # Create a placeholder teacher if no members data
       find_or_create_placeholder_teacher
     end
 
-    unless teacher
-      skip_course("Missing teacher for #{code}")
-      return
-    end
+    skip_course("Missing teacher for #{code}") unless teacher
+    teacher
+  end
 
-    # Create course
+  def create_course_record(class_entry, course_data, teacher)
     course = Course.create!(
-      code: code,
+      code: course_data[:code],
       name: class_entry['name'],
-      classCode: class_code,
-      semester: semester,
+      classCode: course_data[:class_code],
+      semester: course_data[:semester],
       teacher: teacher
     )
     @stats[:courses_created] += 1
-
-    # Create student enrollments (only if members_entry exists)
-    if members_entry
-      import_enrollments(course, members_entry['dicente'] || [])
-    end
-  rescue => e
-    skip_course("Error importing #{code}: #{e.message}")
+    course
   end
 
   def import_enrollments(course, students)

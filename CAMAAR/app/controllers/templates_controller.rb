@@ -33,25 +33,10 @@ class TemplatesController < ApplicationController
   end
 
   def update
-    # Handle question_set update separately to implement copy-on-write
     params_hash = template_params
-    question_set_params = params_hash.delete(:question_set_attributes)
+    question_set_data = extract_question_set_data(params_hash)
 
-    # Update template name first
-    if @template.update(params_hash)
-      # Handle question_set update with copy-on-write logic
-      if question_set_params && question_set_params[:data]
-        if @template.question_set.forms.exists?
-          # Copy-on-write: Create new question_set for template, keep old one for existing forms
-          new_qs = QuestionSet.create!(data: question_set_params[:data])
-          @template.update!(question_set_id: new_qs.id)
-        else
-          # No forms exist: Just update the existing question_set
-          @template.question_set.update!(data: question_set_params[:data])
-        end
-        @template.reload
-      end
-
+    if update_template(params_hash, question_set_data)
       redirect_to templates_path, notice: "Template updated successfully"
     else
       render :edit, status: :unprocessable_entity
@@ -64,6 +49,18 @@ class TemplatesController < ApplicationController
   end
 
   private
+
+  def extract_question_set_data(params_hash)
+    question_set_params = params_hash.delete(:question_set_attributes)
+    question_set_params&.dig(:data)
+  end
+
+  def update_template(params_hash, question_set_data)
+    return false unless @template.update(params_hash)
+
+    QuestionSetUpdateService.new(@template, question_set_data).call
+    true
+  end
 
   def set_template
     @template = current_admin.templates.includes(:question_set).find(params[:id])

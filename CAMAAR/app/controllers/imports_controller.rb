@@ -16,16 +16,33 @@ class ImportsController < AdminController
 
   def build_success_message(stats)
     parts = ["Import completed successfully!"]
-    parts << "#{stats[:users_created]} users created" if stats[:users_created] > 0
-    parts << "#{stats[:users_skipped]} users skipped (already exist)" if stats[:users_skipped] > 0
-    parts << "#{stats[:courses_created]} courses created" if stats[:courses_created] > 0
-    parts << "#{stats[:courses_skipped]} courses skipped" if stats[:courses_skipped] > 0
-    parts << "#{stats[:enrollments_created]} enrollments created" if stats[:enrollments_created] > 0
-
-    if stats[:errors].any?
-      parts << "#{stats[:errors].length} errors occurred (see logs)"
-    end
-
+    parts.concat(build_stat_messages(stats))
+    parts << build_error_message(stats[:errors]) if stats[:errors].any?
     parts.join(". ")
+  end
+
+  def build_stat_messages(stats)
+    stat_configs.filter_map do |config|
+      count = stats[config[:key]]
+      format_stat_message(count, config[:label]) if count && count > 0
+    end
+  end
+
+  def stat_configs
+    [
+      { key: :users_created, label: "users created" },
+      { key: :users_skipped, label: "users skipped (already exist)" },
+      { key: :courses_created, label: "courses created" },
+      { key: :courses_skipped, label: "courses skipped" },
+      { key: :enrollments_created, label: "enrollments created" }
+    ]
+  end
+
+  def format_stat_message(count, label)
+    "#{count} #{label}"
+  end
+
+  def build_error_message(errors)
+    "#{errors.length} errors occurred (see logs)"
   end
 end
