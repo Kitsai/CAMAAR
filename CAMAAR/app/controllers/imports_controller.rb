@@ -1,4 +1,15 @@
+# Controlador responsável por importar dados de cursos e membros via JSON.
+#
+# Este controlador utiliza o JsonImportService para processar arquivos
+# classes.json e class_members.json.
 class ImportsController < AdminController
+  # Processa a importação de dados.
+  #
+  # Este método não recebe argumentos.
+  #
+  # Este método não retorna valor; redireciona após a importação.
+  #
+  # Efeitos colaterais: Chama JsonImportService e redireciona para gerenciamento_path com mensagem.
   def create
     result = JsonImportService.new.call
 

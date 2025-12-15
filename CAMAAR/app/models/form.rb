@@ -1,3 +1,7 @@
+# Model que representa um formulário de avaliação.
+#
+# Um formulário é criado por um admin para um curso específico,
+# baseado em um question_set, e enviado aos usuários através de form_requests.
 class Form < ApplicationRecord
   belongs_to :admin
   belongs_to :course
