@@ -57,6 +57,8 @@ class TemplatesController < ApplicationController
     question_set_params&.dig(:data)
   end
 
+  # Atualiza template e seu QuestionSet
+  # QuestionSetUpdateService aplica copy-on-write se necessário
   def update_template(params_hash, question_set_data)
     return false unless @template.update(params_hash)
 
@@ -68,6 +70,8 @@ class TemplatesController < ApplicationController
     @template = current_admin.templates.includes(:question_set).find(params[:id])
   end
 
+  # Permite parâmetros do template e faz parse do JSON de questions
+  # Data vem como string do form e precisa ser convertida para array
   def template_params
     permitted = params.require(:template).permit(:name, question_set_attributes: [ :id, :data ])
 

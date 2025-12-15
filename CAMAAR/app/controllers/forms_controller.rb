@@ -84,6 +84,7 @@ class FormsController < ApplicationController
   # Verifica se o usuário tem permissão para acessar o formulário
   # Admins: podem acessar formulários que criaram
   # Usuários: podem acessar apenas formulários com FormRequest ativo
+  # Isso previne acesso a formulários já submetidos ou de outras turmas
   def verify_form_access
     # Admins can access forms they created
     # Regular users can only access forms they have a FormRequest for

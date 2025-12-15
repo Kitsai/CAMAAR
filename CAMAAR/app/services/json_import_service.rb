@@ -1,3 +1,5 @@
+# Service para importar dados de turmas e membros via arquivos JSON
+# Processa classes.json e class_members.json criando Users, Courses e Enrollments
 class JsonImportService
   def initialize(classes_path: nil, members_path: nil)
     @classes_path = classes_path || Rails.root.join('..', 'classes.json')
@@ -50,6 +52,9 @@ class JsonImportService
     error_result("Invalid JSON in #{File.basename(path)}: #{e.message}")
   end
 
+  # Importa todas as turmas e cria registros relacionados
+  # Constrói lookup de membros para busca eficiente e processa cada turma independentemente
+  # Erros em turmas individuais não interrompem o processo completo
   def import_data(classes, members)
     # Build lookup hash: "code-classCode-semester" => members_entry
     members_lookup = build_members_lookup(members)
@@ -72,6 +77,9 @@ class JsonImportService
     end
   end
 
+  # Processa uma turma: valida dados, resolve professor, cria Course e Enrollments
+  # Retorna early se dados inválidos ou turma já existe
+  # Captura erros para não interromper o processamento de outras turmas
   def import_course(class_entry, members_lookup)
     course_data = extract_course_data(class_entry)
     return unless validate_course_data(course_data)
@@ -119,6 +127,8 @@ class JsonImportService
     end
   end
 
+  # Resolve o professor da turma: usa dados de members_entry ou cria placeholder
+  # Garante que toda turma tenha um professor válido antes de ser criada
   def resolve_teacher(members_entry, code)
     teacher = if members_entry && members_entry['docente']
       find_or_create_user(members_entry['docente'])
@@ -157,6 +167,9 @@ class JsonImportService
     end
   end
 
+  # Busca usuário existente ou cria novo com password nil
+  # Password nil permite que usuário configure senha via feature de password setup
+  # Normaliza email (downcase + strip) para evitar duplicatas
   def find_or_create_user(user_data)
     return nil if user_data.nil? || user_data['email'].blank?
 

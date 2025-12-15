@@ -1,56 +1,26 @@
-# Módulo auxiliar para gerenciar sessões de usuário, incluindo autenticação e verificações de papel.
+# Helpers para gerenciar sessões e autenticação de usuários
 module SessionsHelper
-  # Retorna o usuário atualmente logado (se houver).
-  #
-  # Este método não recebe argumentos.
-  #
-  # Este método retorna um objeto User se houver um usuário logado, ou nil caso contrário.
-  #
-  # Este método não possui efeitos colaterais.
+  # Retorna o usuário atualmente logado
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
-  # Retorna verdadeiro se o usuário estiver logado, falso caso contrário.
-  #
-  # Este método não recebe argumentos.
-  #
-  # Este método retorna um valor booleano: true se logado, false se não.
-  #
-  # Este método não possui efeitos colaterais.
+  # Verifica se há um usuário logado
   def logged_in?
     !current_user.nil?
   end
 
-  # Retorna verdadeiro se o usuário atual for um administrador.
-  #
-  # Este método não recebe argumentos.
-  #
-  # Este método retorna um valor booleano: true se for admin, false se não.
-  #
-  # Este método não possui efeitos colaterais.
+  # Verifica se o usuário atual é admin
   def admin?
     logged_in? && current_user.admin?
   end
 
-  # Faz login do usuário fornecido.
-  #
-  # Este método recebe um argumento: user (um objeto User).
-  #
-  # Este método não retorna valor.
-  #
-  # Efeitos colaterais: Define session[:user_id] para o ID do usuário fornecido.
+  # Faz login do usuário
   def log_in(user)
     session[:user_id] = user.id
   end
 
-  # Faz logout do usuário atual.
-  #
-  # Este método não recebe argumentos.
-  #
-  # Este método não retorna valor.
-  #
-  # Efeitos colaterais: Remove session[:user_id] da sessão e define @current_user para nil.
+  # Faz logout do usuário atual
   def log_out
     session.delete(:user_id)
     @current_user = nil

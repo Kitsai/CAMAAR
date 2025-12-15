@@ -1,3 +1,5 @@
+# Service para atualizar QuestionSet de templates
+# Implementa copy-on-write quando QuestionSet é usado por outros templates
 class QuestionSetUpdateService
   def initialize(template, question_set_data)
     @template = template
@@ -19,6 +21,8 @@ class QuestionSetUpdateService
 
   private
 
+  # Verifica se QuestionSet já está em uso por formulários
+  # Se sim, cria cópia para não afetar respostas já submetidas
   def should_copy_on_write?
     @template.question_set.forms.exists?
   end

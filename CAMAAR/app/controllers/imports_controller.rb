@@ -1,3 +1,5 @@
+# Gerencia importação de dados via JSON (turmas e membros)
+# Usa JsonImportService para processar arquivos
 class ImportsController < AdminController
   def create
     result = JsonImportService.new.call

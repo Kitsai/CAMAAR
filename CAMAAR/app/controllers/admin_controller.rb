@@ -1,3 +1,5 @@
+# Controller base para áreas que requerem privilégios de admin
+# Valida permissões antes de executar ações
 class AdminController < ApplicationController
   before_action :require_admin
 
