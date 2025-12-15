@@ -2,40 +2,35 @@ require 'rails_helper'
 
 RSpec.describe QuestionSet, type: :model do
   describe "validations" do
-    it "is valid with a non-empty array of questions" do
-      question_set = QuestionSet.new(data: [ { question: "Test?", type: "text" } ])
+    it "is valid with factory" do
+      question_set = build(:question_set)
       expect(question_set).to be_valid
     end
 
-    it "requires data to be present" do
-      question_set = QuestionSet.new(data: nil)
-      expect(question_set).not_to be_valid
-      expect(question_set.errors[:data]).to include("can't be blank")
+    context "when data is nil" do
+      subject { build(:question_set, data: nil) }
+      include_examples "fails custom validation", :data, "can't be blank"
     end
 
-    it "requires data to be a non-empty array" do
-      question_set = QuestionSet.new(data: [])
-      expect(question_set).not_to be_valid
-      expect(question_set.errors[:data]).to include("must be a non-empty array of questions")
+    context "when data is empty array" do
+      subject { build(:question_set, :empty) }
+      include_examples "fails custom validation", :data, "must be a non-empty array of questions"
     end
 
-    it "is invalid when data is not an array" do
-      question_set = QuestionSet.new(data: "not an array")
-      expect(question_set).not_to be_valid
-      expect(question_set.errors[:data]).to include("must be a non-empty array of questions")
+    context "when data is not an array" do
+      subject { build(:question_set, data: "not an array") }
+      include_examples "fails custom validation", :data, "must be a non-empty array of questions"
     end
   end
 
   describe "associations" do
     it "has one template" do
-      expect(QuestionSet.reflect_on_association(:template)).to be_present
-      expect(QuestionSet.reflect_on_association(:template).macro).to eq(:has_one)
+      association = QuestionSet.reflect_on_association(:template)
+      expect(association).to be_present
+      expect(association.macro).to eq(:has_one)
     end
 
-    it "has many forms" do
-      expect(QuestionSet.reflect_on_association(:forms)).to be_present
-      expect(QuestionSet.reflect_on_association(:forms).macro).to eq(:has_many)
-    end
+    it { verify_has_many(QuestionSet, :forms) }
   end
 
   describe "updates" do

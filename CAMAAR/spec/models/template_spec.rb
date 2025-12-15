@@ -5,46 +5,25 @@ RSpec.describe Template, type: :model do
   let(:question_set) { QuestionSet.create!(data: [ { question: "Test question", type: "text" } ]) }
 
   describe "validations" do
-    it "is valid with name, admin, and question_set with questions" do
-      template = Template.new(
-        name: "Test Template",
-        admin: admin,
-        question_set: question_set
-      )
+    it "is valid with factory" do
+      template = build(:template)
       expect(template).to be_valid
     end
 
-    it "requires a name" do
-      template = Template.new(admin: admin, question_set: question_set)
-      expect(template).not_to be_valid
-      expect(template.errors[:name]).to include("can't be blank")
+    include_examples "requires presence of", :name
+    include_examples "requires association", :question_set
+
+    context "when question_set has no questions" do
+      subject { build(:template, question_set: build(:question_set, :empty)) }
+      include_examples "fails custom validation", :question_set, "must have at least one question"
     end
 
-    it "requires a question_set" do
-      template = Template.new(name: "Test Template", admin: admin)
-      expect(template).not_to be_valid
-      expect(template.errors[:question_set]).to include("must exist")
-    end
+    context "when question_set data is nil" do
+      subject { build(:template, question_set: build(:question_set, data: nil)) }
 
-    it "requires question_set to have at least one question" do
-      empty_qs = QuestionSet.new(data: [])
-      template = Template.new(
-        name: "Test Template",
-        admin: admin,
-        question_set: empty_qs
-      )
-      expect(template).not_to be_valid
-      expect(template.errors[:question_set]).to include("must have at least one question")
-    end
-
-    it "is invalid when question_set data is nil" do
-      nil_qs = QuestionSet.new(data: nil)
-      template = Template.new(
-        name: "Test Template",
-        admin: admin,
-        question_set: nil_qs
-      )
-      expect(template).not_to be_valid
+      it "is invalid" do
+        expect(subject).not_to be_valid
+      end
     end
   end
 

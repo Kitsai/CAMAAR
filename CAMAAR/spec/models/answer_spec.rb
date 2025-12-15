@@ -15,19 +15,12 @@ RSpec.describe Answer, type: :model do
   end
 
   describe "validations" do
-    it "is valid with required attributes" do
-      answer = Answer.new(
-        form: form,
-        data: "Test answer"
-      )
+    it "is valid with factory" do
+      answer = build(:answer)
       expect(answer).to be_valid
     end
 
-    it "requires a form" do
-      answer = Answer.new(data: "Test answer")
-      expect(answer).not_to be_valid
-      expect(answer.errors[:form]).to include("must exist")
-    end
+    include_examples "requires association", :form
   end
 
   describe "data attribute" do

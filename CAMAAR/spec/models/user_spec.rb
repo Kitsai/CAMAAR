@@ -2,23 +2,13 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "validations" do
-    it "is valid with an email" do
-      user = User.new(email: "test@example.com")
+    it "is valid with factory" do
+      user = build(:user)
       expect(user).to be_valid
     end
 
-    it "requires an email" do
-      user = User.new(email: nil)
-      expect(user).not_to be_valid
-      expect(user.errors[:email]).to include("can't be blank")
-    end
-
-    it "requires unique email" do
-      User.create!(email: "test@example.com")
-      user = User.new(email: "test@example.com")
-      expect(user).not_to be_valid
-      expect(user.errors[:email]).to include("has already been taken")
-    end
+    include_examples "requires presence of", :email
+    include_examples "requires unique", :email, :user
 
     describe "password validations" do
       it "allows user creation without password" do

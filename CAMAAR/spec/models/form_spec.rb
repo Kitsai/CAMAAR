@@ -40,32 +40,14 @@ RSpec.describe Form, type: :model do
   end
 
   describe "validations" do
-    it "is valid with all required attributes" do
-      form = Form.new(
-        admin: admin,
-        course: course,
-        question_set: question_set
-      )
+    it "is valid with factory" do
+      form = build(:form)
       expect(form).to be_valid
     end
 
-    it "requires an admin" do
-      form = Form.new(course: course, question_set: question_set)
-      expect(form).not_to be_valid
-      expect(form.errors[:admin]).to include("must exist")
-    end
-
-    it "requires a course" do
-      form = Form.new(admin: admin, question_set: question_set)
-      expect(form).not_to be_valid
-      expect(form.errors[:course]).to include("must exist")
-    end
-
-    it "requires a question_set" do
-      form = Form.new(admin: admin, course: course)
-      expect(form).not_to be_valid
-      expect(form.errors[:question_set]).to include("must exist")
-    end
+    include_examples "requires association", :admin
+    include_examples "requires association", :course
+    include_examples "requires association", :question_set
   end
 
   describe "scopes and queries" do
