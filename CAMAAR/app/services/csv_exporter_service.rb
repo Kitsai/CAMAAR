@@ -13,7 +13,7 @@
 #   - Valida permissões do admin para acessar o curso
 #   - Compatível com dados legados
 class CsvExporterService
-  require 'csv'
+  require "csv"
 
   def initialize(admin, form_id)
     @admin = admin
@@ -38,15 +38,17 @@ class CsvExporterService
 
   private
 
+  # Busca os formulários criados pelo admin
   def find_admin_form
     @admin.forms
           .includes(:course, :question_set, :answers)
           .find_by(id: @form_id)
   end
 
+  # Gera o conteúdo do CSV com cabeçalho e linhas de dados
   def generate_csv(form)
     questions = form.question_set.data
-    answers = form.answers.includes(form: [:course, :question_set])
+    answers = form.answers.includes(form: [ :course, :question_set ])
 
     CSV.generate(headers: true) do |csv|
       csv << build_header(questions)
@@ -72,9 +74,10 @@ class CsvExporterService
     CSV.parse_line(data) || []
   rescue CSV::MalformedCSVError
     # Fallback para dados legados
-    data.split(',')
+    data.split(",")
   end
 
+  # Gera o nome do arquivo CSV com data atual
   def generate_filename(form)
     "#{form.course.code}_form_#{form.id}_#{Date.today.strftime('%Y%m%d')}.csv"
   end
