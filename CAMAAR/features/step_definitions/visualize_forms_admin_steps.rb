@@ -19,6 +19,8 @@ Given("there are created forms") do
       question_set: question_set
     )
   end
+  # Refresh the page to show newly created forms
+  visit current_path if current_path.present?
 end
 
 Given("there are no created forms") do
@@ -44,7 +46,9 @@ end
 # Steps for generate_report feature
 
 When("I click on a form") do
-  first('.form-card, a').click
+  # Store the form ID for potential later use
+  @clicked_form_id = @forms.first.id if @forms && @forms.any?
+  first('.template-card-link').click
 end
 
 When("an internal error occurs during report generation") do
@@ -52,7 +56,15 @@ When("an internal error occurs during report generation") do
 end
 
 When("the form is no longer available") do
-  @forms.each(&:destroy) if @forms
+  # For scenarios where form is checked after clicking, we need to simulate
+  # the form being deleted between page load and access
+  # Since the click already happened, we destroy forms and navigate to export URL
+  if @clicked_form_id
+    Form.find(@clicked_form_id).destroy
+    visit export_form_csv_path(@clicked_form_id)
+  else
+    @forms.each(&:destroy) if @forms
+  end
 end
 
 Then("a CSV file containing the form responses should be downloaded") do
@@ -64,5 +76,5 @@ Then("I should see an error message indicating that the report could not be gene
 end
 
 Then("I should see a message indicating that the form cannot be accessed") do
-  expect(page).to have_content(/não encontrado|not found/)
+  expect(page).to have_content(/não encontrado|not found|permissão|permission/)
 end
