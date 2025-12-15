@@ -10,6 +10,8 @@ RSpec.describe CsvExporterService do
 
   describe '#call' do
     context 'with valid data' do
+      subject(:result) { described_class.new(admin, form.id).call }
+
       before do
         form # Create form
         Answer.create!(form: form, data: CSV.generate_line(["Resposta 1", "Resposta 2"]).strip)
@@ -17,33 +19,20 @@ RSpec.describe CsvExporterService do
       end
 
       it 'returns success result' do
-        result = described_class.new(admin, form.id).call
-        expect(result[:success]).to be true
+        expect_successful_csv_export(result)
       end
 
-      it 'generates CSV data' do
-        result = described_class.new(admin, form.id).call
-        expect(result[:csv_data]).to be_present
-        # Check that CSV includes question texts as headers
-        form.question_set.data.each do |question|
-          question_text = question["text"] || question["question"]
-          expect(result[:csv_data]).to include(question_text)
-        end
-        # Check that answers are included
-        expect(result[:csv_data]).to include("Resposta 1")
+      it 'generates CSV data with question headers' do
+        expect_csv_headers(result[:csv_data], form.question_set.data)
       end
 
       it 'generates correct filename' do
-        result = described_class.new(admin, form.id).call
         expect(result[:filename]).to match(/CIC0097_form_#{form.id}_\d{8}\.csv/)
       end
 
-      it 'includes all answers' do
-        result = described_class.new(admin, form.id).call
-        expect(result[:csv_data]).to include("Resposta 1")
-        expect(result[:csv_data]).to include("Resposta 2")
-        expect(result[:csv_data]).to include("Resposta A")
-        expect(result[:csv_data]).to include("Resposta B")
+      it 'includes all answer data' do
+        expect_csv_contains_answers(result[:csv_data],
+          "Resposta 1", "Resposta 2", "Resposta A", "Resposta B")
       end
     end
 

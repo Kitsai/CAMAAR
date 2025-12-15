@@ -395,43 +395,29 @@ RSpec.describe "Forms", type: :request do
           # Create some answers
           Answer.create!(form: form1, data: "Answer 1,Answer 2")
           Answer.create!(form: form1, data: "Answer A,Answer B")
+          # Trigger CSV export request once
+          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
         end
 
         it "returns http success" do
-          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response).to have_http_status(:success)
         end
 
-        it "returns CSV content type" do
-          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
-          expect(response.content_type).to include("text/csv")
-        end
-
-        it "sets attachment disposition" do
-          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
-          expect(response.headers['Content-Disposition']).to include('attachment')
+        it "has correct CSV download format" do
+          expect_csv_download_response(response)
         end
 
         it "includes correct filename" do
-          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
           expect(response.headers['Content-Disposition']).to include("CIC0097_form_#{form1.id}_")
         end
 
-        it "includes CSV headers" do
-          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
-          # Headers should be the question texts
-          form1.question_set.data.each do |question|
-            question_text = question["text"] || question["question"]
-            expect(response.body).to include(question_text)
-          end
+        it "includes CSV question headers" do
+          expect_csv_headers(response.body, form1.question_set.data)
         end
 
-        it "includes answer data" do
-          get "/gerenciamento/resultados/forms/#{form1.id}/csv"
-          expect(response.body).to include("Answer 1")
-          expect(response.body).to include("Answer 2")
-          expect(response.body).to include("Answer A")
-          expect(response.body).to include("Answer B")
+        it "includes all answer data" do
+          expect_csv_contains_answers(response.body,
+            "Answer 1", "Answer 2", "Answer A", "Answer B")
         end
       end
 

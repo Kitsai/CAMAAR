@@ -76,14 +76,12 @@ Then("I should see my courses listed") do
 end
 
 Then("I should download a CSV file with the class performance data") do
-  expect(page.response_headers['Content-Type']).to include('text/csv')
-  expect(page.response_headers['Content-Disposition']).to include('attachment')
-  # Check that CSV includes question texts as headers
-  expect(page.body).to include('Como você avalia o curso?')
-  expect(page.body).to include('O que você aprendeu?')
-  # Check that answers are included
-  expect(page.body).to include('Muito bom')
-  expect(page.body).to include('Aprendi muito sobre SQL')
+  verify_csv_download(page)
+  verify_csv_content(page,
+    'Como você avalia o curso?',
+    'O que você aprendeu?',
+    'Muito bom',
+    'Aprendi muito sobre SQL')
 end
 
 Then("I should see an access denied message") do
