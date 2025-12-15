@@ -2,15 +2,26 @@ require 'rails_helper'
 
 RSpec.describe CreateFormService, type: :service do
   describe '.call' do
-    let(:user)   { create(:user) }
-    let(:admin)  { create(:admin, user: user) }
+    let(:user)  { create(:user) }
+    let(:admin) { create(:admin, user: user) }
 
     let(:question_set) { create(:question_set) }
     let(:template)     { create(:template, question_set: question_set) }
 
-    let(:course)       { create(:course) }
-    let(:student)      { create(:user) }
-    let(:teacher)      { create(:user) }
+    let(:course)  { create(:course) }
+    let(:student) { create(:user) }
+    let(:teacher) { create(:user) }
+
+    let(:template_id) { template&.id }
+    let(:course_ids)  { [course.id] }
+
+    subject(:call_service) do
+      described_class.call(
+        admin: admin,
+        template_id: template_id,
+        course_ids: course_ids
+      )
+    end
 
     before do
       course.students << student
@@ -18,77 +29,71 @@ RSpec.describe CreateFormService, type: :service do
     end
 
     context 'when template and courses are valid' do
-      it 'creates a form for each selected course' do
-        expect {
-          described_class.call(
-            admin: admin,
-            template_id: template.id,
-            course_ids: [course.id]
-          )
-        }.to change(Form, :count).by(1)
+      context 'form creation' do
+        it 'creates one form' do
+          expect { call_service }.to change(Form, :count).by(1)
+        end
       end
 
-      it 'assigns the form to the correct course and admin' do
-        described_class.call(
-          admin: admin,
-          template_id: template.id,
-          course_ids: [course.id]
-        )
+      context 'created form attributes' do
+        before { call_service }
 
-        form = Form.last
-        expect(form.course).to eq(course)
-        expect(form.admin).to eq(admin)
-        expect(form.question_set).to eq(question_set)
+        let(:form) { Form.last }
+
+        it 'assigns the correct course' do
+          expect(form.course).to eq(course)
+        end
+
+        it 'assigns the correct admin' do
+          expect(form.admin).to eq(admin)
+        end
+
+        it 'assigns the correct question set' do
+          expect(form.question_set).to eq(question_set)
+        end
       end
 
-      it 'creates form requests for students and teacher' do
-        expect {
-          described_class.call(
-            admin: admin,
-            template_id: template.id,
-            course_ids: [course.id]
-          )
-        }.to change(FormRequest, :count).by(2)
+      context 'form requests' do
+        it 'creates form requests for all recipients' do
+          expect { call_service }
+            .to change(FormRequest, :count).by(2)
+        end
 
-        recipients = FormRequest.last(2).map(&:user)
-        expect(recipients).to contain_exactly(student, teacher)
+        it 'assigns requests to student and teacher' do
+          call_service
+
+          user_ids = FormRequest.last(2).pluck(:user_id)
+          expect(user_ids).to contain_exactly(student.id, teacher.id)
+        end
       end
     end
 
     context 'when template is missing' do
+      let(:template_id) { nil }
+
       it 'raises MissingTemplate error' do
-        expect {
-          described_class.call(
-            admin: admin,
-            template_id: nil,
-            course_ids: [course.id]
-          )
-        }.to raise_error(CreateFormService::MissingTemplate)
+        expect { call_service }
+          .to raise_error(CreateFormService::MissingTemplate)
       end
     end
 
     context 'when no courses are selected' do
+      let(:course_ids) { [] }
+
       it 'raises MissingCourses error' do
-        expect {
-          described_class.call(
-            admin: admin,
-            template_id: template.id,
-            course_ids: []
-          )
-        }.to raise_error(CreateFormService::MissingCourses)
+        expect { call_service }
+          .to raise_error(CreateFormService::MissingCourses)
       end
     end
 
     context 'when course_ids are invalid' do
+      let(:course_ids) { [999_999] }
+
       it 'raises MissingCourses error' do
-        expect {
-          described_class.call(
-            admin: admin,
-            template_id: template.id,
-            course_ids: [999_999]
-          )
-        }.to raise_error(CreateFormService::MissingCourses)
+        expect { call_service }
+          .to raise_error(CreateFormService::MissingCourses)
       end
     end
   end
 end
+
