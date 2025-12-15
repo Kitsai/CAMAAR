@@ -10,6 +10,8 @@ geralmente, é o coordernador do curso e podem ser respondidos por Alunos e Prof
 O sistema garante anonimização das respostas
 possuindo integração com os sistemas do SIGAA.
 
+Para detalhes de como rodar o sistema leia [A documentacao de instrucoes](/CAMAAR/INSTRUCTIONS.md)
+
 ## Integrantes do grupo
 
 - Lucas Rocha dos Santos - 211055325
