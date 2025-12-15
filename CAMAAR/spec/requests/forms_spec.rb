@@ -12,96 +12,75 @@ RSpec.describe "Forms", type: :request do
   let(:template) { create(:template, admin: admin, question_set: question_set) }
 
   before do
-    # login (same pattern as templates_spec)
     post login_path, params: {
       email: admin_user.email,
       password: "password123"
     }
 
-    # course recipients (required by CreateFormService)
     course.students << student
     course.update!(teacher: teacher)
   end
 
+  def post_forms(template_id:, course_ids:)
+    post "/forms", params: {
+      template_id: template_id,
+      course_ids: course_ids
+    }
+  end
+
   describe "POST /forms" do
     context "when form is created successfully" do
-      it "creates a form" do
-        expect {
-          post "/forms", params: {
-            template_id: template.id,
-            course_ids: [course.id]
-          }
-        }.to change(Form, :count).by(1)
+      subject(:make_request) do
+        post_forms(template_id: template.id, course_ids: [course.id])
       end
 
-      it "creates form requests for students and teacher" do
-        expect {
-          post "/forms", params: {
-            template_id: template.id,
-            course_ids: [course.id]
-          }
-        }.to change(FormRequest, :count).by(2)
+      it "creates a form" do
+        expect { make_request }.to change(Form, :count).by(1)
+      end
+
+      it "creates form requests" do
+        expect { make_request }.to change(FormRequest, :count).by(2)
       end
 
       it "redirects to forms index" do
-        post "/forms", params: {
-          template_id: template.id,
-          course_ids: [course.id]
-        }
-
+        make_request
         expect(response).to redirect_to(forms_path)
       end
 
       it "shows success message" do
-        post "/forms", params: {
-          template_id: template.id,
-          course_ids: [course.id]
-        }
-
+        make_request
         follow_redirect!
         expect(response.body).to include("Formulários criados com sucesso!")
       end
     end
 
     context "when no template is selected" do
-      it "does not create a form" do
-        expect {
-          post "/forms", params: {
-            template_id: nil,
-            course_ids: [course.id]
-          }
-        }.not_to change(Form, :count)
+      subject(:make_request) do
+        post_forms(template_id: nil, course_ids: [course.id])
       end
 
-      it "redirects with error message" do
-        post "/forms", params: {
-          template_id: nil,
-          course_ids: [course.id]
-        }
+      it "does not create a form" do
+        expect { make_request }.not_to change(Form, :count)
+      end
 
-        expect(response).to redirect_to(forms_path)
+      it "shows error message" do
+        make_request
         follow_redirect!
         expect(response.body).to include("É necessário selecionar um template")
       end
     end
 
     context "when no courses are selected" do
-      it "does not create a form" do
-        expect {
-          post "/forms", params: {
-            template_id: template.id,
-            course_ids: []
-          }
-        }.not_to change(Form, :count)
+      subject(:make_request) do
+        post_forms(template_id: template.id, course_ids: [])
       end
 
-      it "redirects with error message" do
-        post "/forms", params: {
-          template_id: template.id,
-          course_ids: []
-        }
+      it "does not create a form" do
+        expect { make_request }.not_to change(Form, :count)
+      end
 
-        expect(response).to redirect_to(forms_path)
+      it "shows error message" do
+        make_request
         follow_redirect!
         expect(response.body).to include("É necessário selecionar pelo menos uma turma")
       end
