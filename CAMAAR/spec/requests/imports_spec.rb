@@ -12,17 +12,7 @@ RSpec.describe "Imports", type: :request do
 
       context "with successful import" do
         before do
-          allow_any_instance_of(JsonImportService).to receive(:call).and_return({
-            success: true,
-            data: {
-              users_created: 5,
-              users_skipped: 2,
-              courses_created: 3,
-              courses_skipped: 0,
-              enrollments_created: 15,
-              errors: []
-            }
-          })
+          mock_successful_import
         end
 
         it "calls JsonImportService" do
@@ -36,34 +26,25 @@ RSpec.describe "Imports", type: :request do
         end
 
         it "shows success message with statistics" do
-          post imports_path
-          follow_redirect!
-          expect(response.body).to include("Import completed successfully")
-          expect(response.body).to include("5 users created")
-          expect(response.body).to include("3 courses created")
-          expect(response.body).to include("15 enrollments created")
+          post_import
+          expect_import_success
+          expect_import_statistics(users: 5, courses: 3, enrollments: 15)
         end
 
         it "shows skipped statistics" do
-          post imports_path
-          follow_redirect!
-          expect(response.body).to include("2 users skipped")
+          post_import
+          expect_import_statistics(users_skipped: 2)
         end
       end
 
       context "with import errors" do
         before do
-          allow_any_instance_of(JsonImportService).to receive(:call).and_return({
-            success: false,
-            error: "Classes file not found"
-          })
+          mock_failed_import("Classes file not found")
         end
 
         it "shows error message" do
-          post imports_path
-          follow_redirect!
-          expect(response.body).to include("Import failed")
-          expect(response.body).to include("Classes file not found")
+          post_import
+          expect_import_error("Classes file not found")
         end
 
         it "redirects to gerenciamento page" do
