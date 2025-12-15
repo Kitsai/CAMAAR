@@ -68,6 +68,22 @@
     transform: scale(1.05);
 }
 
+.logout-btn {
+    background: none;
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-700);
+    transition: all var(--transition-base);
+}
+
+.logout-btn:hover {
+    color: var(--primary-purple);
+}
+
 @media (max-width: 768px) {
     .navbar {
         padding: var(--spacing-md) var(--spacing-md);
