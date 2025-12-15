@@ -1,3 +1,9 @@
+# Model que representa um usuário do sistema.
+#
+# Um usuário pode ter múltiplos papéis:
+# - Professor (teacher): pode lecionar cursos
+# - Aluno (student): pode estar matriculado em cursos
+# - Admin (opcional): pode criar templates e formulários
 class User < ApplicationRecord
   has_secure_password validations: false
 
@@ -14,6 +20,13 @@ class User < ApplicationRecord
   # Admin relationship (optional)
   has_one :admin
 
+  # Verifica se o usuário possui perfil de administrador.
+  #
+  # Este método não recebe argumentos.
+  #
+  # Este método retorna um valor booleano: true se o usuário for admin, false caso contrário.
+  #
+  # Este método não possui efeitos colaterais.
   def admin?
     admin.present?
   end
