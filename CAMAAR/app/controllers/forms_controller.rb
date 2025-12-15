@@ -1,10 +1,10 @@
 class FormsController < ApplicationController
   include AdminAuthorizable
-  
+
   before_action :require_login
-  before_action :find_form, only: [:show, :submit]
-  before_action :verify_form_access, only: [:show, :submit]
-  before_action :require_admin, only: [:results, :export_csv]
+  before_action :find_form, only: [ :show, :submit ]
+  before_action :verify_form_access, only: [ :show, :submit ]
+  before_action :require_admin, only: [ :results, :export_csv ]
 
   def index
     # For users: show forms they need to respond to
@@ -64,8 +64,8 @@ class FormsController < ApplicationController
     if result[:success]
       send_data result[:csv_data],
                 filename: result[:filename],
-                type: 'text/csv',
-                disposition: 'attachment'
+                type: "text/csv",
+                disposition: "attachment"
     else
       redirect_to forms_path, alert: result[:error]
     end
@@ -78,7 +78,7 @@ class FormsController < ApplicationController
 
   def submit
     result = AnswerStorageService.new(@form, params[:answers]).call
-    
+
     if result[:success]
       # Remove the form_request (mark as submitted)
       FormRequest.where(user: current_user, form: @form).destroy_all
