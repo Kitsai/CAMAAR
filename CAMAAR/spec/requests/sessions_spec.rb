@@ -3,6 +3,21 @@ require 'rails_helper'
 RSpec.describe "Sessions", type: :request do
   let(:user) { create(:user) }
 
+  # Helper methods to reduce duplication
+  def perform_login(user_param)
+    post login_path, params: {
+      email: user_param.email,
+      password: "password123"
+    }
+  end
+
+  def perform_invalid_login(email, password)
+    post login_path, params: {
+      email: email,
+      password: password
+    }
+  end
+
   describe "GET /login" do
     it "returns http success" do
       get login_path
@@ -17,80 +32,50 @@ RSpec.describe "Sessions", type: :request do
 
   describe "POST /login" do
     context "with valid credentials" do
+      before { perform_login(user) }
+
       it "logs in the user" do
-        post login_path, params: {
-          email: user.email,
-          password: "password123"
-        }
         expect(session[:user_id]).to eq(user.id)
       end
 
       it "redirects to avaliacoes path for regular users" do
-        post login_path, params: {
-          email: user.email,
-          password: "password123"
-        }
         expect(response).to redirect_to(avaliacoes_path)
       end
 
       it "shows success message" do
-        post login_path, params: {
-          email: user.email,
-          password: "password123"
-        }
         follow_redirect!
         expect(response.body).to include("Successfully logged in")
       end
     end
 
     context "with invalid email" do
+      before { perform_invalid_login("nonexistent@example.com", "password123") }
+
       it "does not log in the user" do
-        post login_path, params: {
-          email: "nonexistent@example.com",
-          password: "password123"
-        }
         expect(session[:user_id]).to be_nil
       end
 
       it "returns unprocessable entity status" do
-        post login_path, params: {
-          email: "nonexistent@example.com",
-          password: "password123"
-        }
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "shows error message" do
-        post login_path, params: {
-          email: "nonexistent@example.com",
-          password: "password123"
-        }
         expect(response.body).to include("Invalid email or password")
       end
     end
 
     context "with invalid password" do
+      before { perform_invalid_login(user.email, "wrongpassword") }
+
       it "does not log in the user" do
-        post login_path, params: {
-          email: user.email,
-          password: "wrongpassword"
-        }
         expect(session[:user_id]).to be_nil
       end
 
       it "returns unprocessable entity status" do
-        post login_path, params: {
-          email: user.email,
-          password: "wrongpassword"
-        }
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "shows error message" do
-        post login_path, params: {
-          email: user.email,
-          password: "wrongpassword"
-        }
         expect(response.body).to include("Invalid email or password")
       end
     end
@@ -124,20 +109,14 @@ RSpec.describe "Sessions", type: :request do
   describe "Admin user authentication" do
     let(:admin_user) { create(:user, :admin) }
 
+    before { perform_login(admin_user) }
+
     it "shows gerenciamento menu after login" do
-      post login_path, params: {
-        email: admin_user.email,
-        password: "password123"
-      }
       follow_redirect!
       expect(response.body).to include("Gerenciamento")
     end
 
     it "redirects admin to avaliacoes path after login" do
-      post login_path, params: {
-        email: admin_user.email,
-        password: "password123"
-      }
       expect(response).to redirect_to(avaliacoes_path)
     end
   end
@@ -146,21 +125,16 @@ RSpec.describe "Sessions", type: :request do
     context "as regular user" do
       let(:user) { create(:user) }
 
-      it "redirects to avaliacoes path" do
-        post login_path, params: {
-          email: user.email,
-          password: "password123"
-        }
+      before do
+        perform_login(user)
         get login_path
+      end
+
+      it "redirects to avaliacoes path" do
         expect(response).to redirect_to(avaliacoes_path)
       end
 
       it "shows already logged in message" do
-        post login_path, params: {
-          email: user.email,
-          password: "password123"
-        }
-        get login_path
         follow_redirect!
         expect(response.body).to include("You are already logged in")
       end
@@ -169,21 +143,16 @@ RSpec.describe "Sessions", type: :request do
     context "as admin user" do
       let(:admin_user) { create(:user, :admin) }
 
-      it "redirects to forms path" do
-        post login_path, params: {
-          email: admin_user.email,
-          password: "password123"
-        }
+      before do
+        perform_login(admin_user)
         get login_path
+      end
+
+      it "redirects to forms path" do
         expect(response).to redirect_to(forms_path)
       end
 
       it "shows already logged in message" do
-        post login_path, params: {
-          email: admin_user.email,
-          password: "password123"
-        }
-        get login_path
         follow_redirect!
         expect(response.body).to include("You are already logged in")
       end
