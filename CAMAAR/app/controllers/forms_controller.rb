@@ -1,3 +1,7 @@
+# Controlador responsável por gerenciar formulários de avaliação.
+#
+# Este controlador permite que admins criem e visualizem formulários,
+# exportem respostas em CSV, e que usuários visualizem e respondam formulários.
 class FormsController < ApplicationController
   include AdminAuthorizable
 

@@ -1,3 +1,6 @@
+# Controlador responsável por gerenciar autenticação de usuários.
+#
+# Este controlador trata do login e logout de usuários no sistema.
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [ :new, :create ]
   before_action :redirect_if_logged_in, only: [ :new ]

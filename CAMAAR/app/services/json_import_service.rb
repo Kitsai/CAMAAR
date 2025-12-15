@@ -1,10 +1,31 @@
+# Service responsável por importar dados de cursos e membros de arquivos JSON.
+#
+# Este service processa arquivos classes.json e class_members.json,
+# criando registros de User, Course e Enrollment no banco de dados.
 class JsonImportService
+  # Inicializa o service com os caminhos dos arquivos JSON.
+  #
+  # Parâmetros:
+  #   classes_path: Caminho para o arquivo classes.json (opcional)
+  #   members_path: Caminho para o arquivo class_members.json (opcional)
   def initialize(classes_path: nil, members_path: nil)
     @classes_path = classes_path || Rails.root.join('..', 'classes.json')
     @members_path = members_path || Rails.root.join('..', 'class_members.json')
     @stats = initialize_stats
   end
 
+  # Executa o processo de importação dos dados.
+  #
+  # Este método valida a existência dos arquivos, faz o parsing do JSON,
+  # e importa os dados de cursos e membros.
+  #
+  # Este método não recebe argumentos.
+  #
+  # Retorna um hash com:
+  #   - success: true, data: hash com estatísticas da importação em caso de sucesso
+  #   - success: false, error: String em caso de erro
+  #
+  # Efeitos colaterais: Cria registros nas tabelas users, courses e enrollments.
   def call
     # Validation phase
     return error_result("Classes file not found") unless File.exist?(@classes_path)
