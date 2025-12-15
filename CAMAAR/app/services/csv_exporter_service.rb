@@ -42,29 +42,11 @@ class CsvExporterService
   end
 
   def build_header(questions)
-    header = ["Formulário", "Turma", "Semestre"]
-    questions.each_with_index do |question, idx|
-      header << "Questão #{idx + 1}"
-      header << "Resposta #{idx + 1}"
-    end
-    header
+    questions.map { |question| question["text"] || question["question"] }
   end
 
   def build_row(answer, questions)
-    row = [
-      "Form #{answer.form.id}",
-      answer.form.course.code,
-      answer.form.course.semester
-    ]
-    
-    answer_values = parse_answer_data(answer.data)
-    
-    questions.each_with_index do |question, idx|
-      row << question["text"]
-      row << (answer_values[idx] || "")
-    end
-    
-    row
+    parse_answer_data(answer.data)
   end
 
   def parse_answer_data(data)
