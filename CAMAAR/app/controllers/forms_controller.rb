@@ -6,11 +6,15 @@ class FormsController < ApplicationController
   before_action :verify_form_access, only: [:show, :submit]
   before_action :require_admin, only: [:results, :export_csv]
 
+  # Lista formulários disponíveis para o usuário responder
+  # Mostra apenas formulários com FormRequest ativo
   def index
     # For users: show forms they need to respond to
     @forms = current_user.forms.includes(:course, :question_set)
   end
 
+  # Cria formulários para turmas selecionadas a partir de um template
+  # Gera FormRequests para alunos e professores das turmas
   def create
     CreateFormService.call(
       admin: current_user.admin,
@@ -27,11 +31,14 @@ class FormsController < ApplicationController
     redirect_to forms_path, alert: "É necessário selecionar pelo menos uma turma"
   end
 
+  # Lista formulários criados pelo admin (área de gerenciamento)
   def results
     # For admins: show forms they have created
     @forms = current_admin.forms.includes(:course, :question_set)
   end
 
+  # Exporta respostas de uma turma em formato CSV
+  # Usa CsvExporterService para gerar o arquivo
   def export_csv
     result = CsvExporterService.new(current_admin, params[:course_code]).call
     
@@ -45,11 +52,14 @@ class FormsController < ApplicationController
     end
   end
 
+  # Exibe um formulário para o usuário responder
   def show
     # Display the form for the user to answer
     @questions = @form.question_set.data
   end
 
+  # Submete as respostas de um formulário
+  # Usa AnswerStorageService para armazenar em formato CSV
   def submit
     result = AnswerStorageService.new(@form, params[:answers]).call
     
@@ -64,12 +74,16 @@ class FormsController < ApplicationController
 
   private
 
+  # Busca o formulário pelo ID do parâmetro
   def find_form
     @form = Form.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to avaliacoes_path, alert: "Formulário não encontrado"
   end
 
+  # Verifica se o usuário tem permissão para acessar o formulário
+  # Admins: podem acessar formulários que criaram
+  # Usuários: podem acessar apenas formulários com FormRequest ativo
   def verify_form_access
     # Admins can access forms they created
     # Regular users can only access forms they have a FormRequest for
