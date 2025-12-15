@@ -40,3 +40,29 @@ end
 Then("I should see a message indicating no forms exist") do
   expect(page).to have_content("Nenhum formulário criado")
 end
+
+# Steps for generate_report feature
+
+When("I click on a form") do
+  first('.form-card, a').click
+end
+
+When("an internal error occurs during report generation") do
+  pending "Internal error simulation needs implementation"
+end
+
+When("the form is no longer available") do
+  @forms.each(&:destroy) if @forms
+end
+
+Then("a CSV file containing the form responses should be downloaded") do
+  expect(page.response_headers['Content-Type']).to include('text/csv')
+end
+
+Then("I should see an error message indicating that the report could not be generated") do
+  expect(page).to have_content(/Erro|Error/)
+end
+
+Then("I should see a message indicating that the form cannot be accessed") do
+  expect(page).to have_content(/não encontrado|not found/)
+end

@@ -76,3 +76,7 @@ Then("I should not be able to be able to delete the Templates") do
   # No delete buttons should be present
   expect(page).not_to have_css('.btn-delete')
 end
+
+Then('I should see the updated templates list') do
+  expect_list_or_empty_state(Template.all, 'No templates available', 'Nenhum template disponível')
+end

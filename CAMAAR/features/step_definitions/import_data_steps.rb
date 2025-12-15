@@ -1,10 +1,7 @@
 # Step definitions for importing data
 
 # Background steps
-
-Given('I am on "gerenciamento" page') do
-  visit gerenciamento_path
-end
+# Note: "I am on {string} page" is in visualize_templates_steps.rb
 
 Given("there is importable data") do
   @importable_data = [
@@ -31,14 +28,7 @@ Given("there is importable data with some invalid data") do
 end
 
 # When steps - Actions
-
-When('I click on "Importar dados" button') do
-  click_button "Importar dados"
-end
-
-When('I click on the "Importar dados" button') do
-  click_button "Importar dados"
-end
+# Note: "I click on {string} button" steps are in visualize_templates_steps.rb
 
 # Then Steps - Assertions
 
@@ -69,4 +59,18 @@ end
 
 Then("I should see a warning indicating that some data could not be imported") do
   expect(page).to have_content("Alguns dados não puderam ser importados")
+end
+
+# Additional workflow steps
+
+Given('I have clicked on the {string} button') do |button_text|
+  click_button button_text
+end
+
+When('the data is imported') do
+  expect(page).to have_content('Import completed')
+end
+
+When('the data import fails') do
+  expect(page).to have_content('Import failed')
 end

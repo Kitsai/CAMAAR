@@ -6,8 +6,21 @@ Given("I am on the {string} page") do |page_name|
     visit gerenciamento_path
   when "gerenciamento/templates"
     visit templates_path
+  when "gerenciamento/resultados"
+    visit forms_path
   else
     raise "Unknown page: #{page_name}"
+  end
+end
+
+Given('I am on {string} page') do |page_name|
+  case page_name
+  when "gerenciamento"
+    visit gerenciamento_path
+  when "gerenciamento/resultados"
+    visit forms_path
+  else
+    visit "/#{page_name}"
   end
 end
 
@@ -27,6 +40,10 @@ When("I click on {string} button") do |button_text|
     # Fall back to the original behavior for other buttons
     click_link button_text
   end
+end
+
+When('I click on the {string} button') do |button_text|
+  click_link button_text
 end
 
 Given("there are created templates") do
