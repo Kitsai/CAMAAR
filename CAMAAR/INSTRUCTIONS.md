@@ -21,8 +21,16 @@ rails db:seed
 rails server
 ```
 
-O seed irá criar um usuário admin padrão. 
+O seed irá criar um usuário admin padrão.
 Suas credenciais são:
 
-email: admin@camaar.com
+email: <admin@camaar.com>
 senha: admin123
+
+## Cadastrando senha de usuário
+
+Como um admin você consegue importar dados do sigaa que automaticamente cadastra usuarios no sistema. Porém é necessario configurar a senha desses usuários.
+
+Após importado os dados acesse a rota:
+
+> /set_password?email=<email para cadastrar senha>
