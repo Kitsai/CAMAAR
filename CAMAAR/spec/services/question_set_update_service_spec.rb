@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe QuestionSetUpdateService do
+RSpec.describe QuestionSetUpdateService, type: :service do
   let(:admin_user) { create(:user, :admin) }
   let(:admin) { admin_user.admin }
   let(:question_set) { create(:question_set) }
@@ -16,12 +16,10 @@ RSpec.describe QuestionSetUpdateService do
   describe '#call' do
     context 'when question_set_data is nil' do
       it 'returns success without making changes' do
-        original_question_set_id = template.question_set_id
-
-        result = described_class.new(template, nil).call
-
-        expect(result[:success]).to be true
-        expect(template.question_set_id).to eq(original_question_set_id)
+        expect_no_changes_to_question_set(template) do
+          result = call_update_service(template, nil)
+          expect_service_success_only(result)
+        end
       end
     end
 
@@ -30,38 +28,32 @@ RSpec.describe QuestionSetUpdateService do
       let!(:form) { create(:form, admin: admin, course: course, question_set: question_set) }
 
       it 'creates a new question_set' do
-        original_question_set_id = template.question_set_id
-
-        expect {
-          described_class.new(template, new_question_data).call
-        }.to change { QuestionSet.count }.by(1)
-
-        expect(template.question_set_id).not_to eq(original_question_set_id)
+        expect_new_question_set_created(template) do
+          expect_question_set_count_increases_by(1) do
+            call_update_service(template, new_question_data)
+          end
+        end
       end
 
       it 'updates the template to reference the new question_set' do
-        described_class.new(template, new_question_data).call
+        call_update_service(template, new_question_data)
 
-        expect(template.question_set.data).to eq(new_question_data)
+        expect_question_set_data_updated(template, new_question_data)
       end
 
       it 'preserves the old question_set for existing forms' do
         original_question_set = template.question_set
         original_data = original_question_set.data
 
-        described_class.new(template, new_question_data).call
+        call_update_service(template, new_question_data)
 
-        # Reload the form and verify it still references the old question_set
-        form.reload
-        expect(form.question_set_id).to eq(original_question_set.id)
-        expect(form.question_set.data).to eq(original_data)
+        expect_old_question_set_preserved(form, original_question_set, original_data)
       end
 
       it 'returns success result with updated template' do
-        result = described_class.new(template, new_question_data).call
+        result = call_update_service(template, new_question_data)
 
-        expect(result[:success]).to be true
-        expect(result[:template]).to eq(template)
+        expect_service_success(result, template)
       end
 
       it 'reloads the template' do
@@ -72,26 +64,23 @@ RSpec.describe QuestionSetUpdateService do
 
     context 'when no forms exist for the question_set' do
       it 'updates the existing question_set in place' do
-        original_question_set_id = template.question_set_id
-
-        expect {
-          described_class.new(template, new_question_data).call
-        }.not_to change { QuestionSet.count }
-
-        expect(template.question_set_id).to eq(original_question_set_id)
+        expect_no_changes_to_question_set(template) do
+          expect_question_set_count_unchanged do
+            call_update_service(template, new_question_data)
+          end
+        end
       end
 
       it 'updates the question_set data' do
-        described_class.new(template, new_question_data).call
+        call_update_service(template, new_question_data)
 
-        expect(template.question_set.data).to eq(new_question_data)
+        expect_question_set_data_updated(template, new_question_data)
       end
 
       it 'returns success result with updated template' do
-        result = described_class.new(template, new_question_data).call
+        result = call_update_service(template, new_question_data)
 
-        expect(result[:success]).to be true
-        expect(result[:template]).to eq(template)
+        expect_service_success(result, template)
       end
 
       it 'reloads the template' do

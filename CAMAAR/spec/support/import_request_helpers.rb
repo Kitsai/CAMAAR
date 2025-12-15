@@ -5,16 +5,22 @@ module ImportRequestHelpers
 
   def expect_import_statistics(users: nil, courses: nil, enrollments: nil, users_skipped: nil)
     follow_redirect! if response.status == 302
-    expect(response.body).to include("#{users} users created") if users
-    expect(response.body).to include("#{courses} courses created") if courses
-    expect(response.body).to include("#{enrollments} enrollments created") if enrollments
-    expect(response.body).to include("#{users_skipped} users skipped") if users_skipped
+
+    stats_map = {
+      users: "users created",
+      courses: "courses created",
+      enrollments: "enrollments created",
+      users_skipped: "users skipped"
+    }
+
+    { users: users, courses: courses, enrollments: enrollments, users_skipped: users_skipped }.each do |key, value|
+      expect(response.body).to include("#{value} #{stats_map[key]}") if value
+    end
   end
 
   def expect_import_error(message)
     follow_redirect! if response.status == 302
-    expect(response.body).to include("Import failed")
-    expect(response.body).to include(message)
+    ["Import failed", message].each { |text| expect(response.body).to include(text) }
   end
 
   def expect_import_success

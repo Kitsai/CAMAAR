@@ -26,34 +26,25 @@ RSpec.describe Answer, type: :model do
   describe "data attribute" do
     it "stores CSV data with only answers" do
       csv_data = "5,Great course!"
-      answer = Answer.create!(
-        form: form,
-        data: csv_data
-      )
+      answer = create_answer_with_data(form, csv_data)
 
-      expect(answer.data).to be_present
-      expect(answer.data).to eq(csv_data)
-      answers = answer.data.split(",")
-      expect(answers.first).to eq("5")
-      expect(answers.last).to eq("Great course!")
+      expect_answer_data_equals(answer, csv_data)
+      expect_csv_values(answer, "5", "Great course!")
     end
   end
 
   describe "relationship with form" do
     it "can have multiple answers for the same form" do
-      answer1 = Answer.create!(form: form, data: "Answer 1")
-      answer2 = Answer.create!(form: form, data: "Answer 2")
+      answer1 = create_answer_with_data(form, "Answer 1")
+      answer2 = create_answer_with_data(form, "Answer 2")
 
-      expect(form.answers.count).to eq(2)
-      expect(form.answers).to include(answer1, answer2)
+      expect_form_has_answers(form, 2, answer1, answer2)
     end
 
     it "is destroyed when form is destroyed" do
-      answer = Answer.create!(form: form, data: "Test data")
-      answer_id = answer.id
+      answer = create_answer_with_data(form, "Test data")
 
-      expect { form.destroy }.to change { Answer.count }.by(-1)
-      expect(Answer.find_by(id: answer_id)).to be_nil
+      expect_destroyed_with_form(form, answer)
     end
   end
 
@@ -88,10 +79,8 @@ RSpec.describe Answer, type: :model do
 
   describe '#answer_at' do
     it 'returns the answer at specific index' do
-      answer = Answer.create!(form: form, data: CSV.generate_line(["First", "Second", "Third"]).strip)
-      expect(answer.answer_at(0)).to eq("First")
-      expect(answer.answer_at(1)).to eq("Second")
-      expect(answer.answer_at(2)).to eq("Third")
+      answer = create_csv_answer(form, "First", "Second", "Third")
+      expect_answer_at_indices(answer, "First", "Second", "Third")
     end
 
     it 'returns nil for invalid index' do

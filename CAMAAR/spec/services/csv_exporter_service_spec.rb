@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CsvExporterService do
+RSpec.describe CsvExporterService, type: :service do
   let(:admin_user) { create(:user, :admin) }
   let(:admin) { admin_user.admin }
   let(:teacher) { create(:user) }
@@ -38,21 +38,18 @@ RSpec.describe CsvExporterService do
 
     context 'with invalid data' do
       it 'returns error when admin is nil' do
-        result = described_class.new(nil, form.id).call
-        expect(result[:success]).to be false
-        expect(result[:error]).to eq("Admin não encontrado")
+        result = call_csv_exporter(nil, form.id)
+        expect_csv_export_error(result, "Admin não encontrado")
       end
 
       it 'returns error when form_id is blank' do
-        result = described_class.new(admin, nil).call
-        expect(result[:success]).to be false
-        expect(result[:error]).to eq("ID do formulário não fornecido")
+        result = call_csv_exporter(admin, nil)
+        expect_csv_export_error(result, "ID do formulário não fornecido")
       end
 
       it 'returns error when admin has no access to form' do
-        result = described_class.new(admin, 99999).call
-        expect(result[:success]).to be false
-        expect(result[:error]).to eq("Você não tem permissão para acessar este formulário")
+        result = call_csv_exporter(admin, 99999)
+        expect_csv_export_error(result, "Você não tem permissão para acessar este formulário")
       end
     end
 
@@ -63,11 +60,10 @@ RSpec.describe CsvExporterService do
       end
 
       it 'properly escapes special characters' do
-        result = described_class.new(admin, form.id).call
+        result = call_csv_exporter(admin, form.id)
         expect(result[:success]).to be true
         # CSV escapes quotes by doubling them
-        expect(result[:csv_data]).to include("Resposta com, vírgula")
-        expect(result[:csv_data]).to include('""aspas""') # CSV standard escaping
+        expect_csv_escapes_special_chars(result[:csv_data], "Resposta com, vírgula", '""aspas""')
       end
     end
   end

@@ -28,9 +28,7 @@ RSpec.describe Form, type: :model do
     end
 
     it "has many users through form_requests" do
-      association = described_class.reflect_on_association(:users)
-      expect(association.macro).to eq(:has_many)
-      expect(association.options[:through]).to eq(:form_requests)
+      expect_has_many_through(described_class, :users, through: :form_requests)
     end
 
     it "has many answers" do
@@ -62,15 +60,11 @@ RSpec.describe Form, type: :model do
     let!(:form3) { create(:form, admin: admin2, course: course1, question_set: qs) }
 
     it "can filter forms by admin" do
-      admin1_forms = Form.where(admin: admin1)
-      expect(admin1_forms).to include(form1, form2)
-      expect(admin1_forms).not_to include(form3)
+      expect_forms_filtered_by(:admin, admin1, form1, form2, excluded: [form3])
     end
 
     it "can filter forms by course" do
-      course1_forms = Form.where(course: course1)
-      expect(course1_forms).to include(form1, form3)
-      expect(course1_forms).not_to include(form2)
+      expect_forms_filtered_by(:course, course1, form1, form3, excluded: [form2])
     end
   end
 
@@ -79,24 +73,18 @@ RSpec.describe Form, type: :model do
       form = create(:form, admin: admin, course: course, question_set: question_set)
       user1 = create(:user)
       user2 = create(:user)
-      
-      FormRequest.create!(user: user1, form: form)
-      FormRequest.create!(user: user2, form: form)
 
-      expect(form.form_requests.count).to eq(2)
-      expect(form.users).to include(user1, user2)
+      create_form_requests_for(form, user1, user2)
+      expect_form_has_requests(form, 2, user1, user2)
     end
   end
 
   describe "answers relationship" do
     it "can have multiple answers" do
       form = create(:form, admin: admin, course: course, question_set: question_set)
-      
-      answer1 = Answer.create!(form: form, data: "Answer 1")
-      answer2 = Answer.create!(form: form, data: "Answer 2")
 
-      expect(form.answers.count).to eq(2)
-      expect(form.answers).to include(answer1, answer2)
+      answers = create_answers_for(form, "Answer 1", "Answer 2")
+      expect_form_has_answers_count(form, 2, *answers)
     end
   end
 end

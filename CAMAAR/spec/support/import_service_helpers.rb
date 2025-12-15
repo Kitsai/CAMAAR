@@ -5,14 +5,11 @@ module ImportServiceHelpers
     JsonImportService.new(classes_path: classes_path, members_path: members_path)
   end
 
-  def expect_import_statistics(result, users_created: nil, courses_created: nil,
-                                enrollments_created: nil, users_skipped: nil, courses_skipped: nil)
+  def expect_import_statistics(result, **stats)
     expect(result[:success]).to be true
-    expect(result[:data][:users_created]).to eq(users_created) if users_created
-    expect(result[:data][:courses_created]).to eq(courses_created) if courses_created
-    expect(result[:data][:enrollments_created]).to eq(enrollments_created) if enrollments_created
-    expect(result[:data][:users_skipped]).to eq(users_skipped) if users_skipped
-    expect(result[:data][:courses_skipped]).to eq(courses_skipped) if courses_skipped
+    stats.each do |key, value|
+      expect(result[:data][key]).to eq(value) if value
+    end
   end
 
   def expect_import_error(result, message_fragment)

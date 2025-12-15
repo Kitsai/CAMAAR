@@ -28,9 +28,7 @@ RSpec.describe User, type: :model do
 
       it "cannot update password without matching confirmation" do
         user = User.create!(email: "test@example.com")
-        result = user.update(password: "password123", password_confirmation: "different")
-        expect(result).to be_falsey
-        expect(user.errors[:password_confirmation]).to be_present
+        expect_password_update_fails(user, "password123", "different")
       end
     end
   end
@@ -39,19 +37,19 @@ RSpec.describe User, type: :model do
     let(:user) { User.create!(email: "test@example.com") }
 
     it "can set password after creation" do
-      expect(user.password_digest).to be_nil
-      user.update(password: "newpassword", password_confirmation: "newpassword")
-      expect(user.password_digest).not_to be_nil
+      expect_no_password_set(user)
+      set_user_password(user, "newpassword")
+      expect_password_set(user)
     end
 
     it "can authenticate after setting password" do
-      user.update(password: "newpassword", password_confirmation: "newpassword")
-      expect(user.authenticate("newpassword")).to eq(user)
+      set_user_password(user, "newpassword")
+      expect_user_authenticates(user, "newpassword")
     end
 
     it "cannot authenticate with wrong password" do
-      user.update(password: "newpassword", password_confirmation: "newpassword")
-      expect(user.authenticate("wrongpassword")).to be_falsey
+      set_user_password(user, "newpassword")
+      expect_authentication_fails(user, "wrongpassword")
     end
   end
 

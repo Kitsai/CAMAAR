@@ -31,12 +31,11 @@ RSpec.describe "Templates", type: :request do
     end
 
     it "displays all templates for the current admin" do
-      template1 = Template.create!(name: "Template 1", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q1" } ]))
-      template2 = Template.create!(name: "Template 2", admin: admin, question_set: QuestionSet.create!(data: [ { question: "Q2" } ]))
+      create_template_with_question_set("Template 1", admin, [{ question: "Q1" }])
+      create_template_with_question_set("Template 2", admin, [{ question: "Q2" }])
 
       get templates_path
-      expect(response.body).to include("Template 1")
-      expect(response.body).to include("Template 2")
+      expect_templates_displayed("Template 1", "Template 2")
     end
   end
 
@@ -119,8 +118,7 @@ RSpec.describe "Templates", type: :request do
     let(:new_attributes) { { name: "Updated Template" } }
 
     it "updates the template" do
-      patch template_path(template), params: { template: new_attributes }
-      template.reload
+      update_template_and_reload(template, new_attributes)
       expect(template.name).to eq("Updated Template")
     end
 
@@ -147,12 +145,9 @@ RSpec.describe "Templates", type: :request do
 
   describe "admin access control" do
     it "redirects non-admin users" do
-      delete logout_path
-      post login_path, params: { email: regular_user.email, password: "password123" }
-
+      switch_to_user(regular_user)
       get templates_path
-      expect(response).to redirect_to(root_path)
-      expect(flash[:alert]).to include("Admin privileges required")
+      expect_admin_required_redirect
     end
 
     it "allows admin users" do

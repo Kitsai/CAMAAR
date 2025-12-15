@@ -25,4 +25,26 @@ module CsvExportHelpers
     expect(result[:success]).to be true
     expect(result[:csv_data]).to be_present
   end
+
+  # Calls the CSV exporter service
+  def call_csv_exporter(admin, form_id)
+    described_class.new(admin, form_id).call
+  end
+
+  # Validates service result failure
+  def expect_csv_export_error(result, error_message)
+    expect(result[:success]).to be false
+    expect(result[:error]).to eq(error_message)
+  end
+
+  # Validates CSV contains special characters
+  def expect_csv_escapes_special_chars(csv_data, *expected_strings)
+    expected_strings.each do |string|
+      expect(csv_data).to include(string)
+    end
+  end
+end
+
+RSpec.configure do |config|
+  config.include CsvExportHelpers, type: :service
 end
