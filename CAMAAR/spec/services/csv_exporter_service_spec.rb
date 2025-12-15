@@ -24,7 +24,12 @@ RSpec.describe CsvExporterService do
       it 'generates CSV data' do
         result = described_class.new(admin, form.id).call
         expect(result[:csv_data]).to be_present
-        expect(result[:csv_data]).to include("Formulário")
+        # Check that CSV includes question texts as headers
+        form.question_set.data.each do |question|
+          question_text = question["text"] || question["question"]
+          expect(result[:csv_data]).to include(question_text)
+        end
+        # Check that answers are included
         expect(result[:csv_data]).to include("Resposta 1")
       end
 

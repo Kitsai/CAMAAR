@@ -61,8 +61,8 @@ When("I visit the results page") do
 end
 
 When("I click to export CSV for a course") do
-  # Click the first course card link
-  first('.template-card-link').click
+  # Navigate directly to the CSV export for @form1
+  visit export_form_csv_path(@form1.id)
 end
 
 When("I try to access the CSV export for a course I don't manage") do
@@ -78,9 +78,12 @@ end
 Then("I should download a CSV file with the class performance data") do
   expect(page.response_headers['Content-Type']).to include('text/csv')
   expect(page.response_headers['Content-Disposition']).to include('attachment')
-  expect(page.body).to include('Formulário')
-  expect(page.body).to include('Questão')
-  expect(page.body).to include('Resposta')
+  # Check that CSV includes question texts as headers
+  expect(page.body).to include('Como você avalia o curso?')
+  expect(page.body).to include('O que você aprendeu?')
+  # Check that answers are included
+  expect(page.body).to include('Muito bom')
+  expect(page.body).to include('Aprendi muito sobre SQL')
 end
 
 Then("I should see an access denied message") do

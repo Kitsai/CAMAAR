@@ -419,10 +419,11 @@ RSpec.describe "Forms", type: :request do
 
         it "includes CSV headers" do
           get "/gerenciamento/resultados/forms/#{form1.id}/csv"
-          expect(response.body).to include("Formulário")
-          expect(response.body).to include("Turma")
-          expect(response.body).to include("Questão")
-          expect(response.body).to include("Resposta")
+          # Headers should be the question texts
+          form1.question_set.data.each do |question|
+            question_text = question["text"] || question["question"]
+            expect(response.body).to include(question_text)
+          end
         end
 
         it "includes answer data" do
