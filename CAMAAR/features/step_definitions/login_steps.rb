@@ -7,21 +7,13 @@ end
 
 Given('I am an admin user') do
   # Create a user with admin privileges
-  @user = User.create!(
-    email: 'admin@example.com',
-    password: 'password123',
-    password_confirmation: 'password123'
-  )
-  @admin = Admin.create!(user: @user)
+  @admin = create_admin
+  @user = @admin.user
 end
 
 # When steps - Actions
 When('I enter a valid email') do
-  @user ||= User.create!(
-    email: 'user@example.com',
-    password: 'password123',
-    password_confirmation: 'password123'
-  )
+  @user ||= create_user(email: 'user@example.com')
   fill_in 'Email', with: @user.email
 end
 
@@ -37,21 +29,14 @@ When('I enter a email that does not exist on database') do
 end
 
 When('I enter the wrong password') do
-  @user ||= User.create!(
-    email: 'user@example.com',
-    password: 'password123',
-    password_confirmation: 'password123'
-  )
+  @user ||= create_user(email: 'user@example.com')
   fill_in 'Email', with: @user.email
   fill_in 'Senha', with: 'wrongpassword'
   click_button 'Entrar'
 end
 
 When('I log in successfully') do
-  visit login_path
-  fill_in 'Email', with: @user.email
-  fill_in 'Senha', with: 'password123'
-  click_button 'Entrar'
+  login_as(@user, 'password123')
 end
 
 # Then steps - Assertions

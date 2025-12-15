@@ -76,15 +76,12 @@ Then("the {string} button should be disabled") do |button_text|
   case button_text
   when "Editar templates"
     # When there are no templates, edit buttons should not be present
-    expect(page).not_to have_css('.btn-edit')
+    expect_no_action_buttons('.btn-edit')
   when "Deletar templates"
     # When there are no templates, delete buttons should not be present
-    expect(page).not_to have_css('.btn-delete')
+    expect_no_action_buttons('.btn-delete')
   else
     # Check if button/link is disabled or not present
-    expect(
-      page.has_css?("a.disabled", text: button_text) ||
-      page.has_css?("button[disabled]", text: button_text)
-    ).to be true
+    expect_button_disabled(button_text)
   end
 end

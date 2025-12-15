@@ -2,13 +2,8 @@
 
 Given("I am on the Avaliações page") do
   # Create a user and log in
-  @user = FactoryBot.create(:user, email: 'test@camaar.com', password: 'password123', password_confirmation: 'password123')
-  
-  visit login_path
-  fill_in 'Email', with: @user.email
-  fill_in 'Senha', with: 'password123'
-  click_button 'Entrar'
-  
+  create_and_login_user
+
   expect(page).to have_current_path(avaliacoes_path)
 end
 
@@ -48,21 +43,11 @@ Then("I should be redirected to the selected form page") do
 end
 
 When("I answer all questions in the form") do
-  # Fill in all questions based on the form's question_set
-  questions = @selected_form.question_set.data
-  
   # Wait for modal to be visible
-  expect(page).to have_css('.modal.active', visible: true)
-  
-  questions.each_with_index do |question, index|
-    case question["type"]
-    when "text"
-      fill_in "answers[#{index}][answer]", with: "This is my answer to: #{question['question']}"
-    when "radio"
-      # Select the first option
-      choose "answer_#{index}_0" if question["options"]&.any?
-    end
-  end
+  wait_for_modal
+
+  # Fill in all questions based on the form's question_set
+  answer_form_questions(@selected_form)
 end
 
 When("I click on the send button") do
@@ -95,26 +80,20 @@ end
 
 Given("I am viewing an available form") do
   # Setup similar to "I am on the Avaliações page" + "there are available forms"
-  @user = FactoryBot.create(:user, email: 'test@camaar.com', password: 'password123', password_confirmation: 'password123')
-  
+  create_and_login_user
+
   admin = FactoryBot.create(:user, :admin).admin
   question_set = FactoryBot.create(:question_set)
   course = FactoryBot.create(:course)
-  
+
   @form = FactoryBot.create(:form, admin: admin, course: course, question_set: question_set)
   @form_request = FormRequest.create!(user: @user, form: @form)
-  
-  # Login and open the form modal
-  visit login_path
-  fill_in 'Email', with: @user.email
-  fill_in 'Senha', with: 'password123'
-  click_button 'Entrar'
-  
+
+  # Refresh the page to show the newly created forms
+  visit forms_path
+
   # Click on the form to open modal
-  find('.template-card', match: :first).click
-  
-  # Wait for modal to appear
-  expect(page).to have_css('.modal.active', visible: true)
+  open_modal_and_wait('.template-card')
 end
 
 Given("I have not answered all mandatory questions") do

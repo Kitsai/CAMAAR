@@ -21,19 +21,19 @@ end
 
 Then("I should be able to edit the Templates") do
   # Wait for the modal to be fully displayed
-  expect(page).to have_css('.modal.active', visible: true)
+  wait_for_modal
 
   # Store reference to the first template
   first_template = @templates.first
 
   # Fill in the edit form with new data
-  fill_in 'Nome do Template', with: 'Updated Template Name'
+  fill_form_fields('Nome do Template' => 'Updated Template Name')
 
   # Save the changes
   click_button 'Atualizar'
 
   # Verify the template was updated successfully
-  expect(page).to have_content('Template updated successfully')
+  expect_success_message('Template updated successfully')
   expect(page).to have_content('Updated Template Name')
 
   # Verify in database
@@ -55,19 +55,10 @@ Then("the template should be deleted") do
   visit current_path
 
   # Now click the delete button on the first template
-  if page.has_css?('.btn-delete')
-    accept_confirm do
-      first('.btn-delete').click
-    end
-  else
-    raise "No delete button found - are there templates on the page?"
-  end
+  click_first_with_confirm('.btn-delete', error_message: "No delete button found - are there templates on the page?")
 
-  # Wait for the deletion to complete and page to reload
-  using_wait_time(5) do
-    # Verify success message is shown
-    expect(page).to have_content('Template deleted successfully')
-  end
+  # Wait for the deletion to complete and verify success message
+  expect_content_after_wait('Template deleted successfully')
 
   # Verify the template count decreased by 1
   # Only count templates for the current admin
@@ -76,20 +67,8 @@ end
 
 Then("I should see the atualized templates list") do
   # Verify that the templates list is displayed and updated
-  # Check that remaining templates are visible
-  remaining_templates = Template.all
-
-  if remaining_templates.any?
-    remaining_templates.each do |template|
-      expect(page).to have_content(template.name)
-    end
-  else
-    # If no templates remain, verify empty state message
-    expect(
-      page.has_content?('No templates available') ||
-      page.has_content?('Nenhum template disponível')
-    ).to be true
-  end
+  # Check that remaining templates are visible or show empty state
+  expect_list_or_empty_state(Template.all, 'No templates available', 'Nenhum template disponível')
 end
 
 Then("I should not be able to be able to delete the Templates") do

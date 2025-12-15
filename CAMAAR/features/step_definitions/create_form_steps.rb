@@ -1,18 +1,7 @@
 # Step definitions for create form feature
 
 Given("I am an admin") do
-  @user = User.create!(
-    email: 'admin@example.com',
-    password: 'password123',
-    password_confirmation: 'password123'
-  )
-  @admin = Admin.create!(user: @user)
-
-  # Log in as admin
-  visit login_path
-  fill_in 'Email', with: @user.email
-  fill_in 'Senha', with: 'password123'
-  click_button 'Entrar'
+  @admin = create_and_login_admin
 end
 
 Given("there is at least one template") do
@@ -46,11 +35,7 @@ end
 When("I select a template") do
   @selected_template = Template.first || FactoryBot.create(:template)
 
-  expect(page).to have_select("templateSelect", visible: true)
-
-  puts page.find("#templateSelect").all("option").map(&:text)
-
-  select @selected_template.name, from: "templateSelect"
+  select_and_wait(@selected_template.name, from: "templateSelect")
 end
 
 When("I do not select a template") do
