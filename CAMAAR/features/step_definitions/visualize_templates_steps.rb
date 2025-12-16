@@ -6,8 +6,30 @@ Given("I am on the {string} page") do |page_name|
     visit gerenciamento_path
   when "gerenciamento/templates"
     visit templates_path
+  when "gerenciamento/resultados"
+    visit forms_path
   else
     raise "Unknown page: #{page_name}"
+  end
+end
+
+Given('I am on {string} page') do |page_name|
+  case page_name
+  when "gerenciamento"
+    visit gerenciamento_path
+  when "gerenciamento/resultados"
+    visit forms_path
+  else
+    visit "/#{page_name}"
+  end
+end
+
+def handle_import_button
+  # In non-JavaScript tests, confirmation dialogs are automatically accepted
+  if Capybara.current_driver == Capybara.javascript_driver
+    accept_confirm { click_button "Importar Dados" }
+  else
+    click_button "Importar Dados"
   end
 end
 
@@ -15,16 +37,24 @@ When("I click on {string} button") do |button_text|
   # Map "Resultados" to "Avaliações" since we renamed it in the sidebar
   button_text = "Avaliações" if button_text == "Resultados"
 
+  # Handle "Importar dados" button (button_to with confirmation)
+  if button_text.downcase == "importar dados"
+    handle_import_button
   # For "Editar templates" from gerenciamento page, navigate to templates
-  if button_text == "Editar templates" && current_path == "/gerenciamento"
-    # Fix case sensitivity: "Editar templates" -> "Editar Templates"
+  elsif button_text == "Editar templates" && current_path == "/gerenciamento"
     click_link "Editar Templates"
   elsif button_text == "Editar templates" || button_text == "Deletar templates"
-    # Store the intent to click this button (for edit/delete actions on templates page)
-    # The actual click will happen in the Then steps after templates are set up
     @button_to_click = button_text
   else
-    # Fall back to the original behavior for other buttons
+    click_link button_text
+  end
+end
+
+When('I click on the {string} button') do |button_text|
+  # Handle "Importar dados" button (button_to with confirmation)
+  if button_text.downcase == "importar dados"
+    handle_import_button
+  else
     click_link button_text
   end
 end

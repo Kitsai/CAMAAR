@@ -69,7 +69,8 @@ Then("the submitted form should no longer be available") do
 end
 
 Then("I should see a message indicating that no forms are available") do
-  expect(page).to have_content("Nenhuma avaliação pendente")
+  # Handle both student view (Nenhuma avaliação pendente) and admin view (Nenhum formulário criado)
+  expect(page).to have_content(/Nenhuma avaliação pendente|Nenhum formulário criado/)
 end
 
 Then("no form items should be displayed") do

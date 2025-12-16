@@ -1,6 +1,6 @@
-<% content_for :page_title, "Formulários Criados" %>
+<% content_for :page_title, "Gerenciamento - Resultados" %>
 
-<%= render 'shared/page_container', title: 'Formulários Criados' do %>
+<%= render 'shared/page_container', title: 'Gerenciamento - Resultados' do %>
   <% if @forms.any? %>
     <div class="templates-grid">
       <% @forms.each do |form| %>
@@ -9,20 +9,39 @@
                     style: "text-decoration: none; color: inherit;",
                     data: { turbo: false } do %>
           <div class="template-card">
-            <div class="template-card-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
-              <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-bottom: 0.1rem;">
+            <div
+              class="template-card-content"
+              style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;"
+            >
+              <div
+                style="display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-bottom: 0.1rem;"
+              >
                 <h3 class="template-card-title" style="margin: 0; flex: 1;"><%= form.course.name %></h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #4299e1;">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="color: #4299e1;"
+                >
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
               </div>
-              <p class="template-card-subtitle" style="color: #718096; margin: 0 0 0.3rem 0; font-size: 0.9rem;">
-                <%= form.course.semester %> • Criado em <%= form.created_at.strftime('%d/%m/%Y') %>
+              <p
+                class="template-card-subtitle"
+                style="color: #718096; margin: 0 0 0.3rem 0; font-size: 0.9rem;"
+              >
+                <%= form.course.semester %>
+                • Criado em
+                <%= form.created_at.strftime("%d/%m/%Y") %>
               </p>
               <p class="form-card-details" style="margin: 0; color: #4a5568;">
-                Professor: <%= form.course.teacher.name %>
+                Professor:
+                <%= form.course.teacher.name %>
               </p>
               <p style="margin: 0.5rem 0 0 0; color: #4299e1; font-size: 0.85rem;">
                 Clique para baixar CSV
